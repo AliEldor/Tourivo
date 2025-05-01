@@ -36,6 +36,12 @@ const tourSchema = new mongoose.Schema(
       required: true,
     },
 
+    reviews: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
 
     featured: {
       type: Boolean,
