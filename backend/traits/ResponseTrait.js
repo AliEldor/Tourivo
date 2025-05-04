@@ -5,4 +5,11 @@ export const ResponseTrait = {
           data
         });
       },
+
+      errorResponse: (res, error, code = 500) => {
+        return res.status(code).json({
+          success: false,
+          error
+        });
+      },
 }
