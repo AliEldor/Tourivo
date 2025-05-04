@@ -12,4 +12,11 @@ export const ResponseTrait = {
           error
         });
       },
+
+      failedValidation: (res, errors) => {
+        return res.status(422).json({
+          success: false,
+          result: errors
+        });
+      },
 }
