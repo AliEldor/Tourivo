@@ -43,4 +43,38 @@ export const TourService = {
       };
     }
   },
+
+  deleteTour: async (id) => {
+    try {
+      const deletedTour = await Tour.findByIdAndDelete(id);
+      
+      if (!deletedTour) {
+        return {
+          success: false,
+          error: "Tour not found"
+        };
+      }
+      
+      return {
+        success: true,
+        message: "Successfully deleted"
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to delete tour"
+      };
+    }
+  },
+
+  getSingleTour: async (id) => {
+    try {
+      const tour = await Tour.findById(id).populate("reviews");
+      
+      if (!tour) {
+        return {
+          success: false,
+          error: "Tour not found"
+        };
+      }
 };
