@@ -152,4 +152,20 @@ export const TourService = {
     }
   },
 
+  getTourCount: async () => {
+    try {
+      const tourCount = await Tour.estimatedDocumentCount();
+      
+      return {
+        success: true,
+        data: tourCount
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch tour count"
+      };
+    }
+  }
+
 };
