@@ -30,5 +30,12 @@ export const validateTour = (method) => {
               body("maxGroupSize").optional().isNumeric().withMessage("Max group size must be a number"),
             ];
           }
+
+          case "deleteTour":
+    case "getSingleTour": {
+      return [
+        param("id").isMongoId().withMessage("Invalid tour ID"),
+      ];
+    }
     }
 }
