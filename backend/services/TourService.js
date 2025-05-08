@@ -133,5 +133,23 @@ export const TourService = {
       };
     }
   },
-  
+
+  getFeaturedTours: async () => {
+    try {
+      const tours = await Tour.find({ featured: true })
+        .populate("reviews")
+        .limit(8);
+      
+      return {
+        success: true,
+        data: tours
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to find featured tours"
+      };
+    }
+  },
+
 };
