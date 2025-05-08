@@ -44,5 +44,13 @@ export const validateTour = (method) => {
       ];
     }
 
+    case "getTourBySearch": {
+        return [
+          query("city").optional(),
+          query("price").optional().isNumeric().withMessage("Price must be a number"),
+          query("maxGroupSize").optional().isNumeric().withMessage("Max group size must be a number"),
+        ];
+      }
+
     }
 }
