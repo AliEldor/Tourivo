@@ -37,5 +37,12 @@ export const validateTour = (method) => {
         param("id").isMongoId().withMessage("Invalid tour ID"),
       ];
     }
+
+    case "getAllTour": {
+      return [
+        query("page").optional().isInt({ min: 0 }).withMessage("Page must be a positive integer"),
+      ];
+    }
+
     }
 }
