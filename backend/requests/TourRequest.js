@@ -1,3 +1,20 @@
 import { body, param, query } from "express-validator";
 import { ResponseTrait } from "../traits/ResponseTrait.js";
 import { validationResult } from "express-validator";
+
+export const validateTour = (method) => {
+    switch (method){
+        case "createTour": {
+            return [
+              body("title").notEmpty().withMessage("Title is required"),
+              body("city").notEmpty().withMessage("City is required"),
+              body("address").notEmpty().withMessage("Address is required"),
+              body("distance").isNumeric().withMessage("Distance must be a number"),
+              body("photo").notEmpty().withMessage("Photo is required"),
+              body("desc").notEmpty().withMessage("Description is required"),
+              body("price").isNumeric().withMessage("Price must be a number"),
+              body("maxGroupSize").isNumeric().withMessage("Max group size must be a number"),
+            ];
+          }
+    }
+}
