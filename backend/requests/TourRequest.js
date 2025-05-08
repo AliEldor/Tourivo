@@ -16,5 +16,19 @@ export const validateTour = (method) => {
               body("maxGroupSize").isNumeric().withMessage("Max group size must be a number"),
             ];
           }
+
+          case "updateTour": {
+            return [
+              param("id").isMongoId().withMessage("Invalid tour ID"),
+              body("title").optional(),
+              body("city").optional(),
+              body("address").optional(),
+              body("distance").optional().isNumeric().withMessage("Distance must be a number"),
+              body("photo").optional(),
+              body("desc").optional(),
+              body("price").optional().isNumeric().withMessage("Price must be a number"),
+              body("maxGroupSize").optional().isNumeric().withMessage("Max group size must be a number"),
+            ];
+          }
     }
 }
