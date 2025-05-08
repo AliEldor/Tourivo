@@ -111,4 +111,14 @@ export const TourService = {
     }
   },
 
+  getTourBySearch: async (query) => {
+    try {
+      const { city, price, maxGroupSize } = query;
+      const cityRegex = new RegExp(city, "i");
+      
+      const tours = await Tour.find({
+        city: cityRegex,
+        price: { $gte: parseInt(price) },
+        maxGroupSize: { $gte: parseInt(maxGroupSize) }
+      }).populate("reviews");
 };
