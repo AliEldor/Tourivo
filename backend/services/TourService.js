@@ -121,4 +121,17 @@ export const TourService = {
         price: { $gte: parseInt(price) },
         maxGroupSize: { $gte: parseInt(maxGroupSize) }
       }).populate("reviews");
+
+      return {
+        success: true,
+        data: tours
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to find tours"
+      };
+    }
+  },
+  
 };
