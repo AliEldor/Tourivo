@@ -25,4 +25,11 @@ export const UserService = {
         { new: true }
       );
 
+      if (!updatedUser) {
+        return {
+          success: false,
+          error: "User not found",
+        };
+      }
+
 };
