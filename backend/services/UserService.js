@@ -87,5 +87,21 @@ export const UserService = {
       };
     }
   },
-  
+
+  getAllUsers: async () => {
+    try {
+      const users = await User.find({});
+
+      return {
+        success: true,
+        count: users.length,
+        data: users,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to find users",
+      };
+    }
+  },
 };
