@@ -5,6 +5,10 @@ export const UserService = {
         try {
         const newUser = new User(userData);
         const savedUser = await newUser.save();
+        return {
+            success: true,
+            data: savedUser,
+          };
         }
     }
 }
