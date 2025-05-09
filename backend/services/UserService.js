@@ -54,8 +54,17 @@ export const UserService = {
               error: "User not found",
             };
           }
-          
+          return {
+            success: true,
+            message: "Successfully deleted",
+          };
     }
+    catch (err) {
+        return {
+          success: false,
+          error: "Failed to delete user",
+        };
+      }
   }
 
 };
