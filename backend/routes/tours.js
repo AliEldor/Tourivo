@@ -54,3 +54,8 @@ router.get("/search/getTourBySearch",
     validate, 
     getTourBySearch
   );
+
+  // Get featured tours
+router.get("/search/getFeaturedTours", 
+    getFeaturedTour
+  );
