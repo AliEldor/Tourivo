@@ -45,39 +45,47 @@ export const UserService = {
   },
 
   deleteUser: async (id) => {
-    try{
-        const deletedUser = await User.findByIdAndDelete(id);
+    try {
+      const deletedUser = await User.findByIdAndDelete(id);
 
-        if (!deletedUser) {
-            return {
-              success: false,
-              error: "User not found",
-            };
-          }
-          return {
-            success: true,
-            message: "Successfully deleted",
-          };
-    }
-    catch (err) {
+      if (!deletedUser) {
         return {
           success: false,
-          error: "Failed to delete user",
+          error: "User not found",
         };
       }
+      return {
+        success: true,
+        message: "Successfully deleted",
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to delete user",
+      };
+    }
   },
 
-  getSingleUser: async (id)=>{
-    try{
-        const user = await User.findById(id);
+  getSingleUser: async (id) => {
+    try {
+      const user = await User.findById(id);
 
-        if (!user) {
-            return {
-              success: false,
-              error: "User not found",
-            };
-          }
+      if (!user) {
+        return {
+          success: false,
+          error: "User not found",
+        };
+      }
+      return {
+        success: true,
+        data: user,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to find user",
+      };
     }
-  }
-
+  },
+  
 };
