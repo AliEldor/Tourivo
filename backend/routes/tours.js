@@ -26,3 +26,10 @@ router.put("/:id",
     validate, 
     updateTour
   );
+
+  // Delete tour
+router.delete("/:id", 
+    validateTour("deleteTour"), 
+    validate, 
+    deleteTour
+  );
