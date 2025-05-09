@@ -14,48 +14,32 @@ import { validate, validateTour } from "../requests/TourRequest.js";
 const router = express.Router();
 
 // Create new tour
-router.post("/", 
-    validateTour("createTour"), 
-    validate, 
-    createTour
-  );
+router.post("/", validateTour("createTour"), validate, createTour);
 
-  // Update tour
-router.put("/:id", 
-    validateTour("updateTour"), 
-    validate, 
-    updateTour
-  );
+// Update tour
+router.put("/:id", validateTour("updateTour"), validate, updateTour);
 
-  // Delete tour
-router.delete("/:id", 
-    validateTour("deleteTour"), 
-    validate, 
-    deleteTour
-  );
+// Delete tour
+router.delete("/:id", validateTour("deleteTour"), validate, deleteTour);
 
-  // Get single tour
-router.get("/:id", 
-    validateTour("getSingleTour"), 
-    validate, 
-    getSingleTour
-  );
+// Get single tour
+router.get("/:id", validateTour("getSingleTour"), validate, getSingleTour);
 
-  // Get all tours
-router.get("/", 
-    validateTour("getAllTour"), 
-    validate, 
-    getAllTour
-  );
+// Get all tours
+router.get("/", validateTour("getAllTour"), validate, getAllTour);
 
-  // Get tour by search
-router.get("/search/getTourBySearch", 
-    validateTour("getTourBySearch"), 
-    validate, 
-    getTourBySearch
-  );
+// Get tour by search
+router.get(
+  "/search/getTourBySearch",
+  validateTour("getTourBySearch"),
+  validate,
+  getTourBySearch
+);
 
-  // Get featured tours
-router.get("/search/getFeaturedTours", 
-    getFeaturedTour
-  );
+// Get featured tours
+router.get("/search/getFeaturedTours", getFeaturedTour);
+
+// Get tour counts
+router.get("/search/getTourCount", getTourCount);
+
+export default router;
