@@ -65,6 +65,19 @@ export const UserService = {
           error: "Failed to delete user",
         };
       }
+  },
+
+  getSingleUser: async (id)=>{
+    try{
+        const user = await User.findById(id);
+
+        if (!user) {
+            return {
+              success: false,
+              error: "User not found",
+            };
+          }
+    }
   }
 
 };
