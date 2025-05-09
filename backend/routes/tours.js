@@ -22,24 +22,28 @@ router.put("/:id", validateTour("updateTour"), validate, updateTour);
 // Delete tour
 router.delete("/:id", validateTour("deleteTour"), validate, deleteTour);
 
-// Get single tour
-router.get("/:id", validateTour("getSingleTour"), validate, getSingleTour);
+// Get tour by search
+router.get(
+    "/search/getTourBySearch",
+    validateTour("getTourBySearch"),
+    validate,
+    getTourBySearch
+  );
+
+  // Get featured tours
+router.get("/search/getFeaturedTours", getFeaturedTour);
+
+  // Get tour counts
+router.get("/search/getTourCount", getTourCount);
 
 // Get all tours
 router.get("/", validateTour("getAllTour"), validate, getAllTour);
 
-// Get tour by search
-router.get(
-  "/search/getTourBySearch",
-  validateTour("getTourBySearch"),
-  validate,
-  getTourBySearch
-);
+// Get single tour
+router.get("/:id", validateTour("getSingleTour"), validate, getSingleTour);
 
-// Get featured tours
-router.get("/search/getFeaturedTours", getFeaturedTour);
 
-// Get tour counts
-router.get("/search/getTourCount", getTourCount);
+
+
 
 export default router;

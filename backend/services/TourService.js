@@ -1,4 +1,5 @@
 import Tour from "../models/Tour.js";
+import "../models/Review.js";
 
 export const TourService = {
   createTour: async (tourData) => {
