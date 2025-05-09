@@ -40,3 +40,10 @@ router.get("/:id",
     validate, 
     getSingleTour
   );
+
+  // Get all tours
+router.get("/", 
+    validateTour("getAllTour"), 
+    validate, 
+    getAllTour
+  );
