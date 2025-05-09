@@ -47,3 +47,10 @@ router.get("/",
     validate, 
     getAllTour
   );
+
+  // Get tour by search
+router.get("/search/getTourBySearch", 
+    validateTour("getTourBySearch"), 
+    validate, 
+    getTourBySearch
+  );
