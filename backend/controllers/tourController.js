@@ -50,3 +50,18 @@ export const getSingleTour = async (req, res) => {
     return ResponseTrait.successResponse(res, response.data);
   };
 
+  // Get all tours
+export const getAllTour = async (req, res) => {
+    const page = parseInt(req.query.page) || 0;
+    const response = await TourService.getAllTours(page);
+    
+    if (!response.success) {
+      return ResponseTrait.errorResponse(res, response.error, 500);
+    }
+    
+    return ResponseTrait.successResponse(res, {
+      count: response.count,
+      data: response.data
+    });
+  };
+
