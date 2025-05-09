@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dns from 'dns'; 
+import tourRoute from './routes/tours.js';
 
 //  DNS setting for connection issue
 dns.setServers(['8.8.8.8', '8.8.4.4']);
@@ -38,6 +39,9 @@ app.get('/', (req, res) => {
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+
+//routes
+app.use('/api/v1/tours', tourRoute);
 
 app.listen(port, () => { 
     connect();
