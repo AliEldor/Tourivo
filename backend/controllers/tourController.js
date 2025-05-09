@@ -76,3 +76,14 @@ export const getTourBySearch = async (req, res) => {
     return ResponseTrait.successResponse(res, response.data);
   };
 
+  // Get featured tours
+export const getFeaturedTour = async (req, res) => {
+    const response = await TourService.getFeaturedTours();
+    
+    if (!response.success) {
+      return ResponseTrait.errorResponse(res, response.error, 500);
+    }
+    
+    return ResponseTrait.successResponse(res, response.data);
+  };
+
