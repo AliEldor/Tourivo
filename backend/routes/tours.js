@@ -19,3 +19,10 @@ router.post("/",
     validate, 
     createTour
   );
+
+  // Update tour
+router.put("/:id", 
+    validateTour("updateTour"), 
+    validate, 
+    updateTour
+  );
