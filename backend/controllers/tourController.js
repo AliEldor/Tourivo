@@ -65,3 +65,14 @@ export const getAllTour = async (req, res) => {
     });
   };
 
+  // Get tour by search
+export const getTourBySearch = async (req, res) => {
+    const response = await TourService.getTourBySearch(req.query);
+    
+    if (!response.success) {
+      return ResponseTrait.errorResponse(res, response.error, 500);
+    }
+    
+    return ResponseTrait.successResponse(res, response.data);
+  };
+
