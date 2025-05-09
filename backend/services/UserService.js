@@ -16,4 +16,13 @@ export const UserService = {
       };
     }
   },
+
+  updateUser: async (id, userData) => {
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        { $set: userData },
+        { new: true }
+      );
+
 };
