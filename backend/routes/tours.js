@@ -33,3 +33,10 @@ router.delete("/:id",
     validate, 
     deleteTour
   );
+
+  // Get single tour
+router.get("/:id", 
+    validateTour("getSingleTour"), 
+    validate, 
+    getSingleTour
+  );
