@@ -25,3 +25,16 @@ export const updateTour = async (req, res) => {
     return ResponseTrait.successResponse(res, response.data);
   };
 
+
+  // Delete tour
+export const deleteTour = async (req, res) => {
+    const { id } = req.params;
+    const response = await TourService.deleteTour(id);
+    
+    if (!response.success) {
+      return ResponseTrait.errorResponse(res, response.error, response.error === "Tour not found" ? 404 : 500);
+    }
+    
+    return ResponseTrait.successResponse(res, { message: "Successfully deleted" });
+  };
+
