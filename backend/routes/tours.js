@@ -10,3 +10,12 @@ import {
   updateTour,
 } from "../controllers/tourController.js";
 import { validate, validateTour } from "../requests/TourRequest.js";
+
+const router = express.Router();
+
+// Create new tour
+router.post("/", 
+    validateTour("createTour"), 
+    validate, 
+    createTour
+  );
