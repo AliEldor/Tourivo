@@ -32,4 +32,16 @@ export const UserService = {
         };
       }
 
+      return {
+        success: true,
+        data: updatedUser,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to update user",
+      };
+    }
+  },
+
 };
