@@ -16,3 +16,6 @@ router.put("/:id", verifyUser, validateUser("updateUser"), validate, updateUser)
 
 // Delete user
 router.delete("/:id", verifyUser, validateUser("deleteUser"), validate, deleteUser);
+
+// Get single user
+router.get("/:id", verifyUser, validateUser("getSingleUser"), validate, getSingleUser);
