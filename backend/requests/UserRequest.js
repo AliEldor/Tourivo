@@ -38,5 +38,9 @@ export const validateUser = (method) => {
               return [param("id").isMongoId().withMessage("Invalid user ID")];
             }
 
+            case "getAllUser": {
+                return [];
+              }
+
     }
 }
