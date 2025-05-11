@@ -33,5 +33,10 @@ export const validateUser = (method) => {
             ];
           }
 
+          case "deleteUser":
+            case "getSingleUser": {
+              return [param("id").isMongoId().withMessage("Invalid user ID")];
+            }
+
     }
 }
