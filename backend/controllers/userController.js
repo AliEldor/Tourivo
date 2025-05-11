@@ -27,3 +27,21 @@ export const updateUser = async (req, res) => {
   
     return ResponseTrait.successResponse(res, response.data);
   };
+
+  // Delete user
+export const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    const response = await UserService.deleteUser(id);
+  
+    if (!response.success) {
+      return ResponseTrait.errorResponse(
+        res,
+        response.error,
+        response.error === "User not found" ? 404 : 500
+      );
+    }
+  
+    return ResponseTrait.successResponse(res, {
+      message: "Successfully deleted",
+    });
+  };
