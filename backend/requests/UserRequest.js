@@ -17,5 +17,21 @@ export const validateUser = (method) => {
               body("role").optional().isIn(["user", "admin"]).withMessage("Role must be either user or admin"),
             ];
           }
+
+          case "updateUser": {
+            return [
+              param("id").isMongoId().withMessage("Invalid user ID"),
+              body("username").optional(),
+              body("email")
+                .optional()
+                .isEmail().withMessage("Invalid email format"),
+              body("password")
+                .optional()
+                .isLength({ min: 3 }).withMessage("Password must be at least 3 characters"),
+              body("photo").optional(),
+              body("role").optional().isIn(["user", "admin"]).withMessage("Role must be either user or admin"),
+            ];
+          }
+
     }
 }
