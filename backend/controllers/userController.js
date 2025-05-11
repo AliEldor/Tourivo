@@ -61,3 +61,17 @@ export const getSingleUser = async (req, res) => {
   
     return ResponseTrait.successResponse(res, response.data);
   };
+
+  // Get all users
+export const getAllUser = async (req, res) => {
+    const response = await UserService.getAllUsers();
+  
+    if (!response.success) {
+      return ResponseTrait.errorResponse(res, response.error, 500);
+    }
+  
+    return ResponseTrait.successResponse(res, {
+      count: response.count,
+      data: response.data,
+    });
+  };
