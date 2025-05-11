@@ -19,3 +19,8 @@ router.delete("/:id", verifyUser, validateUser("deleteUser"), validate, deleteUs
 
 // Get single user
 router.get("/:id", verifyUser, validateUser("getSingleUser"), validate, getSingleUser);
+
+// Get all users
+router.get("/", verifyAdmin, validateUser("getAllUser"), validate, getAllUser);
+
+export default router;
