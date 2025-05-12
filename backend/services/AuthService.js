@@ -28,6 +28,17 @@ export const AuthService = {
 
       await newUser.save();
 
-        }
+      return {
+        success: true,
+        message: "User successfully registered"
+      };
+        } catch (err) {
+            return {
+              success: false,
+              error: "Failed to create user"
+            };
+          }
     }
+
+    
 }
