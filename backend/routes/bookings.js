@@ -9,3 +9,6 @@ import {
 import { validate, validateBooking } from "../requests/BookingRequest.js";
 
 const router = express.Router();
+
+// Create a new booking
+router.post("/", verifyUser, validateBooking("createBooking"), validate, createBooking);
