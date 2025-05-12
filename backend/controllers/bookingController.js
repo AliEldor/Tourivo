@@ -33,5 +33,7 @@ export const getBooking = async (req, res) => {
           response.statusCode || 500
         );
       }
-      
+
+      return ResponseTrait.successResponse(res, response.data);
+
 }
