@@ -8,6 +8,9 @@ export const validateBooking = (method) => {
             return [
                 body("tourName").notEmpty().withMessage("Tour name is required"),
                 body("fullName").notEmpty().withMessage("Full name is required"),
+                body("guestSize")
+          .notEmpty().withMessage("Guest size is required")
+          .isInt({ min: 1 }).withMessage("Guest size must be at least 1"),
             ] 
         }
     }
