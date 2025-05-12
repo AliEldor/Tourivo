@@ -28,10 +28,15 @@ export const validateBooking = (method) => {
     }
 
     case "getBooking": {
-        return [
-          param("id").isMongoId().withMessage("Invalid booking ID")
-        ];
-      }
-
+      return [param("id").isMongoId().withMessage("Invalid booking ID")];
+    }
   }
 };
+
+export const validate = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return ResponseTrait.failedValidation(res, errors.array());
+    }
+    next();
+  };
