@@ -18,6 +18,11 @@ export const validateBooking = (method) => {
           .withMessage("Phone number is required")
           .isNumeric()
           .withMessage("Phone must be a number"),
+        body("bookAt")
+          .notEmpty()
+          .withMessage("Booking date is required")
+          .isISO8601()
+          .withMessage("Invalid date format"),
       ];
     }
   }
