@@ -6,3 +6,6 @@ const router = express.Router();
 
 // Register new user
 router.post("/register", validateAuth("register"), validate, register);
+
+// Login user
+router.post("/login", validateAuth("login"), validate, login);
