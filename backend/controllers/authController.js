@@ -32,3 +32,11 @@ export const login = async (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000) // 15 days
   });
+
+  // Return success response
+  return ResponseTrait.successResponse(res, {
+    token: response.token,
+    data: response.data,
+    role: response.role
+  });
+};
