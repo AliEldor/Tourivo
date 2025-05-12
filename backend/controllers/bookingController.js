@@ -52,4 +52,8 @@ export const getAllBooking = async (req, res) => {
 export const getUserBookings = async (req, res) => {
     const userId = req.user.id;
     const response = await BookingService.getUserBookings(userId);
+
+    if (!response.success) {
+        return ResponseTrait.errorResponse(res, response.error, 500);
+      }
 }
