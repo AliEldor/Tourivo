@@ -7,6 +7,7 @@ export const validateBooking = (method) => {
         case "createBooking": {
             return [
                 body("tourName").notEmpty().withMessage("Tour name is required"),
+                body("fullName").notEmpty().withMessage("Full name is required"),
             ] 
         }
     }
