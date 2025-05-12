@@ -50,10 +50,12 @@ export const getAllBooking = async (req, res) => {
 
 // Get user's bookings
 export const getUserBookings = async (req, res) => {
-    const userId = req.user.id;
-    const response = await BookingService.getUserBookings(userId);
+  const userId = req.user.id;
+  const response = await BookingService.getUserBookings(userId);
 
-    if (!response.success) {
-        return ResponseTrait.errorResponse(res, response.error, 500);
-      }
-}
+  if (!response.success) {
+    return ResponseTrait.errorResponse(res, response.error, 500);
+  }
+
+  return ResponseTrait.successResponse(res, response.data);
+};
