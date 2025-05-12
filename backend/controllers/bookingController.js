@@ -40,4 +40,9 @@ export const getBooking = async (req, res) => {
 // Get all bookings (admin only)
 export const getAllBooking = async (req, res) => {
     const response = await BookingService.getAllBookings();
+
+    if (!response.success) {
+        return ResponseTrait.errorResponse(res, response.error, 500);
+      }
+      
 }
