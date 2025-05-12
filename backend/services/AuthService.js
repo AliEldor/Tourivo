@@ -69,6 +69,28 @@ export const AuthService = {
         };
       }
 
+      // Extract sensitive data from user object
+      const { password: userPassword, role, ...rest } = user._doc;
+
+      // Create JWT token
+      const token = jwt.sign(
+        { id: user._id, role: user.role },
+        process.env.JWT_SECRET_KEY,
+        { expiresIn: "15d" }
+      );
+
+      return {
+        success: true,
+        token,
+        data: { ...rest },
+        role
+      };
+        } catch (err){
+            return {
+                success: false,
+                error: "Failed to login",
+                statusCode: 500
+              };
         }
     }
 
