@@ -25,5 +25,13 @@ export const createBooking = async (req, res) => {
 export const getBooking = async (req, res) => {
     const { id } = req.params;
     const response = await BookingService.getBooking(id);
-    
+
+    if (!response.success) {
+        return ResponseTrait.errorResponse(
+          res, 
+          response.error, 
+          response.statusCode || 500
+        );
+      }
+      
 }
