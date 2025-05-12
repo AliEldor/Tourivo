@@ -47,3 +47,9 @@ export const getAllBooking = async (req, res) => {
 
   return ResponseTrait.successResponse(res, response.data);
 };
+
+// Get user's bookings
+export const getUserBookings = async (req, res) => {
+    const userId = req.user.id;
+    const response = await BookingService.getUserBookings(userId);
+}
