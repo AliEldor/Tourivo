@@ -51,5 +51,12 @@ export const BookingService = {
                 count: bookings.length,
                 data: bookings
               };
+            } catch (err) {
+                return {
+                  success: false,
+                  error: "Failed to fetch bookings"
+                };
+              }
+            },
 
     }
