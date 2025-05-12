@@ -30,4 +30,16 @@ export const BookingService = {
                 };
               }
 
+              return {
+                success: true,
+                data: booking
+              };
+            } catch (err) {
+              return {
+                success: false,
+                error: "Failed to find booking"
+              };
+            }
+          },
+
     }
