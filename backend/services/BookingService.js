@@ -18,6 +18,16 @@ export const BookingService = {
           }
         },
 
-        
+        getBooking: async (id) => {
+            try {
+              const booking = await Booking.findById(id);
+              
+              if (!booking) {
+                return {
+                  success: false,
+                  error: "Booking not found",
+                  statusCode: 404
+                };
+              }
 
     }
