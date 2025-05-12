@@ -18,3 +18,8 @@ router.get("/:id", verifyUser, validateBooking("getBooking"), validate, getBooki
 
 // Get all bookings (admin only)
 router.get("/", verifyAdmin, getAllBooking);
+
+// Get user's bookings
+router.get("/user/bookings", verifyUser, getUserBookings);
+
+export default router;
