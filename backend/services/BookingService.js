@@ -59,4 +59,15 @@ export const BookingService = {
               }
             },
 
+            getUserBookings: async (userId) => {
+                try {
+                  const bookings = await Booking.find({ userId: userId });
+                  
+                  return {
+                    success: true,
+                    count: bookings.length,
+                    data: bookings
+                  };
+                } 
+
     }
