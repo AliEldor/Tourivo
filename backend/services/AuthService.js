@@ -38,7 +38,22 @@ export const AuthService = {
               error: "Failed to create user"
             };
           }
+    },
+
+    login: async (email, password) => {
+        try{
+            // Find user by email
+      const user = await User.findOne({ email });
+
+      // If user doesn't exist
+      if (!user) {
+        return {
+          success: false,
+          error: "User not found",
+          statusCode: 404
+        };
+      }
+        }
     }
 
-    
 }
