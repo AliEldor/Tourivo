@@ -53,6 +53,13 @@ export const AuthService = {
           statusCode: 404
         };
       }
+
+      // Check if password is correct
+      const checkCorrectPassword = await bcrypt.compare(
+        password,
+        user.password
+      );
+
         }
     }
 
