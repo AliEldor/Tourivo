@@ -13,6 +13,11 @@ export const AuthService = {
           error: "Email already exists"
         };
       }
+
+      // Hashing password
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(userData.password, salt);
+      
         }
     }
 }
