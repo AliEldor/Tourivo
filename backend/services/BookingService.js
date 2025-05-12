@@ -42,4 +42,14 @@ export const BookingService = {
             }
           },
 
+          getAllBookings: async () => {
+            try {
+              const bookings = await Booking.find();
+              
+              return {
+                success: true,
+                count: bookings.length,
+                data: bookings
+              };
+
     }
