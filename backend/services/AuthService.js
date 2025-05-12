@@ -17,7 +17,17 @@ export const AuthService = {
       // Hashing password
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(userData.password, salt);
-      
+
+      // Create new user with hashed password
+      const newUser = new User({
+        username: userData.username,
+        email: userData.email,
+        password: hash,
+        photo: userData.photo
+      });
+
+      await newUser.save();
+
         }
     }
 }
