@@ -12,3 +12,6 @@ const router = express.Router();
 
 // Create a new booking
 router.post("/", verifyUser, validateBooking("createBooking"), validate, createBooking);
+
+// Get a single booking by ID
+router.get("/:id", verifyUser, validateBooking("getBooking"), validate, getBooking);
