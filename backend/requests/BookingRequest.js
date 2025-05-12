@@ -23,6 +23,7 @@ export const validateBooking = (method) => {
           .withMessage("Booking date is required")
           .isISO8601()
           .withMessage("Invalid date format"),
+        body("userEmail").isEmail().withMessage("Invalid email format"),
       ];
     }
   }
