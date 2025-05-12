@@ -40,3 +40,15 @@ export const login = async (req, res) => {
     role: response.role
   });
 };
+
+// User logout
+export const logout = async (req, res) => {
+    res.cookie("accessToken", "", {
+      httpOnly: true,
+      expires: new Date(0)
+    });
+    
+    return ResponseTrait.successResponse(res, {
+      message: "Successfully logged out"
+    });
+  };
