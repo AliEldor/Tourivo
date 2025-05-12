@@ -2,7 +2,15 @@ import jwt from "jsonwebtoken";
 import { ResponseTrait } from "../traits/ResponseTrait.js";
 
 export const verifyToken = (req, res, next) => {
-    const token = req.cookies.accessToken;
+    let token = req.cookies.accessToken;
+
+    // If no token in cookie, check Authorization header
+  if (!token && req.headers.authorization) {
+    const authHeader = req.headers.authorization;
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.substring(7);
+    }
+  }
 
   if (!token) {
     return ResponseTrait.errorResponse(
