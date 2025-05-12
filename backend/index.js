@@ -4,7 +4,12 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dns from 'dns'; 
+
+
+// import routes
 import tourRoute from './routes/tours.js';
+import userRoute from './routes/users.js';
+import authRoute from './routes/auth.js';
 
 //  DNS setting for connection issue
 dns.setServers(['8.8.8.8', '8.8.4.4']);
@@ -41,7 +46,9 @@ app.use(cors());
 app.use(cookieParser());
 
 //routes
+app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/tours', tourRoute);
+app.use('/api/v1/users', userRoute);
 
 app.listen(port, () => { 
     connect();
