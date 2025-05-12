@@ -60,6 +60,15 @@ export const AuthService = {
         user.password
       );
 
+      // If password is incorrect
+      if (!checkCorrectPassword) {
+        return {
+          success: false,
+          error: "Incorrect email or password",
+          statusCode: 401
+        };
+      }
+
         }
     }
 
