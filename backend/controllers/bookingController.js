@@ -23,17 +23,21 @@ export const createBooking = async (req, res) => {
 
 // Get a single booking
 export const getBooking = async (req, res) => {
-    const { id } = req.params;
-    const response = await BookingService.getBooking(id);
+  const { id } = req.params;
+  const response = await BookingService.getBooking(id);
 
-    if (!response.success) {
-        return ResponseTrait.errorResponse(
-          res, 
-          response.error, 
-          response.statusCode || 500
-        );
-      }
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
 
-      return ResponseTrait.successResponse(res, response.data);
+  return ResponseTrait.successResponse(res, response.data);
+};
 
+// Get all bookings (admin only)
+export const getAllBooking = async (req, res) => {
+    const response = await BookingService.getAllBookings();
 }
