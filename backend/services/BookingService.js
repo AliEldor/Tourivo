@@ -10,6 +10,14 @@ export const BookingService = {
               success: true,
               data: savedBooking
             };
+          } catch (err) {
+            return {
+              success: false,
+              error: "Failed to create booking"
+            };
           }
+        },
+
+        
+
     }
-}
