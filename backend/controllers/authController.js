@@ -13,3 +13,16 @@ export const register = async (req, res) => {
       message: "User successfully registered"
     });
   };
+
+  // User login
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+    const response = await AuthService.login(email, password);
+  
+    if (!response.success) {
+      return ResponseTrait.errorResponse(
+        res, 
+        response.error, 
+        response.statusCode || 500
+      );
+    }
