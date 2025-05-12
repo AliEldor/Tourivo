@@ -15,3 +15,6 @@ router.post("/", verifyUser, validateBooking("createBooking"), validate, createB
 
 // Get a single booking by ID
 router.get("/:id", verifyUser, validateBooking("getBooking"), validate, getBooking);
+
+// Get all bookings (admin only)
+router.get("/", verifyAdmin, getAllBooking);
