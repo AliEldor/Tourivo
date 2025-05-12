@@ -3,10 +3,10 @@ import { ResponseTrait } from "../traits/ResponseTrait.js";
 
 // Create new booking
 export const createBooking = async (req, res) => {
-    // Add user ID from auth token to booking data
+  // Add user ID from auth token to booking data
   const bookingData = {
     ...req.body,
-    userId: req.user.id
+    userId: req.user.id,
   };
 
   const response = await BookingService.createBooking(bookingData);
@@ -14,5 +14,9 @@ export const createBooking = async (req, res) => {
   if (!response.success) {
     return ResponseTrait.errorResponse(res, response.error, 500);
   }
-  
-}
+
+  return ResponseTrait.successResponse(res, {
+    message: "Your tour is booked",
+    data: response.data,
+  });
+};
