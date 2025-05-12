@@ -11,4 +11,19 @@ export const verifyToken = (req, res, next) => {
       401
     );
   }
-}
+
+  // If token exists, verify it
+  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return ResponseTrait.errorResponse(
+        res, 
+        "Token is invalid", 
+        401
+      );
+    }
+
+    req.user = decoded;
+    next();
+  });
+};
+
