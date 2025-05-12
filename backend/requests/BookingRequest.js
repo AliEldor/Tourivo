@@ -26,5 +26,12 @@ export const validateBooking = (method) => {
         body("userEmail").isEmail().withMessage("Invalid email format"),
       ];
     }
+
+    case "getBooking": {
+        return [
+          param("id").isMongoId().withMessage("Invalid booking ID")
+        ];
+      }
+
   }
 };
