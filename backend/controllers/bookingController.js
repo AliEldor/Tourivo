@@ -20,3 +20,10 @@ export const createBooking = async (req, res) => {
     data: response.data,
   });
 };
+
+// Get a single booking
+export const getBooking = async (req, res) => {
+    const { id } = req.params;
+    const response = await BookingService.getBooking(id);
+    
+}
