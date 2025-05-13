@@ -21,7 +21,7 @@ router.post("/", verifyAdmin, validateTour("createTour"), validate, createTour);
 router.put("/:id", verifyAdmin, validateTour("updateTour"), validate, updateTour);
 
 // Delete tour
-router.delete("/:id", validateTour("deleteTour"), validate, deleteTour);
+router.delete("/:id",verifyAdmin, validateTour("deleteTour"), validate, deleteTour);
 
 // Get tour by search
 router.get(
