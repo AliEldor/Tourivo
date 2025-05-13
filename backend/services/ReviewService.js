@@ -90,6 +90,16 @@ export const ReviewService = {
     try{
         // Find the review
       const review = await Review.findById(reviewId);
+
+      // Check if review exists
+      if (!review) {
+        return {
+          success: false,
+          error: "Review not found",
+          statusCode: 404
+        };
+      }
+      
     }
   }
 
