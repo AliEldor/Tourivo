@@ -79,7 +79,12 @@ export const updateReview = async (req, res) => {
 
   return ResponseTrait.successResponse(res, {
     message: "Review updated",
-    data: response.data
+    data: response.data,
   });
+};
 
+// Delete review
+export const deleteReview = async (req, res) => {
+  const { reviewId } = req.params;
+  const userId = req.user.id;
 };
