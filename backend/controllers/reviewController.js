@@ -30,8 +30,8 @@ export const createReview = async (req, res) => {
 
 // Get reviews for a tour
 export const getTourReviews = async (req, res) => {
-    const { tourId } = req.params;
-  
+  const { tourId } = req.params;
+
   const response = await ReviewService.getTourReviews(tourId);
 
   if (!response.success) {
@@ -41,4 +41,6 @@ export const getTourReviews = async (req, res) => {
       response.statusCode || 500
     );
   }
-}
+
+  return ResponseTrait.successResponse(res, response.data);
+};
