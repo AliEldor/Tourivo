@@ -7,6 +7,7 @@ export const validateReview = (method) => {
         case "createReview": {
             return [
                 param("tourId").isMongoId().withMessage("Invalid tour ID"),
+                body("username").notEmpty().withMessage("Username is required"),
                 
             ]
         }
