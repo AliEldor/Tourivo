@@ -5,6 +5,7 @@ const TourFactory = {
         const defaultTour = {
             title: `${faker.address.city()} Adventure Tour`,
             city: faker.address.city(),
+            address: faker.address.streetAddress(),
         }
     }
 }
