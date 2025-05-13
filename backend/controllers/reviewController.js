@@ -90,4 +90,12 @@ export const deleteReview = async (req, res) => {
 
   const response = await ReviewService.deleteReview(reviewId, userId);
 
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
 };
