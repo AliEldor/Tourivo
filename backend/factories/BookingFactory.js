@@ -5,7 +5,7 @@ const BookingFactory = {
         const defaultBooking = {
             userId: userId,
             userEmail: faker.internet.email(),
-            
+            tourName: tourName,
         }
     }
 }
