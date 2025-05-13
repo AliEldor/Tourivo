@@ -34,3 +34,12 @@ router.get(
     verifyToken,
     getUserReviews
   );
+
+  // Update a review/for the owner of the review
+router.put(
+    "/:reviewId",
+    verifyToken,
+    validateReview("updateReview"),
+    validate,
+    updateReview
+  );
