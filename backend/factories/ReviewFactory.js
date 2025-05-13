@@ -5,6 +5,7 @@ const ReviewFactory = {
         const defaultReview = {
             productId: tourId,
             userId: userId,
+            username: faker.internet.userName(),
         }
     }
 }
