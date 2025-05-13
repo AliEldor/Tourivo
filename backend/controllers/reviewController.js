@@ -33,4 +33,12 @@ export const getTourReviews = async (req, res) => {
     const { tourId } = req.params;
   
   const response = await ReviewService.getTourReviews(tourId);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
 }
