@@ -72,6 +72,11 @@ export const ReviewService = {
     try{
         // Find reviews by the user
       const reviews = await Review.find({ userId: userId }).populate("productId");
+
+      return {
+        success: true,
+        data: reviews
+      };
     }
 
   }
