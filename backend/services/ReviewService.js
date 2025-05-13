@@ -159,6 +159,10 @@ export const ReviewService = {
       // Delete the review
       await Review.findByIdAndDelete(reviewId);
 
+      return {
+        success: true,
+        message: "Review deleted"
+      };
     }
   }
 
