@@ -6,5 +6,11 @@ export const createReview = async (req, res) => {
     const tourId = req.params.tourId;
     const userId = req.user.id;
 
+    // Add user ID from auth token to review data
+  const reviewData = {
+    ...req.body,
+    userId: userId
+  };
+
 
 }
