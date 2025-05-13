@@ -22,5 +22,11 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "faker": "^6.6.6",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
   }
 }
