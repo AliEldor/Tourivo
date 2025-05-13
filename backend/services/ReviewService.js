@@ -40,45 +40,49 @@ export const ReviewService = {
     }
   },
 
-
   getTourReviews: async (tourId) => {
     try {
-        // Check if tour exists
+      // Check if tour exists
       const tour = await Tour.findById(tourId);
       if (!tour) {
         return {
           success: false,
           error: "Tour not found",
-          statusCode: 404
+          statusCode: 404,
         };
       }
 
-       // Find reviews for the tour
-       const reviews = await Review.find({ productId: tourId });
-
-       return {
-        success: true,
-        data: reviews
-      };
-    } catch (err) {
-        return {
-          success: false,
-          error: "Failed to fetch reviews"
-        };
-      }
-  },
-
-  getUserReviews: async (userId) => {
-    try{
-        // Find reviews by the user
-      const reviews = await Review.find({ userId: userId }).populate("productId");
+      // Find reviews for the tour
+      const reviews = await Review.find({ productId: tourId });
 
       return {
         success: true,
-        data: reviews
+        data: reviews,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch reviews",
       };
     }
+  },
 
-  }
+  getUserReviews: async (userId) => {
+    try {
+      // Find reviews by the user
+      const reviews = await Review.find({ userId: userId }).populate(
+        "productId"
+      );
 
+      return {
+        success: true,
+        data: reviews,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch user reviews",
+      };
+    }
+  },
 };
