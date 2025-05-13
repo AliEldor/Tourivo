@@ -59,4 +59,6 @@ export const getUserReviews = async (req, res) => {
     );
   }
 
+  return ResponseTrait.successResponse(res, response.data);
+
 }
