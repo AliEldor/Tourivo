@@ -34,5 +34,12 @@ export const validateReview = (method) => {
           .withMessage("Rating must be between 0 and 5"),
       ];
     }
+
+    case "deleteReview": {
+        return [
+          param("reviewId").isMongoId().withMessage("Invalid review ID")
+        ];
+      }
+
   }
 };
