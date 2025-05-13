@@ -6,6 +6,7 @@ const BookingFactory = {
             userId: userId,
             userEmail: faker.internet.email(),
             tourName: tourName,
+            fullName: faker.name.findName(),
         }
     }
 }
