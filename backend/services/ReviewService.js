@@ -23,6 +23,11 @@ export const ReviewService = {
       // Save the review
       const savedReview = await newReview.save();
 
+      // Update the tour's reviews array
+      await Tour.findByIdAndUpdate(tourId, {
+        $push: { reviews: savedReview._id }
+      });
+
         }
     }
 }
