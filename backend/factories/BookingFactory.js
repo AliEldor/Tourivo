@@ -11,6 +11,8 @@ const BookingFactory = {
       phone: parseInt(faker.phone.phoneNumberFormat().replace(/\D/g, "")),
       bookAt: faker.date.future(),
     };
+
+    return { ...defaultBooking, ...overrides };
   },
 };
 
