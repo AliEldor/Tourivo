@@ -28,6 +28,11 @@ export const ReviewService = {
         $push: { reviews: savedReview._id }
       });
 
+      return {
+        success: true,
+        data: savedReview
+      };
+
         }
     }
 }
