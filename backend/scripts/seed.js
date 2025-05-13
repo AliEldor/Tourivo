@@ -18,5 +18,10 @@ async function seed() {
     console.log('Seeding completed successfully!');
     } catch (error) {
         console.error('Error seeding database:', error);
-      } 
+      } finally {
+        await mongoose.connection.close();
+        console.log('Database connection closed');
+      }
 }
+
+seed();
