@@ -1,10 +1,10 @@
-import faker from "faker";
+import { faker } from '@faker-js/faker';
 import bcrypt from "bcryptjs";
 
 const UserFactory = {
   create: async (overrides = {}) => {
     const defaultUser = {
-      username: faker.internet.userName(),
+      username: `${faker.person.firstName().toLowerCase()}${faker.number.int(999)}`,
       email: faker.internet.email(),
       password: await bcrypt.hash("password123", 10),
       photo: faker.image.avatar(),
