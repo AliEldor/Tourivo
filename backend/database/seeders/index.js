@@ -12,5 +12,11 @@ const DatabaseSeeder = {
     await TourSeeder.truncate();
     await ReviewSeeder.truncate();
     await BookingSeeder.truncate();
+
+    // Seed data in order
+    const users = await UserSeeder.seed();
+    const tours = await TourSeeder.seed();
+    const reviews = await ReviewSeeder.seed(tours, users);
+    const bookings = await BookingSeeder.seed(tours, users);
     }
 }
