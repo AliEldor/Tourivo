@@ -87,8 +87,8 @@ export const ReviewService = {
   },
 
   updateReview: async (reviewId, userId, updateData) => {
-    try{
-        // Find the review
+    try {
+      // Find the review
       const review = await Review.findById(reviewId);
 
       // Check if review exists
@@ -96,16 +96,16 @@ export const ReviewService = {
         return {
           success: false,
           error: "Review not found",
-          statusCode: 404
+          statusCode: 404,
         };
       }
 
       // Check if user is the owner of the review
-      if (review.userId.toString() !== userId && req.user.role !== 'admin') {
+      if (review.userId.toString() !== userId && req.user.role !== "admin") {
         return {
           success: false,
           error: "You can only update your own reviews",
-          statusCode: 403
+          statusCode: 403,
         };
       }
 
@@ -118,10 +118,16 @@ export const ReviewService = {
 
       return {
         success: true,
-        data: updatedReview
+        data: updatedReview,
       };
-
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to update review",
+      };
     }
-  }
+  },
 
+
+  
 };
