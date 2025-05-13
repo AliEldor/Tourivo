@@ -16,5 +16,12 @@ export const validateReview = (method) => {
           .withMessage("Rating must be between 0 and 5"),
       ];
     }
+
+    case "getTourReviews": {
+        return [
+          param("tourId").isMongoId().withMessage("Invalid tour ID")
+        ];
+      }
+
   }
 };
