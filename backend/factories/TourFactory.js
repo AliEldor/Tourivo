@@ -10,6 +10,7 @@ const TourFactory = {
             photo: faker.image.nature(),
             desc: faker.lorem.paragraphs(3),
             price: faker.datatype.number({ min: 50, max: 2000 }),
+            maxGroupSize: faker.datatype.number({ min: 1, max: 20 }),
         }
     }
 }
