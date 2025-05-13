@@ -1,25 +1,35 @@
 import express from "express";
-import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
+import { verifyAdmin, verifyUser, verifyToken } from "../utils/verifyToken.js";
 import {
   createBooking,
   getAllBooking,
   getBooking,
   getUserBookings
 } from "../controllers/bookingController.js";
-import { validate, validateBooking } from "../requests/BookingRequest.js";
+import { validateBooking, validate } from "../requests/BookingRequest.js";
 
 const router = express.Router();
 
-// Create a new booking
-router.post("/", verifyUser, validateBooking("createBooking"), validate, createBooking);
+// Create a new booking/ only authenticated users can book
+router.post("/", 
+  verifyToken, 
+  validateBooking("createBooking"), 
+  validate, 
+  createBooking
+);
 
-// Get a single booking by ID
-router.get("/:id", verifyUser, validateBooking("getBooking"), validate, getBooking);
+// Get user's bookings /users can only see their own bookings
+router.get("/my-bookings", verifyToken, getUserBookings);
 
-// Get all bookings (admin only)
+// Get a specific booking 
+router.get("/:id", 
+  verifyToken, 
+  validateBooking("getBooking"), 
+  validate, 
+  getBooking
+);
+
+// Get all bookings by admins
 router.get("/", verifyAdmin, getAllBooking);
-
-// Get user's bookings
-router.get("/user/bookings", verifyUser, getUserBookings);
 
 export default router;
