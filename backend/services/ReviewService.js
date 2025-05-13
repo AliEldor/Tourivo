@@ -116,6 +116,11 @@ export const ReviewService = {
         { new: true }
       );
 
+      return {
+        success: true,
+        data: updatedReview
+      };
+
     }
   }
 
