@@ -17,6 +17,10 @@ const ReviewSeeder = {
           const review = new Review(reviewData);
         await review.save();
         reviews.push(review);
+
+        // Add review to tour
+        tour.reviews.push(review._id);
+        await tour.save();
       }
 
         }
