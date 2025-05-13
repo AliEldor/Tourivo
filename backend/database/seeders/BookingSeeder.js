@@ -8,6 +8,11 @@ const BookingSeeder = {
         for (let i = 0; i < bookingsCount; i++) {
             const randomUser = users[Math.floor(Math.random() * users.length)];
       const randomTour = tours[Math.floor(Math.random() * tours.length)];
+
+      const bookingData = await BookingFactory.create(
+        randomUser._id,
+        randomTour.title
+      );
         }
 
     }
