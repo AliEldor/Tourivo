@@ -44,3 +44,11 @@ export const getTourReviews = async (req, res) => {
 
   return ResponseTrait.successResponse(res, response.data);
 };
+
+// Get user's reviews
+export const getUserReviews = async (req, res) => {
+    const userId = req.user.id;
+  
+  const response = await ReviewService.getUserReviews(userId);
+
+}
