@@ -7,6 +7,7 @@ const ReviewFactory = {
             userId: userId,
             username: faker.internet.userName(),
             reviewText: faker.lorem.paragraph(),
+            rating: faker.datatype.number({ min: 1, max: 5 })
         }
     }
 }
