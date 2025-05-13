@@ -41,6 +41,10 @@ describe("Auth API", () => {
           password: 'password123'
     });
 
+    expect(response.status).toBe(500);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('Email already exists');
+
     });
   });
 });
