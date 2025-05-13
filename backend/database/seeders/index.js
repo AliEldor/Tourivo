@@ -18,5 +18,10 @@ const DatabaseSeeder = {
     const tours = await TourSeeder.seed();
     const reviews = await ReviewSeeder.seed(tours, users);
     const bookings = await BookingSeeder.seed(tours, users);
-    }
-}
+
+    console.log('Database seeding completed!');
+    return { users, tours, reviews, bookings };
+  }
+};
+
+export default DatabaseSeeder;
