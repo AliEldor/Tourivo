@@ -1,14 +1,18 @@
-import faker from "faker";
+import { faker } from '@faker-js/faker';
 
 const BookingFactory = {
   create: async (userId, tourName, overrides = {}) => {
+
+    const phoneString = faker.string.numeric(10); // Generate a string of 10 digits
+    const phone = parseInt(phoneString); // Convert to number
+
     const defaultBooking = {
       userId: userId,
       userEmail: faker.internet.email(),
       tourName: tourName,
-      fullName: faker.name.findName(),
-      guestSize: faker.datatype.number({ min: 1, max: 8 }),
-      phone: parseInt(faker.phone.phoneNumberFormat().replace(/\D/g, "")),
+      fullName: faker.person.fullName(),
+      guestSize: faker.number.int({ min: 1, max: 8 }),
+      phone: phone,
       bookAt: faker.date.future(),
     };
 
