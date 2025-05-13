@@ -4,6 +4,7 @@ const TourFactory = {
     create: async (overrides = {}) => {
         const defaultTour = {
             title: `${faker.address.city()} Adventure Tour`,
+            city: faker.address.city(),
         }
     }
 }
