@@ -14,6 +14,9 @@ const ReviewSeeder = {
         const reviewData = await ReviewFactory.create(tour._id, user._id, {
             username: user.username
           });
+          const review = new Review(reviewData);
+        await review.save();
+        reviews.push(review);
       }
 
         }
