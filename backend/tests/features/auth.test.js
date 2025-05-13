@@ -9,6 +9,16 @@ describe("Auth API", () => {
   describe("POST /api/v1/auth/register", () => {
     it("should register a new user", async () => {
       const userData = await UserFactory.create();
+
+      const response = await request(app)
+        .post('/api/v1/auth/register')
+        .send({
+          username: userData.username,
+          email: userData.email,
+          password: 'password123',
+          photo: userData.photo
+        });
+
     });
   });
 });
