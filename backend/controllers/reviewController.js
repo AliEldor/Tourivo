@@ -47,8 +47,8 @@ export const getTourReviews = async (req, res) => {
 
 // Get user's reviews
 export const getUserReviews = async (req, res) => {
-    const userId = req.user.id;
-  
+  const userId = req.user.id;
+
   const response = await ReviewService.getUserReviews(userId);
 
   if (!response.success) {
@@ -60,5 +60,10 @@ export const getUserReviews = async (req, res) => {
   }
 
   return ResponseTrait.successResponse(res, response.data);
+};
 
-}
+// Update review
+export const updateReview = async (req, res) => {
+  const { reviewId } = req.params;
+  const userId = req.user.id;
+};
