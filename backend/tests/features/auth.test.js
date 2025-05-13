@@ -22,6 +22,12 @@ describe("Auth API", () => {
         expect(response.status).toBe(200);
       expect(response.body.success).toBe(true);
 
+      // Verify user was created in the database
+      const user = await User.findOne({ email: userData.email });
+      expect(user).not.toBeNull();
+      expect(user.username).toBe(userData.username);
+    });
+
     });
   });
 });
