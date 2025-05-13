@@ -51,4 +51,12 @@ export const getUserReviews = async (req, res) => {
   
   const response = await ReviewService.getUserReviews(userId);
 
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
 }
