@@ -10,3 +10,12 @@ import { validateReview, validate } from "../requests/ReviewRequest.js";
 import { verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
+
+// Create a new review /authenticated users only
+router.post(
+    "/:tourId",
+    verifyToken,
+    validateReview("createReview"),
+    validate,
+    createReview
+  );
