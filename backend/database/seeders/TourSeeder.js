@@ -17,4 +17,11 @@ const TourSeeder = {
     console.log(`${tours.length} tours seeded`);
     return tours;
   },
+
+  truncate: async () => {
+    await Tour.deleteMany({});
+    console.log('Tours collection cleared');
+  }
 };
+
+export default TourSeeder;
