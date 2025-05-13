@@ -43,3 +43,14 @@ router.put(
     validate,
     updateReview
   );
+
+  // Delete a review/for the owner of the review
+router.delete(
+    "/:reviewId",
+    verifyToken,
+    validateReview("deleteReview"),
+    validate,
+    deleteReview
+  );
+  
+  export default router;
