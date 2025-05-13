@@ -18,17 +18,21 @@ export const validateReview = (method) => {
     }
 
     case "getTourReviews": {
-        return [
-          param("tourId").isMongoId().withMessage("Invalid tour ID")
-        ];
-      }
-
-      case "updateReview": {
-        return [
-            param("reviewId").isMongoId().withMessage("Invalid review ID"),
-            body("reviewText").optional().notEmpty().withMessage("Review text cannot be empty"),
-        ]
+      return [param("tourId").isMongoId().withMessage("Invalid tour ID")];
     }
 
+    case "updateReview": {
+      return [
+        param("reviewId").isMongoId().withMessage("Invalid review ID"),
+        body("reviewText")
+          .optional()
+          .notEmpty()
+          .withMessage("Review text cannot be empty"),
+        body("rating")
+          .optional()
+          .isInt({ min: 0, max: 5 })
+          .withMessage("Rating must be between 0 and 5"),
+      ];
+    }
   }
 };
