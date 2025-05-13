@@ -85,4 +85,12 @@ export const ReviewService = {
       };
     }
   },
+
+  updateReview: async (reviewId, userId, updateData) => {
+    try{
+        // Find the review
+      const review = await Review.findById(reviewId);
+    }
+  }
+
 };
