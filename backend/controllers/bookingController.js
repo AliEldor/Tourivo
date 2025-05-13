@@ -34,6 +34,15 @@ export const getBooking = async (req, res) => {
     );
   }
 
+  // only admin can see all bookings
+  if (response.data.userId !== req.user.id && req.user.role !== 'admin') {
+    return ResponseTrait.errorResponse(
+      res,
+      "You can only access your own bookings",
+      403
+    );
+  }
+
   return ResponseTrait.successResponse(res, response.data);
 };
 
@@ -59,3 +68,4 @@ export const getUserBookings = async (req, res) => {
 
   return ResponseTrait.successResponse(res, response.data);
 };
+ 
