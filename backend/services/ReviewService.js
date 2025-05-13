@@ -56,6 +56,10 @@ export const ReviewService = {
        // Find reviews for the tour
        const reviews = await Review.find({ productId: tourId });
 
+       return {
+        success: true,
+        data: reviews
+      };
     }
   }
 
