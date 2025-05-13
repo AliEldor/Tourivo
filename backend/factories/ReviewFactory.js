@@ -6,6 +6,7 @@ const ReviewFactory = {
             productId: tourId,
             userId: userId,
             username: faker.internet.userName(),
+            reviewText: faker.lorem.paragraph(),
         }
     }
 }
