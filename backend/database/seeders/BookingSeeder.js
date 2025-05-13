@@ -13,6 +13,9 @@ const BookingSeeder = {
         randomUser._id,
         randomTour.title
       );
+      const booking = new Booking(bookingData);
+      await booking.save();
+      bookings.push(booking);
         }
 
     }
