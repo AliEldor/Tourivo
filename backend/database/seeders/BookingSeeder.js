@@ -6,6 +6,7 @@ const BookingSeeder = {
     const bookings = [];
 
     for (let i = 0; i < bookingsCount; i++) {
+        try{
       const randomUser = users[Math.floor(Math.random() * users.length)];
       const randomTour = tours[Math.floor(Math.random() * tours.length)];
 
@@ -13,10 +14,15 @@ const BookingSeeder = {
         randomUser._id,
         randomTour.title
       );
+
+      console.log('Creating booking with data:', bookingData);
       const booking = new Booking(bookingData);
       await booking.save();
       bookings.push(booking);
+    } catch(err){
+        console.error(`Error creating booking ${i}:`, err.message);
     }
+}
 
     console.log(`${bookings.length} bookings seeded`);
     return bookings;
