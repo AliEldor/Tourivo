@@ -23,5 +23,11 @@ export const validateReview = (method) => {
         ];
       }
 
+      case "updateReview": {
+        return [
+            param("reviewId").isMongoId().withMessage("Invalid review ID"),
+        ]
+    }
+
   }
 };
