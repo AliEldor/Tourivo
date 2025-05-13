@@ -151,6 +151,11 @@ export const ReviewService = {
         };
       }
 
+      // Remove review from tour
+      await Tour.findByIdAndUpdate(review.productId, {
+        $pull: { reviews: reviewId }
+      });
+
     }
   }
 
