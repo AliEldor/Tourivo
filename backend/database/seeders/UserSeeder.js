@@ -22,5 +22,15 @@ const UserSeeder = {
         users.push(user);
       }
 
+      console.log(`${users.length} users seeded`);
+    return users;
   },
+
+  truncate: async () => {
+    await User.deleteMany({});
+    console.log('Users collection cleared');
+  }
+
 };
+
+export default UserSeeder;
