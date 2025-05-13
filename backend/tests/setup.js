@@ -10,3 +10,11 @@ beforeAll(async () => {
       useUnifiedTopology: true
     });
   });
+
+  // Clear test database collections after each test
+afterEach(async () => {
+    const collections = mongoose.connection.collections;
+    for (const key in collections) {
+      await collections[key].deleteMany({});
+    }
+  });
