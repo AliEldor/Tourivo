@@ -27,3 +27,10 @@ router.get(
     validate,
     getTourReviews
   );
+
+  // Get all reviews by the logged in user
+router.get(
+    "/user",
+    verifyToken,
+    getUserReviews
+  );
