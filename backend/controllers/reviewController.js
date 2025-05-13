@@ -14,5 +14,13 @@ export const createReview = async (req, res) => {
 
   const response = await ReviewService.createReview(tourId, reviewData);
 
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
 
 }
