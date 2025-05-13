@@ -13,6 +13,13 @@ export const ReviewService = {
           statusCode: 404
         };
       }
+
+      // Create new review with tour ID
+      const newReview = new Review({
+        ...reviewData,
+        productId: tourId
+      });
+      
         }
     }
 }
