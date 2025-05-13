@@ -19,7 +19,10 @@ export const ReviewService = {
         ...reviewData,
         productId: tourId
       });
-      
+
+      // Save the review
+      const savedReview = await newReview.save();
+
         }
     }
 }
