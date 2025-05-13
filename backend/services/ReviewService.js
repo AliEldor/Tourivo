@@ -109,6 +109,13 @@ export const ReviewService = {
         };
       }
 
+      // Update the review
+      const updatedReview = await Review.findByIdAndUpdate(
+        reviewId,
+        { $set: updateData },
+        { new: true }
+      );
+
     }
   }
 
