@@ -12,5 +12,7 @@ export const createReview = async (req, res) => {
     userId: userId
   };
 
+  const response = await ReviewService.createReview(tourId, reviewData);
+
 
 }
