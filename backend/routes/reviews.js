@@ -19,3 +19,11 @@ router.post(
     validate,
     createReview
   );
+
+  // Get all reviews for a specific tour 
+router.get(
+    "/tour/:tourId",
+    validateReview("getTourReviews"),
+    validate,
+    getTourReviews
+  );
