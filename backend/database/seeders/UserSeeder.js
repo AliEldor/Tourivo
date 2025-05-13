@@ -13,5 +13,14 @@ const UserSeeder = {
     const admin = new User(adminData);
     await admin.save();
     users.push(admin);
+
+    // Create regular users
+    for (let i = 0; i < count; i++) {
+        const userData = await UserFactory.create();
+        const user = new User(userData);
+        await user.save();
+        users.push(user);
+      }
+
   },
 };
