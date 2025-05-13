@@ -32,6 +32,13 @@ describe("Auth API", () => {
         const userData = await UserFactory.create();
         const user = new User(userData);
         await user.save();
+
+        const response = await request(app)
+        .post('/api/v1/auth/register')
+        .send({
+          username: 'newusername',
+          email: userData.email, // Same email
+          password: 'password123'
     });
 
     });
