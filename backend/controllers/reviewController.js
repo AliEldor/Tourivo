@@ -66,4 +66,7 @@ export const getUserReviews = async (req, res) => {
 export const updateReview = async (req, res) => {
   const { reviewId } = req.params;
   const userId = req.user.id;
+
+  const response = await ReviewService.updateReview(reviewId, userId, req.body);
+  
 };
