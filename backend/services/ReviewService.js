@@ -52,6 +52,10 @@ export const ReviewService = {
           statusCode: 404
         };
       }
+
+       // Find reviews for the tour
+       const reviews = await Review.find({ productId: tourId });
+
     }
   }
 
