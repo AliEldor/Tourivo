@@ -7,6 +7,7 @@ const BookingFactory = {
             userEmail: faker.internet.email(),
             tourName: tourName,
             fullName: faker.name.findName(),
+            guestSize: faker.datatype.number({ min: 1, max: 8 }),
         }
     }
 }
