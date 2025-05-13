@@ -8,6 +8,7 @@ export const validateReview = (method) => {
             return [
                 param("tourId").isMongoId().withMessage("Invalid tour ID"),
                 body("username").notEmpty().withMessage("Username is required"),
+                body("reviewText").notEmpty().withMessage("Review text is required"),
                 
             ]
         }
