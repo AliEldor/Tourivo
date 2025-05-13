@@ -32,7 +32,11 @@ export const ReviewService = {
         success: true,
         data: savedReview
       };
-
-        }
+        } catch (err) {
+            return {
+              success: false,
+              error: "Failed to submit review"
+            };
+          }
     }
 }
