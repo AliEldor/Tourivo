@@ -18,3 +18,8 @@ afterEach(async () => {
       await collections[key].deleteMany({});
     }
   });
+
+  // Disconnect from test database after all tests
+afterAll(async () => {
+    await mongoose.connection.close();
+  });
