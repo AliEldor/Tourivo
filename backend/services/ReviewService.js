@@ -128,6 +128,11 @@ export const ReviewService = {
     }
   },
 
+  deleteReview: async (reviewId, userId) => {
+    try{
+        // Find the review
+      const review = await Review.findById(reviewId);
+    }
+  }
 
-  
 };
