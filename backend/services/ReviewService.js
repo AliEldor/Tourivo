@@ -156,6 +156,9 @@ export const ReviewService = {
         $pull: { reviews: reviewId }
       });
 
+      // Delete the review
+      await Review.findByIdAndDelete(reviewId);
+
     }
   }
 
