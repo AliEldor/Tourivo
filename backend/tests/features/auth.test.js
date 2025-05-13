@@ -28,6 +28,12 @@ describe("Auth API", () => {
       expect(user.username).toBe(userData.username);
     });
 
+    it('should not register a user with an existing email', async () => {
+        const userData = await UserFactory.create();
+        const user = new User(userData);
+        await user.save();
+    });
+
     });
   });
 });
