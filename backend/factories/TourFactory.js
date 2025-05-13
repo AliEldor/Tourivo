@@ -9,6 +9,7 @@ const TourFactory = {
             distance: faker.datatype.number({ min: 10, max: 1000 }),
             photo: faker.image.nature(),
             desc: faker.lorem.paragraphs(3),
+            price: faker.datatype.number({ min: 50, max: 2000 }),
         }
     }
 }
