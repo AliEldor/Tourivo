@@ -22,5 +22,10 @@ export const createReview = async (req, res) => {
     );
   }
 
+  return ResponseTrait.successResponse(res, {
+    message: "Review submitted",
+    data: response.data
+  });
+
 
 }
