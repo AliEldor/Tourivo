@@ -19,6 +19,9 @@ describe("Auth API", () => {
           photo: userData.photo
         });
 
+        expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+
     });
   });
 });
