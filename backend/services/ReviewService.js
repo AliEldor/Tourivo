@@ -99,7 +99,16 @@ export const ReviewService = {
           statusCode: 404
         };
       }
-      
+
+      // Check if user is the owner of the review
+      if (review.userId.toString() !== userId && req.user.role !== 'admin') {
+        return {
+          success: false,
+          error: "You can only update your own reviews",
+          statusCode: 403
+        };
+      }
+
     }
   }
 
