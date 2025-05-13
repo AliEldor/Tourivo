@@ -26,6 +26,7 @@ export const validateReview = (method) => {
       case "updateReview": {
         return [
             param("reviewId").isMongoId().withMessage("Invalid review ID"),
+            body("reviewText").optional().notEmpty().withMessage("Review text cannot be empty"),
         ]
     }
 
