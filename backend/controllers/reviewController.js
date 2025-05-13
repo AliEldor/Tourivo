@@ -77,4 +77,9 @@ export const updateReview = async (req, res) => {
     );
   }
 
+  return ResponseTrait.successResponse(res, {
+    message: "Review updated",
+    data: response.data
+  });
+
 };
