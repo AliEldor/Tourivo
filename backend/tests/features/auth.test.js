@@ -1,0 +1,14 @@
+import request from "supertest";
+import mongoose from "mongoose";
+import app from "../../index.js";
+import { UserFactory } from "../../factories/index.js";
+import User from "../../models/User.js";
+import bcrypt from "bcryptjs";
+
+describe("Auth API", () => {
+  describe("POST /api/v1/auth/register", () => {
+    it("should register a new user", async () => {
+      const userData = await UserFactory.create();
+    });
+  });
+});
