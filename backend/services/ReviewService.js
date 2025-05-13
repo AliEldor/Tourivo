@@ -141,6 +141,16 @@ export const ReviewService = {
           statusCode: 404
         };
       }
+
+      // Check if user is the owner of the review or an admin
+      if (review.userId.toString() !== userId && req.user.role !== 'admin') {
+        return {
+          success: false,
+          error: "You can only delete your own reviews",
+          statusCode: 403
+        };
+      }
+
     }
   }
 
