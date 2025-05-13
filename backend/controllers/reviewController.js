@@ -68,5 +68,13 @@ export const updateReview = async (req, res) => {
   const userId = req.user.id;
 
   const response = await ReviewService.updateReview(reviewId, userId, req.body);
-  
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
 };
