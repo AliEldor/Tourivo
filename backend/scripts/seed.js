@@ -16,5 +16,7 @@ async function seed() {
     await DatabaseSeeder.seedAll();
     
     console.log('Seeding completed successfully!');
-    }
+    } catch (error) {
+        console.error('Error seeding database:', error);
+      } 
 }
