@@ -60,7 +60,12 @@ export const ReviewService = {
         success: true,
         data: reviews
       };
-    }
+    } catch (err) {
+        return {
+          success: false,
+          error: "Failed to fetch reviews"
+        };
+      }
   }
 
 };
