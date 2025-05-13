@@ -6,6 +6,7 @@ export const validateReview = (method) => {
     switch (method) {
         case "createReview": {
             return [
+                param("tourId").isMongoId().withMessage("Invalid tour ID"),
                 
             ]
         }
