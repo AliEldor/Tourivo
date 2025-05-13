@@ -8,6 +8,7 @@ const TourFactory = {
             address: faker.address.streetAddress(),
             distance: faker.datatype.number({ min: 10, max: 1000 }),
             photo: faker.image.nature(),
+            desc: faker.lorem.paragraphs(3),
         }
     }
 }
