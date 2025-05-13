@@ -98,4 +98,7 @@ export const deleteReview = async (req, res) => {
     );
   }
 
+  return ResponseTrait.successResponse(res, {
+    message: "Review deleted",
+  });
 };
