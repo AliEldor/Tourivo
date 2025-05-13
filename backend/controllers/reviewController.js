@@ -87,4 +87,7 @@ export const updateReview = async (req, res) => {
 export const deleteReview = async (req, res) => {
   const { reviewId } = req.params;
   const userId = req.user.id;
+
+  const response = await ReviewService.deleteReview(reviewId, userId);
+
 };
