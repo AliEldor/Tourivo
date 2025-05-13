@@ -43,7 +43,10 @@ app.get('/', (req, res) => {
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true
+  }));
 app.use(cookieParser());
 
 //routes
