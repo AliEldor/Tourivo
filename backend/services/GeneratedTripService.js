@@ -201,8 +201,29 @@ export const GeneratedTripService = {
         success: false,
         error: "Failed to fetch generated trip",
       };
-
     }
-  }
+  },
+
+  getUserGeneratedTrips: async (userId) => {
+    try {
+      const trips = await GeneratedTrip.find({ userId }).populate({
+        path: 'tourSelections.tourId',
+        model: 'Tour',
+        select: 'title city photo price' // Only get essential fields for list view
+      });
+
+      return {
+        success: true,
+        count: trips.length,
+        data: trips,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch generated trips",
+      };
+    }
+  },
+
 
 };
