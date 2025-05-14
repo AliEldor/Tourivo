@@ -183,6 +183,25 @@ export const GeneratedTripService = {
           statusCode: 404,
         };
       }
+
+      if (trip.userId.toString() !== userId) {
+        return {
+          success: false,
+          error: "Unauthorized access to this trip",
+          statusCode: 403,
+        };
+      }
+
+      return {
+        success: true,
+        data: trip,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch generated trip",
+      };
+
     }
   }
 
