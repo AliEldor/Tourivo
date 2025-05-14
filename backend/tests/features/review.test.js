@@ -238,6 +238,29 @@ describe('Review API', () => {
       });
     });
 
+    it('should update a review when the owner accesses it', async () => {
+      const updatedData = {
+        reviewText: 'Updated review text',
+        rating: 4
+      };
+
+      const response = await request(app)
+        .put(`/api/v1/reviews/${testReview._id}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`])
+        .send(updatedData);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.message).toBe('Review updated');
+      expect(response.body.data.data.reviewText).toBe(updatedData.reviewText);
+      expect(response.body.data.data.rating).toBe(updatedData.rating);
+
+      const updatedReview = await Review.findById(testReview._id);
+      expect(updatedReview.reviewText).toBe(updatedData.reviewText);
+      expect(updatedReview.rating).toBe(updatedData.rating);
+    });
+
     
   });
 });
