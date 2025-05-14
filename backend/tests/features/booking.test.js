@@ -94,7 +94,22 @@ describe('Booking API', () => {
         expect(response.body.error).toBe("You're not authorized");
       });
   
-      
+      it('should validate required booking fields', async () => {
+        const bookingData = {
+          userEmail: regularUser.email
+        };
+  
+        const response = await request(app)
+          .post('/api/v1/booking')
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`])
+          .send(bookingData);
+  
+        expect(response.status).toBe(422);
+        expect(response.body.success).toBe(false);
+        expect(response.body.result).toBeInstanceOf(Array);
+        expect(response.body.result.length).toBeGreaterThan(0);
+      });
     });
   
     
