@@ -31,6 +31,13 @@ router.get("/:id",
   getGeneratedTrip
 );
 
+// Book a generated trip
+router.post("/:id/book", 
+  verifyToken, 
+  validateGeneratedTrip("bookGeneratedTrip"), 
+  validate, 
+  bookGeneratedTrip
+);
 
 
 export default router;
