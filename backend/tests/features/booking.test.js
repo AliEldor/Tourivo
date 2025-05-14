@@ -154,5 +154,20 @@ describe('Booking API', () => {
       });
     });
   
+    describe('GET /api/v1/booking/:id', () => {
+      let testBooking;
+  
+      beforeEach(async () => {
+        const bookingData = await BookingFactory.create(
+          regularUser._id.toString(),
+          testTour.title
+        );
+        testBooking = new Booking(bookingData);
+        await testBooking.save();
+      });
+  
+      
+    });
+  
     
 });
