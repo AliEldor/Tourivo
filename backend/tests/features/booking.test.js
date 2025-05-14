@@ -190,6 +190,17 @@ describe('Booking API', () => {
         expect(response.body.data._id.toString()).toBe(testBooking._id.toString());
       });
   
+      it('should not allow a different user to access someone else\'s booking', async () => {
+        const response = await request(app)
+          .get(`/api/v1/booking/${testBooking._id}`)
+          .set('Authorization', `Bearer ${secondUserToken}`)
+          .set('Cookie', [`accessToken=${secondUserToken}`]);
+  
+        expect(response.status).toBe(403);
+        expect(response.body.success).toBe(false);
+        expect(response.body.error).toBe("You can only access your own bookings");
+      });
+  
       
     });
   
