@@ -278,6 +278,26 @@ describe('Review API', () => {
       expect(response.body.error).toBe('You can only update your own reviews');
     });
 
+    it('should allow an admin to update any review', async () => {
+      const updatedData = {
+        reviewText: 'Admin updated this review',
+        rating: 3
+      };
+
+      const response = await request(app)
+        .put(`/api/v1/reviews/${testReview._id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Cookie', [`accessToken=${adminToken}`])
+        .send(updatedData);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.message).toBe('Review updated');
+
+      const updatedReview = await Review.findById(testReview._id);
+      expect(updatedReview.reviewText).toBe(updatedData.reviewText);
+    });
+
     
   });
 });
