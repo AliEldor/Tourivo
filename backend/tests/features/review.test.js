@@ -331,6 +331,23 @@ describe('Review API', () => {
       });
     });
 
+    it('should delete a review when the owner accesses it', async () => {
+      const response = await request(app)
+        .delete(`/api/v1/reviews/${testReview._id}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`]);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.message).toBe('Review deleted');
+      
+      const deletedReview = await Review.findById(testReview._id);
+      expect(deletedReview).toBeNull();
+      
+      const updatedTour = await Tour.findById(testTour._id);
+      expect(updatedTour.reviews).not.toContainEqual(testReview._id);
+    });
+
     
   });
 });
