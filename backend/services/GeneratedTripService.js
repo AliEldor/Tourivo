@@ -276,7 +276,26 @@ export const GeneratedTripService = {
         }
       }
 
+      // update trip with booking info
+      trip.isBooked = true;
+      trip.bookingIds = bookingIds;
+      await trip.save();
+
+      return {
+        success: true,
+        message: "Trip booked successfully",
+        data: {
+          trip,
+          bookings,
+        },
+      };
+    } catch (err) {
+      console.error("Error booking generated trip:", err);
+      return {
+        success: false,
+        error: `Failed to book trip: ${err.message}`,
+      };
     }
-  }
+  },
 
 };
