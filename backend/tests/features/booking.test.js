@@ -45,7 +45,11 @@ describe('Booking API', () => {
         { expiresIn: '15d' }
       );
   
-      
+      secondUserToken = jwt.sign(
+        { id: secondUser._id, role: secondUser.role },
+        process.env.JWT_SECRET_KEY || 'test_secret_key',
+        { expiresIn: '15d' }
+      );
     });
   
     
