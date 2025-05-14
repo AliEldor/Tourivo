@@ -97,6 +97,14 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isInt({ min: 1, max: 30 })
           .withMessage("Duration must be between 1 and 30 days"),
+          body("adjustments.includeTours")
+          .optional()
+          .isArray()
+          .withMessage("includeTours must be an array"),
+        body("adjustments.excludeTours")
+          .optional()
+          .isArray()
+          .withMessage("excludeTours must be an array"),
 
         ];
     }
