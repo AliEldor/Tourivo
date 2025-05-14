@@ -199,6 +199,22 @@ describe('Review API', () => {
       }
     });
 
+    it('should get all reviews by the authenticated user', async () => {
+      const response = await request(app)
+        .get('/api/v1/reviews/user')
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`]);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(Array.isArray(response.body.data)).toBe(true);
+      expect(response.body.data.length).toBe(2);
+
+      response.body.data.forEach(review => {
+        expect(review.userId.toString()).toBe(regularUser._id.toString());
+      });
+    });
+
     
   });
 
