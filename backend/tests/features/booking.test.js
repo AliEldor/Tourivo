@@ -128,6 +128,22 @@ describe('Booking API', () => {
         await Promise.all(bookingPromises);
       });
   
+      it('should get all bookings for the authenticated user', async () => {
+        const response = await request(app)
+          .get('/api/v1/booking/my-bookings')
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`]);
+  
+        expect(response.status).toBe(200);
+        expect(response.body.success).toBe(true);
+        expect(Array.isArray(response.body.data)).toBe(true);
+        expect(response.body.data.length).toBe(3);
+        
+        response.body.data.forEach(booking => {
+          expect(booking.userId).toBe(regularUser._id.toString());
+        });
+      });
+  
       
     });
   
