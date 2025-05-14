@@ -179,6 +179,17 @@ describe('Booking API', () => {
         expect(response.body.data.userId).toBe(regularUser._id.toString());
       });
   
+      it('should allow an admin to access any booking', async () => {
+        const response = await request(app)
+          .get(`/api/v1/booking/${testBooking._id}`)
+          .set('Authorization', `Bearer ${adminToken}`)
+          .set('Cookie', [`accessToken=${adminToken}`]);
+  
+        expect(response.status).toBe(200);
+        expect(response.body.success).toBe(true);
+        expect(response.body.data._id.toString()).toBe(testBooking._id.toString());
+      });
+  
       
     });
   
