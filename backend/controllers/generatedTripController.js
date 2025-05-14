@@ -32,4 +32,22 @@ export const getUserGeneratedTrips = async (req, res) => {
   });
 };
 
+export const getGeneratedTrip = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
+
+  const response = await GeneratedTripService.getGeneratedTrip(id, userId);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
+  return ResponseTrait.successResponse(res, response.data);
+};
+
+
 
