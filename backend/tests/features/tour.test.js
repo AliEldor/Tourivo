@@ -73,5 +73,32 @@ describe('Tour API', () => {
       });
     });
 
+    describe('GET /api/v1/tours', () => {
+        beforeEach(async () => {
+
+          // Create test tours
+          await Tour.deleteMany({});
+          const tourPromises = [];
+          for (let i = 0; i < 5; i++) {
+            const tourData = await TourFactory.create();
+            const tour = new Tour(tourData);
+            tourPromises.push(tour.save());
+          }
+          await Promise.all(tourPromises);
+        });
+
+        it('should get all tours with pagination', async () => {
+            const response = await request(app)
+              .get('/api/v1/tours')
+              .query({ page: 0 });
+      
+            expect(response.status).toBe(200);
+            expect(response.body.success).toBe(true);
+            expect(response.body.data).toHaveProperty('data');
+            expect(response.body.data).toHaveProperty('count');
+            expect(Array.isArray(response.body.data.data)).toBe(true);
+            expect(response.body.data.count).toBeGreaterThan(0);
+          });
+
     });
 });
