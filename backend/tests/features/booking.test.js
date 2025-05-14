@@ -144,7 +144,14 @@ describe('Booking API', () => {
         });
       });
   
-      
+      it('should not allow access without authentication', async () => {
+        const response = await request(app)
+          .get('/api/v1/booking/my-bookings');
+  
+        expect(response.status).toBe(401);
+        expect(response.body.success).toBe(false);
+        expect(response.body.error).toBe("You're not authorized");
+      });
     });
   
     
