@@ -79,6 +79,21 @@ describe('Booking API', () => {
         expect(booking.userId).toBe(regularUser._id.toString());
       });
   
+      it('should not create a booking when user is not authenticated', async () => {
+        const bookingData = await BookingFactory.create(
+          regularUser._id.toString(),
+          testTour.title
+        );
+  
+        const response = await request(app)
+          .post('/api/v1/booking')
+          .send(bookingData);
+  
+        expect(response.status).toBe(401);
+        expect(response.body.success).toBe(false);
+        expect(response.body.error).toBe("You're not authorized");
+      });
+  
       
     });
   
