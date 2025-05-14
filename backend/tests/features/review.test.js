@@ -153,6 +153,20 @@ describe('Review API', () => {
       }
     });
 
+    it('should get all reviews for a specific tour', async () => {
+      const response = await request(app)
+        .get(`/api/v1/reviews/tour/${testTour._id}`);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(Array.isArray(response.body.data)).toBe(true);
+      expect(response.body.data.length).toBe(3);
+
+      response.body.data.forEach(review => {
+        expect(review.productId.toString()).toBe(testTour._id.toString());
+      });
+    });
+
     
   });
 
