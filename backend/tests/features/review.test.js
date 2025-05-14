@@ -308,8 +308,8 @@ describe('Review API', () => {
 
       const response = await request(app)
         .put(`/api/v1/reviews/${nonExistentId}`)
-        .set('Authorization', `Bearer ${adminToken}`)
-        .set('Cookie', [`accessToken=${adminToken}`])
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`])
         .send(updatedData);
 
       expect(response.status).toBe(404);
@@ -317,4 +317,6 @@ describe('Review API', () => {
       expect(response.body.error).toBe('Review not found');
     });
   });
+
+  
 });
