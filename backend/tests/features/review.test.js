@@ -261,6 +261,23 @@ describe('Review API', () => {
       expect(updatedReview.rating).toBe(updatedData.rating);
     });
 
+    it("should not allow a different user to update someone else's review", async () => {
+      const updatedData = {
+        reviewText: 'This should not work',
+        rating: 1
+      };
+
+      const response = await request(app)
+        .put(`/api/v1/reviews/${testReview._id}`)
+        .set('Authorization', `Bearer ${secondUserToken}`)
+        .set('Cookie', [`accessToken=${secondUserToken}`])
+        .send(updatedData);
+
+      expect(response.status).toBe(403);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('You can only update your own reviews');
+    });
+
     
   });
 });
