@@ -248,6 +248,34 @@ export const GeneratedTripService = {
         };
       }
 
+      const bookings = [];
+      const bookingIds = [];
+
+      for (const tourSelection of trip.tourSelections) {
+        const tour = tourSelection.tourId;
+        
+        // Create booking data for this tour
+        const tourBookingData = {
+          ...bookingData,
+          userId,
+          tourName: tour.title,
+        };
+
+        const bookingService = require('./BookingService.js').BookingService;
+        const bookingResult = await bookingService.createBooking(tourBookingData);
+
+        if (bookingResult.success) {
+          bookings.push(bookingResult.data);
+          bookingIds.push(bookingResult.data._id);
+        } else {
+          // If any booking fails, return error
+          return {
+            success: false,
+            error: `Failed to book tour "${tour.title}": ${bookingResult.error}`,
+          };
+        }
+      }
+
     }
   }
 
