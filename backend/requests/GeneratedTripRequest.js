@@ -59,6 +59,16 @@ export const validateGeneratedTrip = (method) => {
         body("fullName")
           .notEmpty()
           .withMessage("Full name is required"),
+          body("guestSize")
+          .notEmpty()
+          .withMessage("Guest size is required")
+          .isInt({ min: 1 })
+          .withMessage("Guest size must be at least 1"),
+        body("phone")
+          .notEmpty()
+          .withMessage("Phone number is required")
+          .isNumeric()
+          .withMessage("Phone must be a number"),
         ];
     }
 
