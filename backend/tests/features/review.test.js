@@ -376,6 +376,17 @@ describe('Review API', () => {
       expect(deletedReview).toBeNull();
     });
 
-    
+    it('should return 404 for non-existent review ID', async () => {
+      const nonExistentId = new mongoose.Types.ObjectId();
+      
+      const response = await request(app)
+        .delete(`/api/v1/reviews/${nonExistentId}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`]);
+
+      expect(response.status).toBe(404);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('Review not found');
+    });
   });
 });
