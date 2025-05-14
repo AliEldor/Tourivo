@@ -172,8 +172,8 @@ export const GeneratedTripService = {
   getGeneratedTrip: async (id, userId) => {
     try {
       const trip = await GeneratedTrip.findById(id).populate({
-        path: 'tourSelections.tourId',
-        model: 'Tour',
+        path: "tourSelections.tourId",
+        model: "Tour",
       });
 
       if (!trip) {
@@ -207,9 +207,9 @@ export const GeneratedTripService = {
   getUserGeneratedTrips: async (userId) => {
     try {
       const trips = await GeneratedTrip.find({ userId }).populate({
-        path: 'tourSelections.tourId',
-        model: 'Tour',
-        select: 'title city photo price' // Only get essential fields for list view
+        path: "tourSelections.tourId",
+        model: "Tour",
+        select: "title city photo price", // Only get essential fields for list view
       });
 
       return {
@@ -228,8 +228,8 @@ export const GeneratedTripService = {
   bookGeneratedTrip: async (tripId, userId, bookingData) => {
     try {
       const trip = await GeneratedTrip.findById(tripId).populate({
-        path: 'tourSelections.tourId',
-        model: 'Tour',
+        path: "tourSelections.tourId",
+        model: "Tour",
       });
 
       if (!trip) {
@@ -253,7 +253,7 @@ export const GeneratedTripService = {
 
       for (const tourSelection of trip.tourSelections) {
         const tour = tourSelection.tourId;
-        
+
         // Create booking data for this tour
         const tourBookingData = {
           ...bookingData,
@@ -261,8 +261,10 @@ export const GeneratedTripService = {
           tourName: tour.title,
         };
 
-        const bookingService = require('./BookingService.js').BookingService;
-        const bookingResult = await bookingService.createBooking(tourBookingData);
+        const bookingService = require("./BookingService.js").BookingService;
+        const bookingResult = await bookingService.createBooking(
+          tourBookingData
+        );
 
         if (bookingResult.success) {
           bookings.push(bookingResult.data);
@@ -310,4 +312,34 @@ export const GeneratedTripService = {
         };
       }
 
+      if (trip.userId.toString() !== userId) {
+        return {
+          success: false,
+          error: "Unauthorized access to this trip",
+          statusCode: 403,
+        };
+      }
+
+      // Only delete if not booked
+      if (trip.isBooked) {
+        return {
+          success: false,
+          error: "Cannot delete a booked trip",
+          statusCode: 400,
+        };
+      }
+
+      await GeneratedTrip.findByIdAndDelete(id);
+
+      return {
+        success: true,
+        message: "Generated trip deleted successfully",
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to delete generated trip",
+      };
+    }
+  },
 };
