@@ -166,6 +166,19 @@ describe('Booking API', () => {
         await testBooking.save();
       });
   
+      it('should get a specific booking when owner accesses it', async () => {
+        const response = await request(app)
+          .get(`/api/v1/booking/${testBooking._id}`)
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`]);
+  
+        expect(response.status).toBe(200);
+        expect(response.body.success).toBe(true);
+        expect(response.body.data._id.toString()).toBe(testBooking._id.toString());
+        expect(response.body.data.tourName).toBe(testBooking.tourName);
+        expect(response.body.data.userId).toBe(regularUser._id.toString());
+      });
+  
       
     });
   
