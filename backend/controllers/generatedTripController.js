@@ -68,5 +68,24 @@ export const deleteGeneratedTrip = async (req, res) => {
   });
 }
 
+  export const bookGeneratedTrip = async (req, res) => {
+    const { id } = req.params;
+    const userId = req.user.id;
+    const bookingData = req.body;
   
+    const response = await GeneratedTripService.bookGeneratedTrip(id, userId, bookingData);
+  
+    if (!response.success) {
+      return ResponseTrait.errorResponse(
+        res,
+        response.error,
+        response.statusCode || 500
+      );
+    }
+  
+    return ResponseTrait.successResponse(res, {
+      message: response.message,
+      data: response.data,
+    });
+  };
 
