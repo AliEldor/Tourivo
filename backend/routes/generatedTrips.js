@@ -12,6 +12,13 @@ import { validateGeneratedTrip, validate } from "../requests/GeneratedTripReques
 
 const router = express.Router();
 
+// Generate a new trip
+router.post("/", 
+  verifyToken, 
+  validateGeneratedTrip("generateTrip"), 
+  validate, 
+  generateTrip
+);
 
 
 export default router;
