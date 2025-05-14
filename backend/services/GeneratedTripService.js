@@ -25,6 +25,27 @@ export const GeneratedTripService = {
         availableTours = availableTours.filter(tour => cityRegex.test(tour.city));
       }
 
+      // Convert tours to a format suitable for the AI
+      const tourOptions = availableTours.map(tour => ({
+        id: tour._id.toString(),
+        title: tour.title,
+        city: tour.city,
+        address: tour.address,
+        description: tour.desc,
+        price: tour.price,
+        maxGroupSize: tour.maxGroupSize,
+        distance: tour.distance,
+        featured: tour.featured,
+      }));
+      
+      // If no tours found after filtering
+      if (tourOptions.length === 0) {
+        return {
+          success: false,
+          error: "No tours available matching your preferences",
+        };
+      }
+
     }
   }
 }
