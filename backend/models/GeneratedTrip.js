@@ -39,6 +39,26 @@ const generatedTripSchema = new mongoose.Schema(
         },
       },
     ],
+    totalEstimatedCost: {
+      type: Number,
+      required: true,
+    },
+    preferences: {
+      type: Object,
+      required: true,
+    },
+    isBooked: {
+      type: Boolean,
+      default: false,
+    },
+    bookingIds: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Booking",
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
-  }
-)
+export default mongoose.model("GeneratedTrip", generatedTripSchema);
