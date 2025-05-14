@@ -112,5 +112,24 @@ describe('Booking API', () => {
       });
     });
   
+    describe('GET /api/v1/booking/my-bookings', () => {
+      beforeEach(async () => {
+        await Booking.deleteMany({ userId: regularUser._id.toString() });
+        
+        const bookingPromises = [];
+        for (let i = 0; i < 3; i++) {
+          const bookingData = await BookingFactory.create(
+            regularUser._id.toString(),
+            testTour.title
+          );
+          const booking = new Booking(bookingData);
+          bookingPromises.push(booking.save());
+        }
+        await Promise.all(bookingPromises);
+      });
+  
+      
+    });
+  
     
 });
