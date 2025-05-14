@@ -20,5 +20,8 @@ router.post("/",
   generateTrip
 );
 
+// Get all generated trips for the user
+router.get("/", verifyToken, getUserGeneratedTrips);
+
 
 export default router;
