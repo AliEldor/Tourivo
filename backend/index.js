@@ -11,7 +11,9 @@ import tourRoute from './routes/tours.js';
 import userRoute from './routes/users.js';
 import authRoute from './routes/auth.js';
 import bookingRoute from './routes/bookings.js';
-import reviewRoute from './routes/reviews.js'
+import reviewRoute from './routes/reviews.js';
+import generatedTripRoute from './routes/generatedTrips.js';
+
 
 //  DNS setting for connection issue
 dns.setServers(['8.8.8.8', '8.8.4.4']);
@@ -56,6 +58,7 @@ app.use('/api/v1/tours', tourRoute);
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/booking', bookingRoute);
 app.use("/api/v1/reviews", reviewRoute);
+app.use('/api/v1/generated-trips', generatedTripRoute);
 
 app.listen(port, () => { 
     connect();
