@@ -6,30 +6,19 @@ import {
   getGeneratedTrip,
   deleteGeneratedTrip,
   bookGeneratedTrip,
-  regenerateTrip,
 } from "../controllers/generatedTripController.js";
 import { validateGeneratedTrip, validate } from "../requests/GeneratedTripRequest.js";
 
 const router = express.Router();
 
 // Generate a new trip
-router.post("/", 
-  verifyToken, 
-  validateGeneratedTrip("generateTrip"), 
-  validate, 
-  generateTrip
-);
+router.post("/", verifyToken, validateGeneratedTrip("generateTrip"), validate, generateTrip);
 
 // Get all generated trips for the user
 router.get("/", verifyToken, getUserGeneratedTrips);
 
 // Get a specific generated trip
-router.get("/:id", 
-  verifyToken, 
-  validateGeneratedTrip("getGeneratedTrip"), 
-  validate, 
-  getGeneratedTrip
-);
+router.get("/:id", verifyToken, validateGeneratedTrip("getGeneratedTrip"), validate, getGeneratedTrip);
 
 // Book a generated trip
 router.post("/:id/book", 
@@ -39,20 +28,7 @@ router.post("/:id/book",
   bookGeneratedTrip
 );
 
-// Regenerate a trip with adjustments
-router.post("/:id/regenerate", 
-  verifyToken, 
-  validateGeneratedTrip("regenerateTrip"), 
-  validate, 
-  regenerateTrip
-);
-
 // Delete a generated trip
-router.delete("/:id", 
-  verifyToken, 
-  validateGeneratedTrip("deleteGeneratedTrip"), 
-  validate, 
-  deleteGeneratedTrip
-);
+router.delete("/:id", verifyToken, validateGeneratedTrip("deleteGeneratedTrip"), validate, deleteGeneratedTrip);
 
 export default router;
