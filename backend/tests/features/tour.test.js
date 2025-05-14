@@ -251,5 +251,24 @@ describe('DELETE /api/v1/tours/:id', () => {
       expect(response.body.success).toBe(true);
       expect(response.body.message).toBe('Successfully deleted');
 
+      const deletedTour = await Tour.findById(testTour._id);
+      expect(deletedTour).toBeNull();
+    });
+
+    it('should not allow regular users to delete a tour', async () => {
+      const response = await request(app)
+        .delete(`/api/v1/tours/${testTour._id}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`]);
+
+      expect(response.status).toBe(401);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe("You're not authorized");
+      
+      // Verify the tour still exists in the database
+      const tour = await Tour.findById(testTour._id);
+      expect(tour).not.toBeNull();
+    });
+
     });
 });
