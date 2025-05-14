@@ -168,4 +168,22 @@ export const GeneratedTripService = {
       };
     }
   },
+
+  getGeneratedTrip: async (id, userId) => {
+    try {
+      const trip = await GeneratedTrip.findById(id).populate({
+        path: 'tourSelections.tourId',
+        model: 'Tour',
+      });
+
+      if (!trip) {
+        return {
+          success: false,
+          error: "Generated trip not found",
+          statusCode: 404,
+        };
+      }
+    }
+  }
+
 };
