@@ -42,5 +42,14 @@ export const validateGeneratedTrip = (method) => {
             ];
         }
 
+        case "getGeneratedTrip": 
+    case "deleteGeneratedTrip": {
+      return [
+        param("id")
+          .isMongoId()
+          .withMessage("Invalid trip ID")
+      ];
+    }
+
     }
 }
