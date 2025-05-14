@@ -69,9 +69,33 @@ export const GeneratedTripService = {
       // Initialize the OpenAI model
       const model = new ChatOpenAI({
         openAIApiKey: process.env.OPENAI_API_KEY,
-        modelName: "gpt-3.5-turbo",
-        temperature: 0.7,
+        modelName: "o4-mini",
+        temperature: 1,
       });
+
+      //  prompt template
+      const prompt = ChatPromptTemplate.fromMessages([
+        ["system", "You are a travel planning assistant that creates personalized itineraries from available tours."],
+        ["human", `Create a personalized travel itinerary based on the following preferences:
+          
+          Budget: {budget}
+          Duration: {duration} days
+          Interests: {interests}
+          Preferred type of destinations: {destinationType}
+          Season/time of travel: {season}
+          
+          Select from these available tours to create the best itinerary:
+          {tourOptions}
+          
+          Important rules:
+          1. ONLY use tours from the provided list
+          2. The total duration of selected tours should be roughly equal to the requested duration
+          3. The total cost should not exceed the budget
+          4. Select tours that match the user's interests
+          5. Each tour MUST have a valid tourId from the options provided
+          
+          {format_instructions}`],
+      ]);
 
     }
   }
