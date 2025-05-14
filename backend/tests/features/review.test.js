@@ -362,6 +362,20 @@ describe('Review API', () => {
       expect(review).not.toBeNull();
     });
 
+    it('should allow an admin to delete any review', async () => {
+      const response = await request(app)
+        .delete(`/api/v1/reviews/${testReview._id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Cookie', [`accessToken=${adminToken}`]);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.message).toBe('Review deleted');
+      
+      const deletedReview = await Review.findById(testReview._id);
+      expect(deletedReview).toBeNull();
+    });
+
     
   });
 });
