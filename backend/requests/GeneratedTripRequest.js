@@ -16,7 +16,9 @@ export const validateGeneratedTrip = (method) => {
           .withMessage("Duration is required")
           .isInt({ min: 1, max: 30 })
           .withMessage("Duration must be between 1 and 30 days"),
-        body("interests").notEmpty().withMessage("Interests are required"),
+        body("interests")
+          .notEmpty()
+          .withMessage("Interests are required"),
         body("destinationType")
           .optional()
           .isString()
@@ -25,7 +27,10 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isString()
           .withMessage("Season must be a string"),
-        body("city").optional().isString().withMessage("City must be a string"),
+        body("city")
+          .optional()
+          .isString()
+          .withMessage("City must be a string"),
         body("maxPrice")
           .optional()
           .isNumeric()
@@ -36,16 +41,24 @@ export const validateGeneratedTrip = (method) => {
           .withMessage("Max group size must be a number"),
       ];
     }
-
-    case "getGeneratedTrip":
+    
+    case "getGeneratedTrip": 
     case "deleteGeneratedTrip": {
-      return [param("id").isMongoId().withMessage("Invalid trip ID")];
+      return [
+        param("id")
+          .isMongoId()
+          .withMessage("Invalid trip ID")
+      ];
     }
-
+    
     case "bookGeneratedTrip": {
       return [
-        param("id").isMongoId().withMessage("Invalid trip ID"),
-        body("fullName").notEmpty().withMessage("Full name is required"),
+        param("id")
+          .isMongoId()
+          .withMessage("Invalid trip ID"),
+        body("fullName")
+          .notEmpty()
+          .withMessage("Full name is required"),
         body("guestSize")
           .notEmpty()
           .withMessage("Guest size is required")
@@ -61,13 +74,17 @@ export const validateGeneratedTrip = (method) => {
           .withMessage("Booking date is required")
           .isISO8601()
           .withMessage("Invalid date format"),
-        body("userEmail").isEmail().withMessage("Invalid email format"),
+        body("userEmail")
+          .isEmail()
+          .withMessage("Invalid email format"),
       ];
     }
 
     case "regenerateTrip": {
       return [
-        param("id").isMongoId().withMessage("Invalid trip ID"),
+        param("id")
+          .isMongoId()
+          .withMessage("Invalid trip ID"),
         body("adjustments")
           .optional()
           .isObject()
@@ -88,7 +105,8 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isArray()
           .withMessage("excludeTours must be an array"),
-        body("adjustments.interests").optional(),
+        body("adjustments.interests")
+          .optional(),
         body("feedback")
           .optional()
           .isString()
@@ -99,9 +117,9 @@ export const validateGeneratedTrip = (method) => {
 };
 
 export const validate = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return ResponseTrait.failedValidation(res, errors.array());
-    }
-    next();
-  };
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return ResponseTrait.failedValidation(res, errors.array());
+  }
+  next();
+};
