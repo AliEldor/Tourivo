@@ -298,6 +298,23 @@ describe('Review API', () => {
       expect(updatedReview.reviewText).toBe(updatedData.reviewText);
     });
 
-    
+    it('should return 404 for non-existent review ID', async () => {
+      const nonExistentId = new mongoose.Types.ObjectId();
+
+      const updatedData = {
+        reviewText: 'Updated review',
+        rating: 4
+      };
+
+      const response = await request(app)
+        .put(`/api/v1/reviews/${nonExistentId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Cookie', [`accessToken=${adminToken}`])
+        .send(updatedData);
+
+      expect(response.status).toBe(404);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('Review not found');
+    });
   });
 });
