@@ -243,6 +243,15 @@ describe('Booking API', () => {
         expect(response.body.data.length).toBe(5);
       });
   
-      
+      it('should not allow regular users to get all bookings', async () => {
+        const response = await request(app)
+          .get('/api/v1/booking')
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`]);
+  
+        expect(response.status).toBe(401);
+        expect(response.body.success).toBe(false);
+        expect(response.body.error).toBe("You're not authorized");
+      });
     });
 });
