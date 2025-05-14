@@ -52,5 +52,35 @@ describe('Booking API', () => {
       );
     });
   
+    describe('POST /api/v1/booking', () => {
+      it('should create a new booking when user is authenticated', async () => {
+        const bookingData = await BookingFactory.create(
+          regularUser._id.toString(),
+          testTour.title
+        );
+  
+        const response = await request(app)
+          .post('/api/v1/booking')
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`])
+          .send(bookingData);
+  
+        expect(response.status).toBe(200);
+        expect(response.body.success).toBe(true);
+        expect(response.body.data).toHaveProperty('message', 'Your tour is booked');
+        expect(response.body.data).toHaveProperty('data');
+        expect(response.body.data.data).toHaveProperty('_id');
+        expect(response.body.data.data.tourName).toBe(bookingData.tourName);
+        expect(response.body.data.data.fullName).toBe(bookingData.fullName);
+        
+        const booking = await Booking.findById(response.body.data.data._id);
+        expect(booking).not.toBeNull();
+        expect(booking.tourName).toBe(bookingData.tourName);
+        expect(booking.userId).toBe(regularUser._id.toString());
+      });
+  
+      
+    });
+  
     
 });
