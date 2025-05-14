@@ -16,5 +16,25 @@ describe('Review API', () => {
   let secondUser;
   let testTour;
 
+  beforeAll(async () => {
+    const adminData = await UserFactory.create({ role: 'admin' });
+    adminUser = new User(adminData);
+    await adminUser.save();
+    
+    const userData = await UserFactory.create({ role: 'user' });
+    regularUser = new User(userData);
+    await regularUser.save();
+
+    const secondUserData = await UserFactory.create({ role: 'user' });
+    secondUser = new User(secondUserData);
+    await secondUser.save();
+
+    const tourData = await TourFactory.create();
+    testTour = new Tour(tourData);
+    await testTour.save();
+
+    
+  });
+
   
 });
