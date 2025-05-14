@@ -13,20 +13,26 @@ export const GeneratedTripService = {
 
       // Apply basic filters based on preferences if provided
       if (preferences.maxPrice) {
-        availableTours = availableTours.filter(tour => tour.price <= preferences.maxPrice);
+        availableTours = availableTours.filter(
+          (tour) => tour.price <= preferences.maxPrice
+        );
       }
 
       if (preferences.maxGroupSize) {
-        availableTours = availableTours.filter(tour => tour.maxGroupSize >= preferences.maxGroupSize);
+        availableTours = availableTours.filter(
+          (tour) => tour.maxGroupSize >= preferences.maxGroupSize
+        );
       }
-      
+
       if (preferences.city) {
         const cityRegex = new RegExp(preferences.city, "i");
-        availableTours = availableTours.filter(tour => cityRegex.test(tour.city));
+        availableTours = availableTours.filter((tour) =>
+          cityRegex.test(tour.city)
+        );
       }
 
       // Convert tours to a format suitable for the AI
-      const tourOptions = availableTours.map(tour => ({
+      const tourOptions = availableTours.map((tour) => ({
         id: tour._id.toString(),
         title: tour.title,
         city: tour.city,
@@ -37,7 +43,7 @@ export const GeneratedTripService = {
         distance: tour.distance,
         featured: tour.featured,
       }));
-      
+
       // If no tours found after filtering
       if (tourOptions.length === 0) {
         return {
@@ -75,8 +81,13 @@ export const GeneratedTripService = {
 
       //  prompt template
       const prompt = ChatPromptTemplate.fromMessages([
-        ["system", "You are a travel planning assistant that creates personalized itineraries from available tours."],
-        ["human", `Create a personalized travel itinerary based on the following preferences:
+        [
+          "system",
+          "You are a travel planning assistant that creates personalized itineraries from available tours.",
+        ],
+        [
+          "human",
+          `Create a personalized travel itinerary based on the following preferences:
           
           Budget: {budget}
           Duration: {duration} days
@@ -94,17 +105,16 @@ export const GeneratedTripService = {
           4. Select tours that match the user's interests
           5. Each tour MUST have a valid tourId from the options provided
           
-          {format_instructions}`],
+          {format_instructions}`,
+        ],
       ]);
 
       const interestsString = Array.isArray(preferences.interests)
         ? preferences.interests.join(", ")
         : preferences.interests;
 
-      
       const chain = prompt.pipe(model).pipe(outputParser);
 
-      
       const tripData = await chain.invoke({
         budget: preferences.budget,
         duration: preferences.duration,
@@ -117,9 +127,11 @@ export const GeneratedTripService = {
 
       console.log("Generated trip data:", JSON.stringify(tripData, null, 2));
 
-      const tourIds = tripData.tourSelections.map(selection => selection.tourId);
+      const tourIds = tripData.tourSelections.map(
+        (selection) => selection.tourId
+      );
       const validTours = await Tour.find({ _id: { $in: tourIds } });
-      
+
       if (validTours.length !== tourIds.length) {
         return {
           success: false,
@@ -127,6 +139,33 @@ export const GeneratedTripService = {
         };
       }
 
+      const newTrip = new GeneratedTrip({
+        userId,
+        title: tripData.title,
+        description: tripData.description,
+        duration: preferences.duration,
+        tourSelections: tripData.tourSelections,
+        totalEstimatedCost: tripData.totalEstimatedCost,
+        preferences: preferences,
+      });
+
+      await newTrip.save();
+
+      const populatedTrip = await GeneratedTrip.findById(newTrip._id).populate({
+        path: "tourSelections.tourId",
+        model: "Tour",
+      });
+
+      return {
+        success: true,
+        data: populatedTrip,
+      };
+    } catch (err) {
+      console.error("Error generating trip:", err);
+      return {
+        success: false,
+        error: `Failed to generate trip: ${err.message}`,
+      };
     }
-  }
-}
+  },
+};
