@@ -220,7 +220,17 @@ describe('Tour API', () => {
         price: 999
       };
 
-      
+      const response = await request(app)
+      .put(`/api/v1/tours/${testTour._id}`)
+      .set('Authorization', `Bearer ${regularToken}`)
+      .set('Cookie', [`accessToken=${regularToken}`])
+      .send(updatedData);
+
+    expect(response.status).toBe(401);
+    expect(response.body.success).toBe(false);
+    expect(response.body.error).toBe("You're not authorized");
+  });
+});
 
     });
 });
