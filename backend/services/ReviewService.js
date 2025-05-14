@@ -86,35 +86,21 @@ export const ReviewService = {
     }
   },
 
-  updateReview: async (reviewId, userId, updateData) => {
+  updateReview: async (reviewId, updateData) => {
     try {
-      // Find the review
-      const review = await Review.findById(reviewId);
+      const updatedReview = await Review.findByIdAndUpdate(
+        reviewId,
+        { $set: updateData },
+        { new: true }
+      );
 
-      // Check if review exists
-      if (!review) {
+      if (!updatedReview) {
         return {
           success: false,
           error: "Review not found",
           statusCode: 404,
         };
       }
-
-      // Check if user is the owner of the review
-      if (review.userId.toString() !== userId && req.user.role !== "admin") {
-        return {
-          success: false,
-          error: "You can only update your own reviews",
-          statusCode: 403,
-        };
-      }
-
-      // Update the review
-      const updatedReview = await Review.findByIdAndUpdate(
-        reviewId,
-        { $set: updateData },
-        { new: true }
-      );
 
       return {
         success: true,
@@ -128,12 +114,10 @@ export const ReviewService = {
     }
   },
 
-  deleteReview: async (reviewId, userId) => {
+  deleteReview: async (reviewId) => {
     try {
-      // Find the review
       const review = await Review.findById(reviewId);
-
-      // Check if review exists
+      
       if (!review) {
         return {
           success: false,
@@ -141,20 +125,13 @@ export const ReviewService = {
           statusCode: 404,
         };
       }
-
-      // Check if user is the owner of the review or an admin
-      if (review.userId.toString() !== userId && req.user.role !== "admin") {
-        return {
-          success: false,
-          error: "You can only delete your own reviews",
-          statusCode: 403,
-        };
+      
+      const tour = await Tour.findById(review.productId);
+      if (tour) {
+        await Tour.findByIdAndUpdate(review.productId, {
+          $pull: { reviews: reviewId },
+        });
       }
-
-      // Remove review from tour
-      await Tour.findByIdAndUpdate(review.productId, {
-        $pull: { reviews: reviewId },
-      });
 
       // Delete the review
       await Review.findByIdAndDelete(reviewId);
@@ -164,6 +141,7 @@ export const ReviewService = {
         message: "Review deleted",
       };
     } catch (err) {
+      console.error("Error in deleteReview service:", err);
       return {
         success: false,
         error: "Failed to delete review",

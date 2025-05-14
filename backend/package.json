@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cleanup": "node scripts/cleanup.js",
+    "test": "cross-env NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
+    "seed": "node scripts/seed.js",
+    "seed:test": "cross-env NODE_ENV=test node scripts/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +25,12 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "cross-env": "^7.0.3",
+    "faker": "^6.6.6",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
   }
 }
