@@ -35,6 +35,23 @@ describe('Tour API', () => {
         { expiresIn: '15d' }
       );
     });
+
+    describe('POST /api/v1/tours', () => {
+        it('should create a new tour when admin is authenticated', async () => {
+          const tourData = await TourFactory.create();
     
+          const response = await request(app)
+            .post('/api/v1/tours')
+            .set('Authorization', `Bearer ${adminToken}`)
+            .set('Cookie', [`accessToken=${adminToken}`])
+            .send(tourData);
+    
+          expect(response.status).toBe(200);
+          expect(response.body.success).toBe(true);
+          expect(response.body.data).toHaveProperty('_id');
+          expect(response.body.data.title).toBe(tourData.title);
+          expect(response.body.data.city).toBe(tourData.city);
+          expect(response.body.data.price).toBe(tourData.price);
+
     });
 });
