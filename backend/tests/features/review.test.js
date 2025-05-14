@@ -318,5 +318,19 @@ describe('Review API', () => {
     });
   });
 
-  
+  describe('DELETE /api/v1/reviews/:reviewId', () => {
+    let testReview;
+
+    beforeEach(async () => {
+      const reviewData = await ReviewFactory.create(testTour._id, regularUser._id);
+      testReview = new Review(reviewData);
+      await testReview.save();
+      
+      await Tour.findByIdAndUpdate(testTour._id, {
+        $push: { reviews: testReview._id }
+      });
+    });
+
+    
+  });
 });
