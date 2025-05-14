@@ -100,5 +100,27 @@ describe('Tour API', () => {
             expect(response.body.data.count).toBeGreaterThan(0);
           });
 
+          it('should get tours by search criteria', async () => {
+            
+            const specificTour = await TourFactory.create({
+              city: 'SearchTestCity',
+              price: 100,
+              maxGroupSize: 5
+            });
+            const tour = new Tour(specificTour);
+      await tour.save();
+
+      const response = await request(app)
+        .get('/api/v1/tours/search/getTourBySearch')
+        .query({
+          city: 'SearchTestCity',
+          price: 50,  
+          maxGroupSize: 2  
+        });
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(Array.isArray(response.body.data)).toBe(true);
+
     });
 });
