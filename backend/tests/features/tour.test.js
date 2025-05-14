@@ -151,5 +151,36 @@ describe('Tour API', () => {
       });
     });
 
+    describe('GET /api/v1/tours/:id', () => {
+        let testTour;
+    
+        beforeEach(async () => {
+          const tourData = await TourFactory.create();
+          testTour = new Tour(tourData);
+          await testTour.save();
+        });
+
+        it('should get a single tour by ID', async () => {
+            const response = await request(app)
+              .get(`/api/v1/tours/${testTour._id}`);
+      
+            expect(response.status).toBe(200);
+            expect(response.body.success).toBe(true);
+            expect(response.body.data._id.toString()).toBe(testTour._id.toString());
+            expect(response.body.data.title).toBe(testTour.title);
+          });
+
+          it('should return 404 for non-existent tour ID', async () => {
+            const nonExistentId = new mongoose.Types.ObjectId();
+            
+            const response = await request(app)
+              .get(`/api/v1/tours/${nonExistentId}`);
+      
+            expect(response.status).toBe(500); 
+            expect(response.body.success).toBe(false);
+            expect(response.body.error).toBe('Tour not found');
+          });
+        });
+
     });
 });
