@@ -122,5 +122,11 @@ describe('Tour API', () => {
       expect(response.body.success).toBe(true);
       expect(Array.isArray(response.body.data)).toBe(true);
 
+      const foundTour = response.body.data.find(t => t.city === 'SearchTestCity');
+      expect(foundTour).toBeDefined();
+      expect(foundTour.price).toBe(100);
+      expect(foundTour.maxGroupSize).toBe(5);
+    });
+
     });
 });
