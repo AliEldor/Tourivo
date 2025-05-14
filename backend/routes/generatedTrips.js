@@ -47,4 +47,12 @@ router.post("/:id/regenerate",
   regenerateTrip
 );
 
+// Delete a generated trip
+router.delete("/:id", 
+  verifyToken, 
+  validateGeneratedTrip("deleteGeneratedTrip"), 
+  validate, 
+  deleteGeneratedTrip
+);
+
 export default router;
