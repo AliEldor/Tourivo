@@ -105,6 +105,12 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isArray()
           .withMessage("excludeTours must be an array"),
+          body("adjustments.interests")
+          .optional(),
+        body("feedback")
+          .optional()
+          .isString()
+          .withMessage("Feedback must be a string"),
 
         ];
     }
