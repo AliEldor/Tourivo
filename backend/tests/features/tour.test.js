@@ -128,5 +128,28 @@ describe('Tour API', () => {
       expect(foundTour.maxGroupSize).toBe(5);
     });
 
+    it('should get featured tours', async () => {
+        
+        await Tour.deleteMany({});
+        for (let i = 0; i < 3; i++) {
+          const tourData = await TourFactory.create({ featured: true });
+          const tour = new Tour(tourData);
+          await tour.save();
+        }
+  
+        const response = await request(app)
+          .get('/api/v1/tours/search/getFeaturedTours');
+  
+        expect(response.status).toBe(200);
+        expect(response.body.success).toBe(true);
+        expect(Array.isArray(response.body.data)).toBe(true);
+        expect(response.body.data.length).toBeGreaterThan(0);
+        
+        response.body.data.forEach(tour => {
+          expect(tour.featured).toBe(true);
+        });
+      });
+    });
+
     });
 });
