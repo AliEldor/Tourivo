@@ -82,7 +82,13 @@ export const validateGeneratedTrip = (method) => {
 
     case "regenerateTrip": {
         return [
-
+            param("id")
+          .isMongoId()
+          .withMessage("Invalid trip ID"),
+        body("adjustments")
+          .optional()
+          .isObject()
+          .withMessage("Adjustments must be an object"),
         ];
     }
 
