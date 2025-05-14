@@ -89,6 +89,15 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isObject()
           .withMessage("Adjustments must be an object"),
+          body("adjustments.budget")
+          .optional()
+          .isNumeric()
+          .withMessage("Budget must be a number"),
+        body("adjustments.duration")
+          .optional()
+          .isInt({ min: 1, max: 30 })
+          .withMessage("Duration must be between 1 and 30 days"),
+
         ];
     }
 
