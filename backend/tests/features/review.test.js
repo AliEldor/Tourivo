@@ -167,7 +167,16 @@ describe('Review API', () => {
       });
     });
 
-    
+    it('should return 404 for non-existent tour ID', async () => {
+      const nonExistentId = new mongoose.Types.ObjectId();
+
+      const response = await request(app)
+        .get(`/api/v1/reviews/tour/${nonExistentId}`);
+
+      expect(response.status).toBe(404);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('Tour not found');
+    });
   });
 
   
