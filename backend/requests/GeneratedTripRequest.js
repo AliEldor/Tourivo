@@ -51,5 +51,16 @@ export const validateGeneratedTrip = (method) => {
       ];
     }
 
+    case "bookGeneratedTrip": {
+        return [
+            param("id")
+          .isMongoId()
+          .withMessage("Invalid trip ID"),
+        body("fullName")
+          .notEmpty()
+          .withMessage("Full name is required"),
+        ];
+    }
+
     }
 }
