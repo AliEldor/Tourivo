@@ -97,6 +97,26 @@ export const GeneratedTripService = {
           {format_instructions}`],
       ]);
 
+      const interestsString = Array.isArray(preferences.interests)
+        ? preferences.interests.join(", ")
+        : preferences.interests;
+
+      
+      const chain = prompt.pipe(model).pipe(outputParser);
+
+      
+      const tripData = await chain.invoke({
+        budget: preferences.budget,
+        duration: preferences.duration,
+        interests: interestsString,
+        destinationType: preferences.destinationType,
+        season: preferences.season,
+        tourOptions: JSON.stringify(tourOptions, null, 2),
+        format_instructions: formatInstructions,
+      });
+
+      console.log("Generated trip data:", JSON.stringify(tripData, null, 2));
+
     }
   }
 }
