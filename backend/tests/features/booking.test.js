@@ -201,7 +201,18 @@ describe('Booking API', () => {
         expect(response.body.error).toBe("You can only access your own bookings");
       });
   
-      
+      it('should return 404 for non-existent booking ID', async () => {
+        const nonExistentId = new mongoose.Types.ObjectId();
+        
+        const response = await request(app)
+          .get(`/api/v1/booking/${nonExistentId}`)
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`]);
+  
+        expect(response.status).toBe(404);
+        expect(response.body.success).toBe(false);
+        expect(response.body.error).toBe('Booking not found');
+      });
     });
   
     
