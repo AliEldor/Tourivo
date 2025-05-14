@@ -348,6 +348,20 @@ describe('Review API', () => {
       expect(updatedTour.reviews).not.toContainEqual(testReview._id);
     });
 
+    it('should not allow a different user to delete someone else\'s review', async () => {
+      const response = await request(app)
+        .delete(`/api/v1/reviews/${testReview._id}`)
+        .set('Authorization', `Bearer ${secondUserToken}`)
+        .set('Cookie', [`accessToken=${secondUserToken}`]);
+
+      expect(response.status).toBe(403);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('You can only delete your own reviews');
+      
+      const review = await Review.findById(testReview._id);
+      expect(review).not.toBeNull();
+    });
+
     
   });
 });
