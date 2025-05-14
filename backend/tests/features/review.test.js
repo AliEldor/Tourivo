@@ -39,6 +39,12 @@ describe('Review API', () => {
       { expiresIn: '15d' }
     );
     
+    regularToken = jwt.sign(
+      { id: regularUser._id, role: regularUser.role },
+      process.env.JWT_SECRET_KEY || 'test_secret_key',
+      { expiresIn: '15d' }
+    );
+
     
   });
 
