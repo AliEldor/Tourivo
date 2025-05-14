@@ -182,5 +182,21 @@ describe('Tour API', () => {
           });
         });
 
+        describe('PUT /api/v1/tours/:id', () => {
+            let testTour;
+        
+            beforeEach(async () => {
+              // Create a test tour
+              const tourData = await TourFactory.create();
+              testTour = new Tour(tourData);
+              await testTour.save();
+            });
+
+            it('should update a tour when admin is authenticated', async () => {
+                const updatedData = {
+                  title: 'Updated Tour Title',
+                  price: 999
+                };
+
     });
 });
