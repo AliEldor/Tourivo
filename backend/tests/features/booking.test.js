@@ -231,6 +231,18 @@ describe('Booking API', () => {
         await Promise.all(bookingPromises);
       });
   
+      it('should allow admin to get all bookings', async () => {
+        const response = await request(app)
+          .get('/api/v1/booking')
+          .set('Authorization', `Bearer ${adminToken}`)
+          .set('Cookie', [`accessToken=${adminToken}`]);
+  
+        expect(response.status).toBe(200);
+        expect(response.body.success).toBe(true);
+        expect(Array.isArray(response.body.data)).toBe(true);
+        expect(response.body.data.length).toBe(5);
+      });
+  
       
     });
 });
