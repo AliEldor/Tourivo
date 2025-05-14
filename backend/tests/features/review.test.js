@@ -33,6 +33,12 @@ describe('Review API', () => {
     testTour = new Tour(tourData);
     await testTour.save();
 
+    adminToken = jwt.sign(
+      { id: adminUser._id, role: adminUser.role },
+      process.env.JWT_SECRET_KEY || 'test_secret_key',
+      { expiresIn: '15d' }
+    );
+    
     
   });
 
