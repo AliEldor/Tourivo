@@ -52,5 +52,39 @@ describe('Review API', () => {
     );
   });
 
+  describe('POST /api/v1/reviews/:tourId', () => {
+    it('should create a new review when user is authenticated', async () => {
+      const reviewData = {
+        username: regularUser.username,
+        reviewText: 'This was an amazing tour!',
+        rating: 5
+      };
+
+      const response = await request(app)
+        .post(`/api/v1/reviews/${testTour._id}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`])
+        .send(reviewData);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.message).toBe('Review submitted');
+      expect(response.body.data.data).toHaveProperty('_id');
+      expect(response.body.data.data.reviewText).toBe(reviewData.reviewText);
+      expect(response.body.data.data.rating).toBe(reviewData.rating);
+      expect(response.body.data.data.userId.toString()).toBe(regularUser._id.toString());
+      expect(response.body.data.data.productId.toString()).toBe(testTour._id.toString());
+
+      const review = await Review.findById(response.body.data.data._id);
+      expect(review).not.toBeNull();
+      expect(review.reviewText).toBe(reviewData.reviewText);
+
+      const updatedTour = await Tour.findById(testTour._id);
+      expect(updatedTour.reviews).toContainEqual(new mongoose.Types.ObjectId(review._id));
+    });
+
+    
+  });
+
   
 });
