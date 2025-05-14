@@ -31,6 +31,14 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isString()
           .withMessage("City must be a string"),
+          body("maxPrice")
+          .optional()
+          .isNumeric()
+          .withMessage("Max price must be a number"),
+        body("maxGroupSize")
+          .optional()
+          .isNumeric()
+          .withMessage("Max group size must be a number"),
             ];
         }
 
