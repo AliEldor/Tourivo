@@ -179,5 +179,28 @@ describe('Review API', () => {
     });
   });
 
+  describe('GET /api/v1/reviews/user', () => {
+    beforeEach(async () => {
+      await Review.deleteMany({ userId: regularUser._id });
+
+      const tourData = await TourFactory.create();
+      const secondTour = new Tour(tourData);
+      await secondTour.save();
+
+      for (let i = 0; i < 2; i++) {
+        const tourId = i === 0 ? testTour._id : secondTour._id;
+        const reviewData = await ReviewFactory.create(tourId, regularUser._id);
+        const review = new Review(reviewData);
+        await review.save();
+
+        await Tour.findByIdAndUpdate(tourId, {
+          $push: { reviews: review._id }
+        });
+      }
+    });
+
+    
+  });
+
   
 });
