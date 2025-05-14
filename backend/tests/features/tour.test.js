@@ -53,5 +53,25 @@ describe('Tour API', () => {
           expect(response.body.data.city).toBe(tourData.city);
           expect(response.body.data.price).toBe(tourData.price);
 
+      const tour = await Tour.findById(response.body.data._id);
+      expect(tour).not.toBeNull();
+      expect(tour.title).toBe(tourData.title);
+    });
+
+    it('should not allow regular users to create a tour', async () => {
+        const tourData = await TourFactory.create();
+  
+        const response = await request(app)
+          .post('/api/v1/tours')
+          .set('Authorization', `Bearer ${regularToken}`)
+          .set('Cookie', [`accessToken=${regularToken}`])
+          .send(tourData);
+  
+        expect(response.status).toBe(401);
+        expect(response.body.success).toBe(false);
+        expect(response.body.error).toBe("You're not authorized");
+      });
+    });
+
     });
 });
