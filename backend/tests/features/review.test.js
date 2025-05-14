@@ -83,6 +83,22 @@ describe('Review API', () => {
       expect(updatedTour.reviews).toContainEqual(new mongoose.Types.ObjectId(review._id));
     });
 
+    it('should not create a review when user is not authenticated', async () => {
+      const reviewData = {
+        username: regularUser.username,
+        reviewText: 'Great tour!',
+        rating: 4
+      };
+
+      const response = await request(app)
+        .post(`/api/v1/reviews/${testTour._id}`)
+        .send(reviewData);
+
+      expect(response.status).toBe(401);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe("You're not authorized");
+    });
+
     
   });
 
