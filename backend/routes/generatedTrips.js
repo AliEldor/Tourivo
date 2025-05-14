@@ -23,5 +23,14 @@ router.post("/",
 // Get all generated trips for the user
 router.get("/", verifyToken, getUserGeneratedTrips);
 
+// Get a specific generated trip
+router.get("/:id", 
+  verifyToken, 
+  validateGeneratedTrip("getGeneratedTrip"), 
+  validate, 
+  getGeneratedTrip
+);
+
+
 
 export default router;
