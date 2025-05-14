@@ -198,5 +198,29 @@ describe('Tour API', () => {
                   price: 999
                 };
 
+                const response = await request(app)
+        .put(`/api/v1/tours/${testTour._id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Cookie', [`accessToken=${adminToken}`])
+        .send(updatedData);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.title).toBe(updatedData.title);
+      expect(response.body.data.price).toBe(updatedData.price);
+
+      const updatedTour = await Tour.findById(testTour._id);
+      expect(updatedTour.title).toBe(updatedData.title);
+      expect(updatedTour.price).toBe(updatedData.price);
+    });
+
+    it('should not allow regular users to update a tour', async () => {
+      const updatedData = {
+        title: 'Updated Tour Title',
+        price: 999
+      };
+
+      
+
     });
 });
