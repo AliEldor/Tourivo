@@ -18,5 +18,27 @@ const generatedTripSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
+    tourSelections: [
+      {
+        tourId: {
+          type: mongoose.Types.ObjectId,
+          ref: "Tour",
+          required: true,
+        },
+        orderInTrip: {
+          type: Number,
+          required: true,
+        },
+        durationInDays: {
+          type: Number,
+          required: true,
+        },
+        note: {
+          type: String,
+        },
+      },
+    ],
+
   }
 )
