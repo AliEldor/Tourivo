@@ -298,4 +298,16 @@ export const GeneratedTripService = {
     }
   },
 
+  deleteGeneratedTrip: async (id, userId) => {
+    try {
+      const trip = await GeneratedTrip.findById(id);
+
+      if (!trip) {
+        return {
+          success: false,
+          error: "Generated trip not found",
+          statusCode: 404,
+        };
+      }
+
 };
