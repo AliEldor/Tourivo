@@ -23,6 +23,14 @@ export const validateGeneratedTrip = (method) => {
           .optional()
           .isString()
           .withMessage("Destination type must be a string"),
+          body("season")
+          .optional()
+          .isString()
+          .withMessage("Season must be a string"),
+        body("city")
+          .optional()
+          .isString()
+          .withMessage("City must be a string"),
             ];
         }
 
