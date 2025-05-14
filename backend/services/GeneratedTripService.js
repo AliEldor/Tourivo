@@ -15,7 +15,16 @@ export const GeneratedTripService = {
       if (preferences.maxPrice) {
         availableTours = availableTours.filter(tour => tour.price <= preferences.maxPrice);
       }
+
+      if (preferences.maxGroupSize) {
+        availableTours = availableTours.filter(tour => tour.maxGroupSize >= preferences.maxGroupSize);
+      }
       
+      if (preferences.city) {
+        const cityRegex = new RegExp(preferences.city, "i");
+        availableTours = availableTours.filter(tour => cityRegex.test(tour.city));
+      }
+
     }
   }
 }
