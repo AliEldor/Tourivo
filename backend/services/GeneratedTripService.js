@@ -225,5 +225,30 @@ export const GeneratedTripService = {
     }
   },
 
+  bookGeneratedTrip: async (tripId, userId, bookingData) => {
+    try {
+      const trip = await GeneratedTrip.findById(tripId).populate({
+        path: 'tourSelections.tourId',
+        model: 'Tour',
+      });
+
+      if (!trip) {
+        return {
+          success: false,
+          error: "Generated trip not found",
+          statusCode: 404,
+        };
+      }
+
+      if (trip.userId.toString() !== userId) {
+        return {
+          success: false,
+          error: "Unauthorized access to this trip",
+          statusCode: 403,
+        };
+      }
+
+    }
+  }
 
 };
