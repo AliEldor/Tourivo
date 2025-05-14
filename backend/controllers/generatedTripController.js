@@ -49,5 +49,24 @@ export const getGeneratedTrip = async (req, res) => {
   return ResponseTrait.successResponse(res, response.data);
 };
 
+export const deleteGeneratedTrip = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
 
+  const response = await GeneratedTripService.deleteGeneratedTrip(id, userId);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
+  return ResponseTrait.successResponse(res, {
+    message: response.message,
+  });
+}
+
+  
 
