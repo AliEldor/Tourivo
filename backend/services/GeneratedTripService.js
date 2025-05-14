@@ -117,6 +117,16 @@ export const GeneratedTripService = {
 
       console.log("Generated trip data:", JSON.stringify(tripData, null, 2));
 
+      const tourIds = tripData.tourSelections.map(selection => selection.tourId);
+      const validTours = await Tour.find({ _id: { $in: tourIds } });
+      
+      if (validTours.length !== tourIds.length) {
+        return {
+          success: false,
+          error: "Some selected tours were not found in the database",
+        };
+      }
+
     }
   }
 }
