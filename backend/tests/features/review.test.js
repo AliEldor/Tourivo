@@ -114,7 +114,24 @@ describe('Review API', () => {
       expect(response.body.result.length).toBeGreaterThan(0);
     });
 
-    
+    it('should return 404 for non-existent tour ID', async () => {
+      const nonExistentId = new mongoose.Types.ObjectId();
+      const reviewData = {
+        username: regularUser.username,
+        reviewText: 'Great tour!',
+        rating: 4
+      };
+
+      const response = await request(app)
+        .post(`/api/v1/reviews/${nonExistentId}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`])
+        .send(reviewData);
+
+      expect(response.status).toBe(404);
+      expect(response.body.success).toBe(false);
+      expect(response.body.error).toBe('Tour not found');
+    });
   });
 
   
