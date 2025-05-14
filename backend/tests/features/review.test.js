@@ -99,6 +99,21 @@ describe('Review API', () => {
       expect(response.body.error).toBe("You're not authorized");
     });
 
+    it('should validate required review fields', async () => {
+      const reviewData = {};
+
+      const response = await request(app)
+        .post(`/api/v1/reviews/${testTour._id}`)
+        .set('Authorization', `Bearer ${regularToken}`)
+        .set('Cookie', [`accessToken=${regularToken}`])
+        .send(reviewData);
+
+      expect(response.status).toBe(422);
+      expect(response.body.success).toBe(false);
+      expect(response.body.result).toBeInstanceOf(Array);
+      expect(response.body.result.length).toBeGreaterThan(0);
+    });
+
     
   });
 
