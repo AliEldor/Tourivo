@@ -17,4 +17,19 @@ export const generateTrip = async (req, res) => {
   });
 };
 
+export const getUserGeneratedTrips = async (req, res) => {
+  const userId = req.user.id;
+
+  const response = await GeneratedTripService.getUserGeneratedTrips(userId);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(res, response.error, 500);
+  }
+
+  return ResponseTrait.successResponse(res, {
+    count: response.count,
+    data: response.data,
+  });
+};
+
 
