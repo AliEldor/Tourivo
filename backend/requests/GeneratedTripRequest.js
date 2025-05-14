@@ -80,5 +80,11 @@ export const validateGeneratedTrip = (method) => {
         ];
     }
 
+    case "regenerateTrip": {
+        return [
+
+        ];
+    }
+
     }
 }
