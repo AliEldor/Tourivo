@@ -232,5 +232,24 @@ describe('Tour API', () => {
   });
 });
 
+describe('DELETE /api/v1/tours/:id', () => {
+    let testTour;
+
+    beforeEach(async () => {
+      const tourData = await TourFactory.create();
+      testTour = new Tour(tourData);
+      await testTour.save();
+    });
+
+    it('should delete a tour when admin is authenticated', async () => {
+      const response = await request(app)
+        .delete(`/api/v1/tours/${testTour._id}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .set('Cookie', [`accessToken=${adminToken}`]);
+
+      expect(response.status).toBe(200);
+      expect(response.body.success).toBe(true);
+      expect(response.body.message).toBe('Successfully deleted');
+
     });
 });
