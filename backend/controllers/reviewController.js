@@ -1,5 +1,6 @@
 import { ReviewService } from "../services/ReviewService.js";
 import { ResponseTrait } from "../traits/ResponseTrait.js";
+import Review from "../models/Review.js";
 
 // Create a new review
 export const createReview = async (req, res) => {
@@ -66,39 +67,81 @@ export const getUserReviews = async (req, res) => {
 export const updateReview = async (req, res) => {
   const { reviewId } = req.params;
   const userId = req.user.id;
+  const isAdmin = req.user.role === "admin";
 
-  const response = await ReviewService.updateReview(reviewId, userId, req.body);
+  try {
+    
+    const review = await Review.findById(reviewId);
+    
+    if (!review) {
+      return ResponseTrait.errorResponse(res, "Review not found", 404);
+    }
+    
+    if (review.userId.toString() !== userId && !isAdmin) {
+      return ResponseTrait.errorResponse(
+        res, 
+        "You can only update your own reviews", 
+        403
+      );
+    }
+    
+    const response = await ReviewService.updateReview(reviewId, req.body);
 
-  if (!response.success) {
-    return ResponseTrait.errorResponse(
-      res,
-      response.error,
-      response.statusCode || 500
-    );
+    if (!response.success) {
+      return ResponseTrait.errorResponse(
+        res,
+        response.error,
+        response.statusCode || 500
+      );
+    }
+
+    return ResponseTrait.successResponse(res, {
+      message: "Review updated",
+      data: response.data,
+    });
+  } catch (err) {
+    return ResponseTrait.errorResponse(res, "Failed to update review", 500);
   }
-
-  return ResponseTrait.successResponse(res, {
-    message: "Review updated",
-    data: response.data,
-  });
 };
 
 // Delete review
 export const deleteReview = async (req, res) => {
   const { reviewId } = req.params;
   const userId = req.user.id;
+  const isAdmin = req.user.role === "admin";
 
-  const response = await ReviewService.deleteReview(reviewId, userId);
+  try {
+    
+    const review = await Review.findById(reviewId);
+    
+    if (!review) {
+      return ResponseTrait.errorResponse(res, "Review not found", 404);
+    }
+    
+    
+    if (review.userId.toString() !== userId && !isAdmin) {
+      return ResponseTrait.errorResponse(
+        res, 
+        "You can only delete your own reviews", 
+        403
+      );
+    }
+    
+    const response = await ReviewService.deleteReview(reviewId);
 
-  if (!response.success) {
-    return ResponseTrait.errorResponse(
-      res,
-      response.error,
-      response.statusCode || 500
-    );
+    if (!response.success) {
+      return ResponseTrait.errorResponse(
+        res,
+        response.error,
+        response.statusCode || 500
+      );
+    }
+
+    return ResponseTrait.successResponse(res, {
+      message: "Review deleted",
+    });
+  } catch (err) {
+    console.error("Error in deleteReview controller:", err);
+    return ResponseTrait.errorResponse(res, "Failed to delete review", 500);
   }
-
-  return ResponseTrait.successResponse(res, {
-    message: "Review deleted",
-  });
 };
