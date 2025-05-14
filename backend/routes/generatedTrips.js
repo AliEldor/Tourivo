@@ -39,5 +39,12 @@ router.post("/:id/book",
   bookGeneratedTrip
 );
 
+// Regenerate a trip with adjustments
+router.post("/:id/regenerate", 
+  verifyToken, 
+  validateGeneratedTrip("regenerateTrip"), 
+  validate, 
+  regenerateTrip
+);
 
 export default router;
