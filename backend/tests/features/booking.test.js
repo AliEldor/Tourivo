@@ -7,4 +7,14 @@ import Tour from '../../models/Tour.js';
 import User from '../../models/User.js';
 import jwt from 'jsonwebtoken';
 
-
+describe('Booking API', () => {
+    let adminToken;
+    let regularToken;
+    let secondUserToken;
+    let adminUser;
+    let regularUser;
+    let secondUser;
+    let testTour;
+  
+    
+});
