@@ -50,6 +50,9 @@ router.post(
   uploadPhoto
 );
 
+// get user's photos
+router.get("/my-photos", verifyToken, getUserPhotos);
+
 
 
 export default router;
