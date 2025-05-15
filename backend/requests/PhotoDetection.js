@@ -25,6 +25,15 @@ export const validatePhotoDetection = (method) => {
       ];
     }
 
+    case "getPhoto": 
+    case "deletePhoto": {
+      return [
+        param("id")
+          .isMongoId()
+          .withMessage("Invalid photo detection ID")
+      ];
+    }
+
     
   }
 };
