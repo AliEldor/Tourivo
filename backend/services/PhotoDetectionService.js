@@ -49,3 +49,29 @@ const determineBestLandmark = (landmarks) => {
   return null;
 };
 
+export const PhotoDetectionService  = {
+  uploadPhoto: async (userId, file, photoData) => {
+    try {
+      const newPhoto = new PhotoDetection({
+        userId,
+        tourId: photoData.tourId || null,
+        tripId: photoData.tripId || null,
+        imageUrl: file.path,
+        filename: file.filename,
+        personalNote: photoData.description || "", 
+        isPublic: photoData.isPublic || false,
+      });
+
+      await newPhoto.save();
+
+      // empty detection fields
+      let landmarks = [];
+      let labels = [];
+      let locationInfo = {};
+      let tags = [];
+      let bestLandmark = null;
+
+  
+
+
+};
