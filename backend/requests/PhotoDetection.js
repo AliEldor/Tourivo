@@ -54,6 +54,14 @@ export const validatePhotoDetection = (method) => {
       ];
     }
 
+    case "getTourPhotos": {
+      return [
+        param("tourId")
+          .isMongoId()
+          .withMessage("Invalid tour ID")
+      ];
+    }
+
     
   }
 };
