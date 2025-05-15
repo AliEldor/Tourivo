@@ -266,5 +266,47 @@ export const PhotoDetectionService  = {
     }
   },
 
-  
+  deletePhoto: async (id, userId) => {
+    try {
+      const photo = await PhotoDetection.findById(id);
+
+      if (!photo) {
+        return {
+          success: false,
+          error: "Photo not found",
+          statusCode: 404,
+        };
+      }
+
+      if (photo.userId.toString() !== userId) {
+        return {
+          success: false,
+          error: "Unauthorized to delete this photo",
+          statusCode: 403,
+        };
+      }
+
+      try {
+        if (fs.existsSync(photo.imageUrl)) {
+          fs.unlinkSync(photo.imageUrl);
+        }
+      } catch (fsErr) {
+        console.error("Error deleting file:", fsErr);
+      }
+
+      await PhotoDetection.findByIdAndDelete(id);
+
+      return {
+        success: true,
+        message: "Photo deleted successfully",
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to delete photo",
+      };
+    }
+  },
+
+ 
 };
