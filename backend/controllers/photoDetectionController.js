@@ -26,3 +26,19 @@ export const uploadPhoto = async (req, res) => {
   }
 };
 
+// get a specific photo
+export const getPhoto = async (req, res) => {
+  const { id } = req.params;
+  const response = await PhotoDetectionService .getPhoto(id);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
+  return ResponseTrait.successResponse(res, response.data);
+};
+
