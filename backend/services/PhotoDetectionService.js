@@ -308,5 +308,49 @@ export const PhotoDetectionService  = {
     }
   },
 
- 
+  updatePhoto: async (id, userId, photoData) => {
+    try {
+      const photo = await PhotoDetection.findById(id);
+
+      if (!photo) {
+        return {
+          success: false,
+          error: "Photo not found",
+          statusCode: 404,
+        };
+      }
+
+      if (photo.userId.toString() !== userId) {
+        return {
+          success: false,
+          error: "Unauthorized to update this photo",
+          statusCode: 403,
+        };
+      }
+
+      if (photoData.personalNote !== undefined) {
+        photo.personalNote = photoData.personalNote;
+      }
+      
+      if (photoData.isPublic !== undefined) {
+        photo.isPublic = photoData.isPublic;
+      }
+      
+      if (photoData.tags !== undefined && Array.isArray(photoData.tags)) {
+        photo.tags = photoData.tags;
+      }
+
+      await photo.save();
+
+      return {
+        success: true,
+        data: photo,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to update photo",
+      };
+    }
+  },
 };
