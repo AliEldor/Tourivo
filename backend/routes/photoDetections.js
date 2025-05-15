@@ -53,6 +53,14 @@ router.post(
 // get user's photos
 router.get("/my-photos", verifyToken, getUserPhotos);
 
+// get photos by landmark
+router.get(
+  "/landmark/:landmarkName", 
+  validatePhotoDetection("getPhotosByLandmark"), 
+  validate, 
+  getPhotosByLandmark
+);
+
 
 
 export default router;
