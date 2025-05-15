@@ -209,5 +209,23 @@ export const PhotoDetectionService  = {
     }
   },
 
+  getUserPhotos: async (userId) => {
+    try {
+      const photos = await PhotoDetection.find({ userId })
+        .sort({ createdAt: -1 }); 
+
+      return {
+        success: true,
+        count: photos.length,
+        data: photos,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch user photos",
+      };
+    }
+  },
+
   
 };
