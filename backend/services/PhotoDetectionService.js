@@ -246,5 +246,25 @@ export const PhotoDetectionService  = {
     }
   },
 
+  getTourPhotos: async (tourId) => {
+    try {
+      const photos = await PhotoDetection.find({ 
+        tourId,
+        isPublic: true 
+      }).sort({ createdAt: -1 });
+
+      return {
+        success: true,
+        count: photos.length,
+        data: photos,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch tour photos",
+      };
+    }
+  },
+
   
 };
