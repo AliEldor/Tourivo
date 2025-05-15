@@ -61,6 +61,14 @@ router.get(
   getPhotosByLandmark
 );
 
+// get photos for a specific tour
+router.get(
+  "/tour/:tourId", 
+  validatePhotoDetection("getTourPhotos"), 
+  validate, 
+  getTourPhotos
+);
+
 
 
 export default router;
