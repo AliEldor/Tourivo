@@ -62,7 +62,15 @@ export const validatePhotoDetection = (method) => {
       ];
     }
 
-    
+    case "getPhotosByLandmark": {
+      return [
+        param("landmarkName")
+          .notEmpty()
+          .withMessage("Landmark name is required")
+          .isString()
+          .withMessage("Landmark name must be a string"),
+      ];
+    }
   }
 };
 
