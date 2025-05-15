@@ -105,3 +105,19 @@ export const deletePhoto = async (req, res) => {
   });
 };
 
+export const updatePhoto = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
+  
+  const response = await PhotoDetectionService .updatePhoto(id, userId, req.body);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
+  return ResponseTrait.successResponse(res, response.data);
+};
