@@ -72,3 +72,17 @@ export const getTourPhotos = async (req, res) => {
   });
 };
 
+export const getPhotosByLandmark = async (req, res) => {
+  const { landmarkName } = req.params;
+  const response = await PhotoDetectionService .getPhotosByLandmark(landmarkName);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(res, response.error, 500);
+  }
+
+  return ResponseTrait.successResponse(res, {
+    count: response.count,
+    data: response.data,
+  });
+};
+
