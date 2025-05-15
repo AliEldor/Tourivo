@@ -185,5 +185,29 @@ export const PhotoDetectionService  = {
     }
   },
 
+  getPhoto: async (id) => {
+    try {
+      const photo = await PhotoDetection.findById(id);
 
+      if (!photo) {
+        return {
+          success: false,
+          error: "Photo not found",
+          statusCode: 404,
+        };
+      }
+
+      return {
+        success: true,
+        data: photo,
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "Failed to fetch photo",
+      };
+    }
+  },
+
+  
 };
