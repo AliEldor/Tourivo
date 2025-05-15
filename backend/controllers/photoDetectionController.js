@@ -42,3 +42,18 @@ export const getPhoto = async (req, res) => {
   return ResponseTrait.successResponse(res, response.data);
 };
 
+// Get all photos for a user
+export const getUserPhotos = async (req, res) => {
+  const userId = req.user.id;
+  const response = await PhotoDetectionService .getUserPhotos(userId);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(res, response.error, 500);
+  }
+
+  return ResponseTrait.successResponse(res, {
+    count: response.count,
+    data: response.data,
+  });
+};
+
