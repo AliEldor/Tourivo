@@ -69,6 +69,14 @@ router.get(
   getTourPhotos
 );
 
+// get a specific photo
+router.get(
+  "/:id", 
+  validatePhotoDetection("getPhoto"), 
+  validate, 
+  getPhoto
+);
+
 
 
 export default router;
