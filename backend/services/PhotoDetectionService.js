@@ -71,7 +71,94 @@ export const PhotoDetectionService  = {
       let tags = [];
       let bestLandmark = null;
 
-  
+      if (client) {
+        try {
+          console.log("Reading image file from:", file.path);
+          
+          const imageBuffer = fs.readFileSync(file.path);
+          
+          console.log("Image file read successfully, size:", imageBuffer.length, "bytes");
+          console.log("Starting Vision API analysis...");
+          
+          // analyze  image with g vision
+          const [result] = await client.annotateImage({
+            image: { content: imageBuffer.toString("base64") },
+            features: [
+              { type: "LANDMARK_DETECTION", maxResults: 10 },
+              { type: "LABEL_DETECTION", maxResults: 15 },
+              { type: "IMAGE_PROPERTIES" },
+            ],
+          });
+
+          console.log("Vision API analysis completed successfully");
+
+          // extract landmarks if available
+          if (result.landmarkAnnotations && result.landmarkAnnotations.length > 0) {
+            landmarks = result.landmarkAnnotations.map((landmark) => ({
+              name: landmark.description,
+              confidence: landmark.score,
+              locations: landmark.locations ? landmark.locations.map(loc => ({
+                latitude: loc.latLng.latitude,
+                longitude: loc.latLng.longitude
+              })) : []
+            }));
+            
+            console.log("Detected landmarks:", landmarks.map(l => `${l.name} (${(l.confidence*100).toFixed(1)}%)`).join(", "));
+            
+            bestLandmark = determineBestLandmark(landmarks);
+            console.log("Best landmark determined to be:", bestLandmark ? bestLandmark.name : "None");
+          } else {
+            console.log("No landmarks detected");
+          }
+
+          if (result.labelAnnotations && result.labelAnnotations.length > 0) {
+            labels = result.labelAnnotations.map((label) => ({
+              name: label.description,
+              confidence: label.score,
+            }));
+            console.log("Detected labels:", labels.slice(0, 5).map(l => l.name).join(", "), "...");
+          } else {
+            console.log("No labels detected");
+          }
+
+          // location info 
+          if (bestLandmark && bestLandmark.locations && bestLandmark.locations.length > 0) {
+            locationInfo = {
+              latitude: bestLandmark.locations[0].latitude,
+              longitude: bestLandmark.locations[0].longitude,
+              locationName: bestLandmark.name,
+            };
+            console.log("Location info set to:", locationInfo);
+          } 
+          else if (landmarks.length > 0 && landmarks[0].locations && landmarks[0].locations.length > 0) {
+            locationInfo = {
+              latitude: landmarks[0].locations[0].latitude,
+              longitude: landmarks[0].locations[0].longitude,
+              locationName: landmarks[0].name,
+            };
+            console.log("Using fallback location:", locationInfo);
+          } else {
+            console.log("No location info detected");
+          }
+
+          tags = labels
+            .filter(label => label.confidence > 0.75) 
+            .map(label => label.name);
+          
+          if (bestLandmark && !tags.includes(bestLandmark.name)) {
+            tags.unshift(bestLandmark.name);
+          }
+          
+          console.log("Generated tags:", tags.join(", "));
+          
+        } catch (analysisError) {
+          console.error("Error during image analysis:", analysisError);
+        }
+      } else {
+        console.warn("Vision client not available, skipping image analysis");
+      }
+
+      
 
 
 };
