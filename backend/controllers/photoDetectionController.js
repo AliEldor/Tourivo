@@ -86,3 +86,22 @@ export const getPhotosByLandmark = async (req, res) => {
   });
 };
 
+export const deletePhoto = async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user.id;
+  
+  const response = await PhotoDetectionService .deletePhoto(id, userId);
+
+  if (!response.success) {
+    return ResponseTrait.errorResponse(
+      res,
+      response.error,
+      response.statusCode || 500
+    );
+  }
+
+  return ResponseTrait.successResponse(res, {
+    message: response.message,
+  });
+};
+
