@@ -34,6 +34,26 @@ export const validatePhotoDetection = (method) => {
       ];
     }
 
+    case "updatePhoto": {
+      return [
+        param("id")
+          .isMongoId()
+          .withMessage("Invalid photo detection ID"),
+        body("personalNote")
+          .optional()
+          .isString()
+          .withMessage("Personal note must be a string"),
+        body("isPublic")
+          .optional()
+          .isBoolean()
+          .withMessage("isPublic must be a boolean value"),
+        body("tags")
+          .optional()
+          .isArray()
+          .withMessage("Tags must be an array"),
+      ];
+    }
+
     
   }
 };
