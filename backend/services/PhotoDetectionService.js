@@ -158,7 +158,32 @@ export const PhotoDetectionService  = {
         console.warn("Vision client not available, skipping image analysis");
       }
 
-      
+      newPhoto.detections = {
+        bestLandmark: bestLandmark ? {
+          name: bestLandmark.name,
+          confidence: bestLandmark.confidence,
+        } : null,
+        landmarks,
+        labels,
+        locationInfo,
+      };
+      newPhoto.tags = tags;
+
+      await newPhoto.save();
+      console.log("Photo saved with analysis results");
+
+      return {
+        success: true,
+        data: newPhoto,
+      };
+    } catch (err) {
+      console.error("Error in uploadPhoto service:", err);
+      return {
+        success: false,
+        error: "Failed to upload and analyze photo: " + err.message,
+      };
+    }
+  },
 
 
 };
