@@ -77,6 +77,15 @@ router.get(
   getPhoto
 );
 
+// update a photo
+router.put(
+  "/:id", 
+  verifyToken, 
+  validatePhotoDetection("updatePhoto"), 
+  validate, 
+  updatePhoto
+);
+
 
 
 export default router;
