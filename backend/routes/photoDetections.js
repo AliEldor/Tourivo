@@ -86,6 +86,13 @@ router.put(
   updatePhoto
 );
 
-
+// delete a photo
+router.delete(
+  "/:id", 
+  verifyToken, 
+  validatePhotoDetection("deletePhoto"), 
+  validate, 
+  deletePhoto
+);
 
 export default router;
