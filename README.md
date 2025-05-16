@@ -12,9 +12,9 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 <!-- System Design -->
 <img src="./readme/title3.svg"/>
 
-### Add Title Here
+### Database Schema
 
-- To be decided on later on.
+<img src="./readme/schema3.png"/>
 
 <br><br>
 
