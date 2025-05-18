@@ -62,6 +62,12 @@ const Header = () => {
     return window.removeEventListener("scroll", stickyHeaderFunc);
   });
 
+  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
+
+  const isLoginPage = location.pathname === "/login";
+  const isRegisterPage = location.pathname === "/register";
+  const isAuthPage = isLoginPage || isRegisterPage;
+
   
 };
 
