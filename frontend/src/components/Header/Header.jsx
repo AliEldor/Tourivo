@@ -6,6 +6,31 @@ import logo from "../../assets/images/Tourivo2.png";
 import "./header.css";
 import { AuthContext } from "./../../context/AuthContext.jsx";
 
+const nav__links = [
+  {
+    path: "/home",
+    display: "Home",
+  },
+  {
+    path: "/about",
+    display: "About",
+  },
+  {
+    path: "/tours",
+    display: "Tours",
+  },
+  {
+    path: "/generate-trip",
+    display: "Generate Trip",
+    requiresAuth: true,
+  },
+  {
+    path: "/photo-detection",
+    display: "Photo AI",
+    requiresAuth: true,
+  },
+];
+
 
 
 export default Header;
