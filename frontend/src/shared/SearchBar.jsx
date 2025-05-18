@@ -57,7 +57,21 @@ const SearchBar = () => {
             </div>
           </FormGroup>
 
-          
+          <FormGroup className="d-flex gap-2 form__group">
+            <span>
+              <i className="ri-group-line"></i>
+            </span>
+            <div>
+              <h6>Group Size</h6>
+              <input
+                type="number"
+                placeholder="People"
+                ref={maxGroupSizeRefRef}
+              />
+            </div>
+          </FormGroup>
+
+         
         </Form>
       </div>
     </Col>
