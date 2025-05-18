@@ -39,3 +39,18 @@
     outline: none;
 }
 
+.newsletter__btn {
+    padding: 0.5rem 1.5rem !important;
+    background: var(--secondary-color) !important;
+    color: #fff !important;
+    font-size: 1.1rem !important;
+}
+
+.newsletter__content p{
+    color: var(--heading-color);
+    font-size: 1.1rem;
+}
+.newsletter__img{
+    display: none;
+}
+
