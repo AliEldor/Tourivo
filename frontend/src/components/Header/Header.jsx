@@ -84,6 +84,35 @@ const Header = () => {
             </div>
             {/*logo end */}
 
+            {/*menu*/}
+            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+              <ul className="menu d-flex align-items-center gap-5">
+                {nav__links.map((item, index) => (
+                  <li className="nav__item" key={index}>
+                    {item.requiresAuth && !user ? (
+                      <Link
+                        to="/login"
+                        className="nav-link login-required"
+                        title="Login required"
+                      >
+                        {item.display} <i className="ri-lock-line"></i>
+                      </Link>
+                    ) : (
+                      <NavLink
+                        to={item.path}
+                        className={(navClass) =>
+                          navClass.isActive ? "active__link" : ""
+                        }
+                      >
+                        {item.display}
+                      </NavLink>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/*menu end*/}
+
             
           </div>
         </Row>
