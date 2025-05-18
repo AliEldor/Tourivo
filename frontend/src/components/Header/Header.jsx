@@ -38,6 +38,30 @@ const Header = () => {
   const location = useLocation();
   const { user, dispatch } = useContext(AuthContext);
 
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
+
+  const stickyHeaderFunc = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky__header");
+      } else {
+        headerRef.current.classList.remove("sticky__header");
+      }
+    });
+  };
+
+  useEffect(() => {
+    stickyHeaderFunc();
+
+    return window.removeEventListener("scroll", stickyHeaderFunc);
+  });
+
   
 };
 
