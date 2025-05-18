@@ -71,7 +71,9 @@ const SearchBar = () => {
             </div>
           </FormGroup>
 
-         
+          <span className="search__icon" onClick={searchHandler}>
+            <i className="ri-search-line"></i>
+          </span>
         </Form>
       </div>
     </Col>
