@@ -45,3 +45,25 @@
   border-right: 1px solid #ddd;
 }
 
+.search__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+}
+
+.search__icon i {
+  font-size: 1.1rem;
+  padding: 0.5rem 0.6rem;
+  background: var(--secondary-color);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.search__icon i:hover {
+  background: #1a68a7;
+}
+
+
