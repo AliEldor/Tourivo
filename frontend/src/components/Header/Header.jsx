@@ -113,7 +113,36 @@ const Header = () => {
             </div>
             {/*menu end*/}
 
-            
+            <div className="nav__right d-flex align-items-center gap-4">
+              <div className="nav__btns d-flex align-items-center gap-3">
+                {user ? (
+                  <>
+                    <h5 className="mb-0">
+                      {user?.data?.data?.username || "User"}
+                    </h5>
+                    <Button className="btn btn-dark" onClick={logout}>
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  // Only show auth buttons if not on an auth page
+                  !isAuthPage && (
+                    <div className="auth-buttons d-flex align-items-center gap-3">
+                      <Button className="btn primary__btn auth-btn">
+                        <Link to="/login">Login</Link>
+                      </Button>
+                      <Button className="btn outline-btn auth-btn">
+                        <Link to="/register">Register</Link>
+                      </Button>
+                    </div>
+                  )
+                )}
+              </div>
+
+              <span className="mobile__menu" onClick={toggleMenu}>
+                <i className="ri-menu-line"></i>
+              </span>
+            </div>
           </div>
         </Row>
       </Container>
