@@ -88,4 +88,28 @@
   }
 }
 
+@media only screen and (max-width: 576px) {
+  .search__bar form .form__group {
+    width: 100%;
+    margin-bottom: 0.75rem !important;
+  }
 
+  .form__group input {
+    font-size: 0.7rem;
+  }
+
+  .form__group span i {
+    font-size: 1.1rem;
+  }
+
+  .form__group h6 {
+    font-size: 0.9rem;
+  }
+
+  .search__icon {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
