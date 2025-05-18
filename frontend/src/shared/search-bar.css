@@ -66,4 +66,26 @@
   background: #1a68a7;
 }
 
+@media only screen and (max-width: 992px) {
+  .search__bar {
+    width: 90%;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  .search__bar form {
+    flex-wrap: wrap;
+  }
+
+  .search__bar form .form__group {
+    width: 48%;
+    margin-bottom: 1rem !important;
+    padding: 0 5px;
+  }
+
+  .form__group-fast {
+    border-right: none;
+  }
+}
+
 
