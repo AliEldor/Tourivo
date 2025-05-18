@@ -6,6 +6,13 @@ import axiosInstance from "../utils/axios";
 
 import { useNavigate } from "react-router-dom";
 
+const SearchBar = () => {
+  const locationRef = useRef("");
+  const priceRef = useRef("");
+  const maxGroupSizeRefRef = useRef("");
+  const navigate = useNavigate();
 
+  
+};
 
 export default SearchBar;
