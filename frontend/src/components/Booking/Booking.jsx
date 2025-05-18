@@ -42,6 +42,20 @@ const Booking = ({ tour, avgRating }) => {
       }
 
       
+      if (!booking.fullName.trim()) {
+        return alert("Full name is required");
+      }
+      if (!booking.phone.trim()) {
+        return alert("Phone number is required");
+      }
+      if (!booking.bookAt) {
+        return alert("Booking date is required");
+      }
+      if (!booking.guestSize || booking.guestSize < 1) {
+        return alert("Guest size must be at least 1");
+      }
+
+      
     } catch (err) {
       console.log("Full error:", err);
       console.log("Error response:", err.response?.data);
