@@ -34,6 +34,52 @@ const quick__links2 = [
   },
 ];
 
+const Footer = () => {
+  const year = new Date().getFullYear();
+  return (
+    <footer className="footer">
+      <Container>
+        <Row>
+          <Col lg="3">
+            <div className="logo">
+              <img src={logo} alt="" />
+              <p>
+                footer.
+              </p>
 
+              <div className="social__links d-flex align-items-center gap-4">
+                <span>
+                  <Link to="#">
+                    <i class="ri-youtube-line"></i>
+                  </Link>
+                </span>
+
+                <span>
+                  <Link to="#">
+                    <i class="ri-github-fill"></i>
+                  </Link>
+                </span>
+
+                <span>
+                  <Link to="#">
+                    <i class="ri-facebook-circle-line"></i>
+                  </Link>
+                </span>
+
+                <span>
+                  <Link to="#">
+                    <i class="ri-instagram-line"></i>
+                  </Link>
+                </span>
+              </div>
+            </div>
+          </Col>
+
+          
+        </Row>
+      </Container>
+    </footer>
+  );
+};
 
 export default Footer;
