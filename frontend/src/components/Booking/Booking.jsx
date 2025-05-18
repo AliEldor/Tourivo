@@ -101,6 +101,26 @@ const Booking = ({ tour, avgRating }) => {
         </span>
       </div>
 
+      {/*booking form start*/}
+      <div className="booking__form">
+        <h5>Information</h5>
+        <Form className="booking__info-form" onSubmit={handleClick}>
+          <FormGroup>
+            <input
+              type="text"
+              placeholder="Full Name"
+              id="fullName"
+              required
+              onChange={handleChange}
+              value={booking.fullName}
+            />
+          </FormGroup>
+
+          
+        </Form>
+      </div>
+      {/*booking form end*/}
+      
       
     </div>
   );
