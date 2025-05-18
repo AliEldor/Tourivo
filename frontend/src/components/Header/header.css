@@ -112,3 +112,24 @@
   color: white;
 }
 
+section {
+  padding-top: 90px !important;
+}
+
+.login-required {
+  color: #888 !important;
+  position: relative;
+  cursor: pointer;
+}
+
+.login-required i {
+  margin-left: 5px;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.login-required:hover {
+  color: var(--secondary-color) !important;
+}
+
+
