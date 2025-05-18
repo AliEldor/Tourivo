@@ -37,7 +37,23 @@ const Testimonial = () => {
 
   }
 
-  
+  return (
+  <Slider {...settings}>
+    <div className='testimonial py-4 px-3'>
+    <p>fix the layout and excuse my ocd. </p>
+
+           <div className='d-flex align-items-center gap-4 mt-3'>
+           <img src={ava01} className='w-25 h-25 rounded-2' alt='' />
+           <div>
+            <h6 className='mb-0 mt-3'>Charbel Daoud</h6>
+            <p>Customer</p>
+           </div>
+          </div>
+         </div>
+
+         
+  </Slider>
+  );
 };
 
 export default Testimonial
