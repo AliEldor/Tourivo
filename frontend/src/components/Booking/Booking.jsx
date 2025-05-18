@@ -128,6 +128,26 @@ const Booking = ({ tour, avgRating }) => {
             />
           </FormGroup>
 
+          <FormGroup className="d-flex align-items-center gap-3">
+            <input
+              type="date"
+              placeholder=""
+              id="bookAt"
+              required
+              onChange={handleChange}
+              value={booking.bookAt}
+              min={new Date().toISOString().split("T")[0]}
+            />
+            <input
+              type="number"
+              placeholder="Guest"
+              id="guestSize"
+              required
+              onChange={handleChange}
+              value={booking.guestSize}
+              min="1"
+            />
+          </FormGroup>
         </Form>
       </div>
       {/*booking form end*/}
