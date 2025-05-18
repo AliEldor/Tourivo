@@ -91,4 +91,24 @@
   border-radius: 6px !important;
 }
 
+.outline-btn {
+  background: transparent !important;
+  border: 1px solid var(--secondary-color) !important;
+  border-radius: 6px !important;
+  padding: 0 1.5rem !important;
+}
+
+.outline-btn a {
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.outline-btn:hover {
+  background: var(--secondary-color) !important;
+}
+
+.outline-btn:hover a {
+  color: white;
+}
 
