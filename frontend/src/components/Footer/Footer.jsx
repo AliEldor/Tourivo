@@ -95,6 +95,53 @@ const Footer = () => {
               ))}
             </ListGroup>
           </Col>
+          <Col lg="3">
+            <h5 className="footer__link-title">Contact</h5>
+            <ListGroup className="footer__quick-links">
+              <ListGroupItem
+                className="ps-0 border-0 d-flex
+                align-items-center gap-3"
+              >
+                <h6 className="mb-0 d-flex align-items-center gap-2">
+                  <span>
+                    <i class="ri-map-pin-line"></i>
+                  </span>
+                  Address:
+                </h6>
+
+                <p className="mb-0">Kharayeb, Lebanon</p>
+              </ListGroupItem>
+
+              <ListGroupItem
+                className="ps-0 border-0 d-flex
+                align-items-center gap-3"
+              >
+                <h6 className="mb-0 d-flex align-items-center gap-2">
+                  <span>
+                    <i class="ri-mail-line"></i>
+                  </span>
+                  Email:
+                </h6>
+
+                <p className="mb-0">alieldor02@gmail.com</p>
+              </ListGroupItem>
+
+              <ListGroupItem
+                className="ps-0 border-0 d-flex
+                align-items-center gap-3"
+              >
+                <h6 className="mb-0 d-flex align-items-center gap-2">
+                  <span>
+                    <i class="ri-phone-fill"></i>
+                  </span>
+                  Phone:
+                </h6>
+
+                <p className="mb-0">+961 81877888</p>
+              </ListGroupItem>
+            </ListGroup>
+          </Col>
+
           
         </Row>
       </Container>
