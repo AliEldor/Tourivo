@@ -76,7 +76,17 @@ const Testimonial = () => {
          </div>
 
 
-         
+         <div className='testimonial py-4 px-3'>
+         <p>would you buy this!! </p>
+
+           <div className='d-flex align-items-center gap-4 mt-3'>
+           <img src={ava02} className='w-25 h-25 rounded-2' alt='' />
+           <div>
+            <h6 className='mb-0 mt-3'>Gheeda Abou Chakra</h6>
+            <p>Customer</p>
+           </div>
+          </div>
+         </div>
   </Slider>
   );
 };
