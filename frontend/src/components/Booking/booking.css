@@ -6,3 +6,31 @@
     top: 80px;
 }
 
+.booking__top h3{
+    font-size: 2rem;
+    font-weight: 700;
+
+}
+
+.booking__top h3 span{
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.booking__top span{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.booking__top span i{
+    color: var(--secondary-color);
+}
+
+.booking__top{
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgb(229, 231, 235);
+    
+}
+
