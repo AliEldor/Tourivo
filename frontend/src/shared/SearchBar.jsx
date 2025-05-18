@@ -30,7 +30,28 @@ const SearchBar = () => {
     }
   };
 
-  
+  return (
+    <Col lg="12">
+      <div className="search__bar">
+        <Form
+          className="d-flex align-items-center"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <FormGroup className="d-flex gap-2 form__group form__group-fast">
+            <span>
+              <i className="ri-map-pin-line"></i>
+            </span>
+            <div>
+              <h6>Location</h6>
+              <input type="text" placeholder="Where to?" ref={locationRef} />
+            </div>
+          </FormGroup>
+
+          
+        </Form>
+      </div>
+    </Col>
+  );
 };
 
 export default SearchBar;
