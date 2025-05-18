@@ -68,7 +68,20 @@ const Header = () => {
   const isRegisterPage = location.pathname === "/register";
   const isAuthPage = isLoginPage || isRegisterPage;
 
-  
+  return (
+    <header className="header" ref={headerRef}>
+      <Container>
+        <Row>
+          <div
+            className="nav__wrapper d-flex align-items-center
+        justify-content-between"
+          >
+            
+          </div>
+        </Row>
+      </Container>
+    </header>
+  );
 };
 
 export default Header;
