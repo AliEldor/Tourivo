@@ -142,7 +142,11 @@ const Footer = () => {
             </ListGroup>
           </Col>
 
-          
+          <Col lg="12" className="text-center pt-5">
+            <p className="copyright">
+              Copyright {year}, designed and developed by Ali Eldor.
+            </p>
+          </Col>
         </Row>
       </Container>
     </footer>
