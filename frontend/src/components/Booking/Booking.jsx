@@ -116,7 +116,18 @@ const Booking = ({ tour, avgRating }) => {
             />
           </FormGroup>
 
-          
+          <FormGroup>
+            <input
+              type="tel"
+              placeholder="Phone"
+              id="phone"
+              required
+              onChange={handleChange}
+              value={booking.phone}
+              pattern="[0-9]*"
+            />
+          </FormGroup>
+
         </Form>
       </div>
       {/*booking form end*/}
