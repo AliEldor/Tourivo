@@ -47,6 +47,16 @@ const SearchBar = () => {
             </div>
           </FormGroup>
 
+          <FormGroup className="d-flex gap-2 form__group form__group-fast">
+            <span>
+              <i className="ri-money-dollar-circle-fill"></i>
+            </span>
+            <div>
+              <h6>Price</h6>
+              <input type="number" placeholder="Budget" ref={priceRef} />
+            </div>
+          </FormGroup>
+
           
         </Form>
       </div>
