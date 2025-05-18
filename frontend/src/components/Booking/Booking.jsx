@@ -55,7 +55,29 @@ const Booking = ({ tour, avgRating }) => {
         return alert("Guest size must be at least 1");
       }
 
-      
+      const userEmail = getUserEmail();
+
+      if (!userEmail) {
+        return alert("User email is required. Please sign in again.");
+      }
+
+      const bookingData = {
+        tourName: booking.tourName,
+        fullName: booking.fullName.trim(),
+        guestSize: parseInt(booking.guestSize),
+        phone: booking.phone.toString(),
+        bookAt: new Date(booking.bookAt).toISOString(),
+        userEmail: userEmail,
+      };
+
+      console.log("Sending booking data:", bookingData);
+
+      const response = await axiosInstance.post("/booking", bookingData);
+
+      if (response.data) {
+        const bookingWithTotalAmount = { ...bookingData, totalAmount };
+        navigate("/thank-you", { state: bookingWithTotalAmount });
+      }
     } catch (err) {
       console.log("Full error:", err);
       console.log("Error response:", err.response?.data);
