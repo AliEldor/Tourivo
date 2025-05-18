@@ -72,4 +72,23 @@
   z-index: 999;
 }
 
+.auth-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.auth-btn {
+  transition: all 0.3s ease;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.primary__btn.auth-btn {
+  padding: 0 1.5rem !important;
+  border-radius: 6px !important;
+}
+
 
