@@ -14,6 +14,17 @@ const Booking = ({ tour, avgRating }) => {
     return user?.data?.data?.email;
   };
 
+  const [booking, setBooking] = useState({
+    userId: user?.data?.data?._id,
+    userEmail: getUserEmail(),
+    tourName: title,
+    fullName: "",
+    phone: "",
+    guestSize: 1,
+    bookAt: "",
+  });
+
+  
 };
 
 export default Booking;
