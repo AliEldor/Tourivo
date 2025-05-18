@@ -76,6 +76,14 @@ const Header = () => {
             className="nav__wrapper d-flex align-items-center
         justify-content-between"
           >
+            {/*logo*/}
+            <div className="logo">
+              <Link to="/">
+                <img src={logo} alt="Tourivo" />
+              </Link>
+            </div>
+            {/*logo end */}
+
             
           </div>
         </Row>
