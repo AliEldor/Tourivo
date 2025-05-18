@@ -12,6 +12,24 @@ const SearchBar = () => {
   const maxGroupSizeRefRef = useRef("");
   const navigate = useNavigate();
 
+  const searchHandler = async () => {
+    const location = locationRef.current.value || "";
+    const price = priceRef.current.value || "0";
+    const maxGroupSize = maxGroupSizeRefRef.current.value || "0";
+
+    const queryString = `city=${location}&price=${price}&maxGroupSize=${maxGroupSize}`;
+
+    try {
+      const response = await axiosInstance.get(
+        `/tours/search/getTourBySearch?${queryString}`
+      );
+
+      navigate(`/tours/search/?${queryString}`, { state: response.data.data });
+    } catch (error) {
+      console.log("Error during search:", error);
+    }
+  };
+
   
 };
 
