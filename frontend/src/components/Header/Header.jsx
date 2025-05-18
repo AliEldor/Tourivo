@@ -31,6 +31,14 @@ const nav__links = [
   },
 ];
 
+const Header = () => {
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, dispatch } = useContext(AuthContext);
 
+  
+};
 
 export default Header;
