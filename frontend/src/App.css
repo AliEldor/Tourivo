@@ -44,7 +44,7 @@ ul {
 .primary__btn {
   background: var(--secondary-color) !important;
   border: none !important;
-  border-radius: 50px !important;
+  border-radius: 6px !important;
   padding: 0.4rem 1.5rem !important;
 }
 
@@ -83,7 +83,7 @@ ul {
   border-radius: 50px;
   font-weight: 500;
   font-size: 1.7rem;
-  color: var(--heading-color);
+  color: #fff;;
 }
 
 @media only screen and (max-width: 992px) {
@@ -98,13 +98,13 @@ ul {
     padding: 0.2rem 1.1rem !important;
   }
 
-  section{
+  section {
     padding: 40px 0;
   }
 }
 
-@media only screen and (max-width:768px){
-  .section__subtitle{
+@media only screen and (max-width: 768px) {
+  .section__subtitle {
     font-size: 1.3rem;
   }
 }
