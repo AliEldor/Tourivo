@@ -18,3 +18,24 @@
     margin-bottom: 2rem;
 }
 
+.newsletter__input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.newsletter__input input{
+    border: none;
+    font-size: 1rem;
+    color: var(--heading-color);
+
+}
+
+.newsletter__input input:focus {
+    outline: none;
+}
+
