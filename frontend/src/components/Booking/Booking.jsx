@@ -33,7 +33,27 @@ const Booking = ({ tour, avgRating }) => {
   const totalAmount =
     Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
-  
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (!user || user === undefined || user === null) {
+        return alert("Please sign in");
+      }
+
+      
+    } catch (err) {
+      console.log("Full error:", err);
+      console.log("Error response:", err.response?.data);
+      alert(
+        err.response?.data?.message ||
+          err.response?.data?.error ||
+          "Failed to book tour"
+      );
+    }
+  };
+
+ 
 };
 
 export default Booking;
