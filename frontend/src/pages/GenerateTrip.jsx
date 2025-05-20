@@ -135,6 +135,26 @@ function GenerateTrip() {
     }
   };
 
+  const extractTripId = (responseData) => {
+    if (responseData?.data?._id) {
+      return responseData.data._id;
+    }
+
+    if (responseData?.data?.data?._id) {
+      return responseData.data.data._id;
+    }
+
+    if (responseData?.data && typeof responseData.data === "object") {
+      for (const key in responseData.data) {
+        if (responseData.data[key]?._id) {
+          return responseData.data[key]._id;
+        }
+      }
+    }
+
+    return null;
+  };
+
   
 }
 
