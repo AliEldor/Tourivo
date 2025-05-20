@@ -291,6 +291,30 @@ function GenerateTrip() {
                   {/* Interest options */}
                   <InterestOptions />
 
+                  {/* Season and destination type */}
+                  <Row>
+                    <Col md="6">
+                      <FormField
+                        label="Preferred Season"
+                        name="season"
+                        type="select"
+                        value={tripData.season}
+                        onChange={handleChange}
+                        options={SEASON_OPTIONS}
+                      />
+                    </Col>
+                    <Col md="6">
+                      <FormField
+                        label="Destination Type"
+                        name="destinationType"
+                        type="select"
+                        value={tripData.destinationType}
+                        onChange={handleChange}
+                        options={DESTINATION_OPTIONS}
+                      />
+                    </Col>
+                  </Row>
+
                   
                 </Form>
               </div>
