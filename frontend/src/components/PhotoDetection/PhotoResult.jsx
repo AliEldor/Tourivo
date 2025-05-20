@@ -46,6 +46,37 @@ const LandmarkSection = ({ landmark }) => {
   );
 };
 
+const LocationSection = ({ locationInfo }) => {
+  if (!locationInfo?.locationName) return null;
+
+  const openInMaps = (lat, lng) => {
+    const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+    window.open(mapsUrl, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <div className="detail-section">
+      <h3>Location</h3>
+      <p>{locationInfo.locationName}</p>
+      {locationInfo.latitude && locationInfo.longitude && (
+        <div className="location-details">
+          <p className="coordinates">
+            {locationInfo.latitude.toFixed(6)},{" "}
+            {locationInfo.longitude.toFixed(6)}
+          </p>
+          <button
+            className="maps-button"
+            onClick={() =>
+              openInMaps(locationInfo.latitude, locationInfo.longitude)
+            }
+          >
+            View in Maps
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 
 export default PhotoResult;
