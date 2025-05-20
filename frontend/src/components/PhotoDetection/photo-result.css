@@ -90,4 +90,25 @@
   gap: 10px;
 }
 
+.maps-button {
+  background-color: #0e1d34;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.maps-button:hover {
+  background-color: #1a355e;
+}
+
+.maps-button:active {
+  transform: translateY(1px);
+}
+
 
