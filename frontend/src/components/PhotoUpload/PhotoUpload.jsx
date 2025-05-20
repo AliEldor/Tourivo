@@ -34,6 +34,48 @@ const PhotoUpload = ({ onUploadSuccess }) => {
     setDescription(e.target.value);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!selectedFile) {
+      setError("Please select an image to upload");
+      return;
+    }
+
+    try {
+      setIsUploading(true);
+      setError(null);
+
+      const formData = new FormData();
+      formData.append("photo", selectedFile);
+
+      if (description.trim()) {
+        formData.append("description", description);
+      }
+
+      const response = await uploadPhoto(formData);
+
+      setSelectedFile(null);
+      setPreview(null);
+      setDescription("");
+
+      if (onUploadSuccess) {
+    
+        if (response.data && response.success) {
+          onUploadSuccess(response.data);
+        } else {
+         
+          onUploadSuccess(response);
+        }
+      }
+    } catch (err) {
+      setError(err.message || "Failed to upload photo");
+      console.error("Upload error:", err);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   
 };
 
