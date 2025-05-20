@@ -356,7 +356,29 @@ function TripResult() {
   return (
     <>
       <CommonSection title="Your Generated Trip" />
-      
+      <section className="trip-result">
+        <Container>
+          {trip && (
+            <>
+              <div className="trip-header">
+                <h2>{trip.title}</h2>
+                <div className="trip-meta">
+                  <span>
+                    <i className="ri-time-line"></i> {trip.duration} days
+                  </span>
+                  <span>
+                    <i className="ri-money-dollar-circle-line"></i> $
+                    {trip.totalEstimatedCost} total
+                  </span>
+                </div>
+                <p className="trip-description">{trip.description}</p>
+              </div>
+
+              
+            </>
+          )}
+        </Container>
+      </section>
 
       
     </>
