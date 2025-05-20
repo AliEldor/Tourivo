@@ -10,6 +10,14 @@ const TourCard = ({ tour }) => {
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
 
+  // scroll to top when clicking on a tour
+  const handleTourClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="tour__card">
       <Card>
@@ -36,7 +44,9 @@ const TourCard = ({ tour }) => {
           </div>
 
           <h5 className="tour__title">
-            <Link to={`/tours/${_id}`}>{title}</Link>
+            <Link to={`/tours/${_id}`} onClick={handleTourClick}>
+              {title}
+            </Link>
           </h5>
 
           <div className="card__bottom d-flex align-items-center justify-content-between mt-3">
@@ -45,7 +55,9 @@ const TourCard = ({ tour }) => {
             </h5>
 
             <button className="btn booking__btn">
-              <Link to={`/tours/${_id}`}>Book Now</Link>
+              <Link to={`/tours/${_id}`} onClick={handleTourClick}>
+                Book Now
+              </Link>
             </button>
           </div>
         </CardBody>
