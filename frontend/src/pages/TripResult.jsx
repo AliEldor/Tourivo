@@ -290,7 +290,33 @@ function TripResult() {
         ? { Authorization: `Bearer ${authToken}` }
         : {};
 
-      
+      const response = await axiosInstance.post(
+        `/generated-trips/${id}/book`,
+        bookingData,
+        {
+          headers: authHeaders,
+        }
+      );
+
+      setServerResponse(response.data);
+
+      if (response.data.success) {
+        setBookingStatus({
+          loading: false,
+          error: null,
+          success: true,
+        });
+
+        setTimeout(() => {
+          navigate("/thank-you", {
+            state: response.data.data?.bookings?.[0] || response.data.data,
+          });
+        }, 2000);
+      } else {
+        throw new Error(
+          response.data.error || response.data.message || "Failed to book trip"
+        );
+      }
     } 
   };
 
