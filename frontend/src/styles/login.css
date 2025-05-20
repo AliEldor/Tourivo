@@ -164,3 +164,12 @@
   }
 }
 
+@media only screen and (max-width: 576px) {
+  .login__form {
+    padding: 2rem 1rem;
+  }
+
+  .login__container {
+    margin: 10px;
+  }
+}
