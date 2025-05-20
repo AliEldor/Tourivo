@@ -246,6 +246,15 @@ function TripResult() {
       return;
     }
 
+    if (!bookingForm.fullName || !bookingForm.phone || !bookingForm.bookAt) {
+      setBookingStatus({
+        loading: false,
+        error: "Please fill in all required fields",
+        success: false,
+      });
+      return;
+    }
+
     
   };
 
