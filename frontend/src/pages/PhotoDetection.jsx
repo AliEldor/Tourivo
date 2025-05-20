@@ -33,6 +33,10 @@ const PhotoDetection = () => {
             </p>
           </div>
 
+          <div className="upload-section">
+            <PhotoUpload onUploadSuccess={handleUploadSuccess} />
+          </div>
+
           
         </div>
       </section>
