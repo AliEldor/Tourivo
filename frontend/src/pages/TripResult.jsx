@@ -334,6 +334,14 @@ function TripResult() {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="loading">
+        <Spinner color="primary" /> Loading...
+      </div>
+    );
+  }
+
   
 }
 
