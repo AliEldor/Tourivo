@@ -31,4 +31,23 @@
     border-radius: 3px 0 0 0;
  }
 
+ .card__top span i{
+    color: var(--secondary-color);
+ }
+
+ .tour__rating{
+    font-size: .9rem;
+    color: var(--text-color);
+ }
+
+ .tour__location{
+    color: var(--heading-color);
+    font-weight: 500;
+ }
+
+ .tour__rating i,
+ .tour__location i{
+    font-size: 1rem;
+ }
+
  
