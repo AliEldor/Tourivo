@@ -22,4 +22,11 @@ export const getUserPhotos = async () => {
   }
 };
 
-
+export const getPhotoById = async (photoId) => {
+  try {
+    const response = await axiosInstance.get(`/photo-detections/${photoId}`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
