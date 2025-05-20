@@ -122,4 +122,15 @@
 }
 
 
+@media (max-width: 768px) {
+  .trip-loading-container {
+    width: 90%;
+    padding: 1rem;
+  }
 
+  .trip-loading-content {
+    padding: 1.5rem;
+  }
+
+  
+}
