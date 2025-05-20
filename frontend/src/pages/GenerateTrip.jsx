@@ -112,6 +112,14 @@ function GenerateTrip() {
     maxGroupSize: "",
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTripData({
+      ...tripData,
+      [name]: value,
+    });
+  };
+
   
 }
 
