@@ -163,6 +163,14 @@ const PhotoResult = ({ photo }) => {
   );
 };
 
-
+PhotoResult.propTypes = {
+  photo: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    personalNote: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    detections: PropTypes.object,
+    data: PropTypes.object,
+  }),
+};
 
 export default PhotoResult;
