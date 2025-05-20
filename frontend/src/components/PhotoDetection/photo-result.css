@@ -65,4 +65,29 @@
   font-size: 1.2rem;
 }
 
+.landmark-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.confidence {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.coordinates {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 
