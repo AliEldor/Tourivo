@@ -12,11 +12,13 @@ import About from "../pages/About";
 import GenerateTrip from "../pages/GenerateTrip";
 import TripResult from "../pages/TripResult";
 import PhotoDetection from "../pages/PhotoDetection";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 const Routers = () => {
   return (
     <div>
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -25,8 +27,14 @@ const Routers = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/tours/search" element={<SearchResultList />} />
-        <Route path="/thank-you" element={<ThankYou />} />
-        
+
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/generate-trip" element={<GenerateTrip />} />
+          <Route path="/trip/:id" element={<TripResult />} />
+          <Route path="/photo-detection" element={<PhotoDetection />} />
+        </Route>
       </Routes>
     </div>
   );
