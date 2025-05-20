@@ -85,3 +85,37 @@
   box-shadow: 0 0 0 2px rgba(28, 117, 188, 0.1);
 }
 
+.auth__btn {
+  background: var(--secondary-color) !important;
+  width: 100%;
+  color: #fff !important;
+  border-radius: 6px !important;
+  padding: 0.8rem !important;
+  margin-top: 1rem;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(28, 117, 188, 0.2);
+}
+
+.auth__btn:hover {
+  background: #1a68a7 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(28, 117, 188, 0.3);
+}
+
+.auth__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(28, 117, 188, 0.2);
+}
+
+.auth__btn:disabled {
+  background: #aac8e4 !important;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
