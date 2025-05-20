@@ -45,7 +45,17 @@ const Login = () => {
     }
   };
 
- 
+  return (
+    <section className="login-page">
+      <Container>
+        <Row>
+          <Col lg="8" className="m-auto">
+            
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
 };
 
 export default Login;
