@@ -374,6 +374,27 @@ function TripResult() {
                 <p className="trip-description">{trip.description}</p>
               </div>
 
+              <Row>
+                <Col lg="12">
+                  <h4 className="mb-4">Your Itinerary</h4>
+                </Col>
+
+                {trip.tourSelections
+                  .sort((a, b) => a.orderInTrip - b.orderInTrip)
+                  .map((selection) => (
+                    <Col md="12" className="mb-4" key={selection.tourId._id}>
+                      <TourCard
+                        tour={{
+                          ...selection.tourId,
+                          durationInDays: selection.durationInDays,
+                          note: selection.note,
+                        }}
+                        day={selection.orderInTrip}
+                      />
+                    </Col>
+                  ))}
+              </Row>
+
               
             </>
           )}
