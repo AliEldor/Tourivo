@@ -243,7 +243,24 @@ function GenerateTrip() {
         <Container>
           <Row>
             <Col lg="8" className="m-auto">
-              
+              <div className="generate-trip__container">
+                <h2>Tell us about your dream trip</h2>
+                <p>
+                  Our AI will create a personalized itinerary based on your
+                  preferences
+                </p>
+
+                {error && <Alert color="danger">{error}</Alert>}
+
+                {apiResponse && !apiResponse.success && (
+                  <Alert color="warning">
+                    <h5>API Response Details:</h5>
+                    <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
+                  </Alert>
+                )}
+
+                
+              </div>
             </Col>
           </Row>
         </Container>
