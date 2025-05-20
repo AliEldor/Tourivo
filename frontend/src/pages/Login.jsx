@@ -71,6 +71,16 @@ const Login = () => {
                     />
                   </FormGroup>
 
+                  <FormGroup>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      required
+                      id="password"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+
                   
                 </Form>
                 <p>
