@@ -8,7 +8,6 @@ import { z } from "zod";
 export const GeneratedTripService = {
   generateTrip: async (userId, preferences) => {
     try {
-      //fetch available tours from the database
       let availableTours = await Tour.find({});
 
       // Apply basic filters based on preferences if provided

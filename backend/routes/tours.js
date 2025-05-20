@@ -14,16 +14,14 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-// Create new tour (admin)
+//(admin)
 router.post("/", verifyAdmin, validateTour("createTour"), validate, createTour);
 
-// Update tour
 router.put("/:id", verifyAdmin, validateTour("updateTour"), validate, updateTour);
 
-// Delete tour
 router.delete("/:id",verifyAdmin, validateTour("deleteTour"), validate, deleteTour);
 
-// Get tour by search
+//user
 router.get(
     "/search/getTourBySearch",
     validateTour("getTourBySearch"),
@@ -31,16 +29,12 @@ router.get(
     getTourBySearch
   );
 
-  // Get featured tours
 router.get("/search/getFeaturedTours", getFeaturedTour);
 
-  // Get tour counts
 router.get("/search/getTourCount", getTourCount);
 
-// Get all tours
 router.get("/", validateTour("getAllTour"), validate, getAllTour);
 
-// Get single tour
 router.get("/:id", validateTour("getSingleTour"), validate, getSingleTour);
 
 

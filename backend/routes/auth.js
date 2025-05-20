@@ -4,13 +4,13 @@ import { validate, validateAuth } from "../requests/AuthRequest.js";
 
 const router = express.Router();
 
-// Register new user
+
 router.post("/register", validateAuth("register"), validate, register);
 
-// Login user
+
 router.post("/login", validateAuth("login"), validate, login);
 
-// Logout user
+
 router.post("/logout", logout);
 
 export default router;

@@ -11,7 +11,6 @@ import { verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-// Create a new review /authenticated users only
 router.post(
     "/:tourId",
     verifyToken,
@@ -20,7 +19,6 @@ router.post(
     createReview
   );
 
-  // Get all reviews for a specific tour 
 router.get(
     "/tour/:tourId",
     validateReview("getTourReviews"),
@@ -28,14 +26,12 @@ router.get(
     getTourReviews
   );
 
-  // Get all reviews by the logged in user
 router.get(
     "/user",
     verifyToken,
     getUserReviews
   );
 
-  // Update a review/for the owner of the review
 router.put(
     "/:reviewId",
     verifyToken,
@@ -44,7 +40,6 @@ router.put(
     updateReview
   );
 
-  // Delete a review/for the owner of the review
 router.delete(
     "/:reviewId",
     verifyToken,

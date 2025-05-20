@@ -24,7 +24,7 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 // Database connection
 const connect = async () => {
@@ -41,10 +41,6 @@ const connect = async () => {
   }
 };
 
-// For testing
-app.get("/", (req, res) => {
-  res.send("api is working");
-});
 
 // Middleware
 app.use(express.json());
@@ -57,7 +53,6 @@ app.use(
 app.use(cookieParser());
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-console.log("Serving static files from:", path.join(__dirname, "uploads"));
 
 //routes
 app.use("/api/v1/auth", authRoute);
