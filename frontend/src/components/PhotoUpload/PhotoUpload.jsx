@@ -76,7 +76,16 @@ const PhotoUpload = ({ onUploadSuccess }) => {
     }
   };
 
-  
+  return (
+    <div className="photo-upload">
+      <h2>Upload a Photo</h2>
+      <p className="subtitle">Upload a photo to analyze it with AI</p>
+
+      {error && <div className="error-message">{error}</div>}
+
+      
+    </div>
+  );
 };
 
 export default PhotoUpload;
