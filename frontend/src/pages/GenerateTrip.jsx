@@ -155,6 +155,21 @@ function GenerateTrip() {
     return null;
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (tripData.interests.length === 0) {
+      setError("Please select at least one interest");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    setApiResponse(null);
+
+    
+  };
+
   
 }
 
