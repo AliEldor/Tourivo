@@ -16,6 +16,10 @@ import MasonryImagesGallery from "../components/Image-gallery/MasonryImagesGalle
 import Testimonials from "../components/Testimonial/Testimonials";
 import Newsletter from "../shared/Newsletter";
 
-
+const Home = () => {
+  return (
+   
+  );
+};
 
 export default Home;
