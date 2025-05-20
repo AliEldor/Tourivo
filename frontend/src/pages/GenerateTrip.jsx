@@ -213,7 +213,28 @@ function GenerateTrip() {
     }
   };
 
-  
+  const InterestOptions = () => (
+    <FormGroup>
+      <Label>Interests (select at least one)</Label>
+      <div className="interest-options">
+        {INTEREST_OPTIONS.map((interest, index) => (
+          <div key={index} className="interest-option">
+            <Input
+              type="checkbox"
+              id={`interest-${index}`}
+              name="interests"
+              value={interest.toLowerCase()}
+              onChange={handleInterestChange}
+              checked={tripData.interests.includes(interest.toLowerCase())}
+            />
+            <Label for={`interest-${index}`}>{interest}</Label>
+          </div>
+        ))}
+      </div>
+    </FormGroup>
+  );
+
+ 
 }
 
 export default GenerateTrip;
