@@ -8,5 +8,19 @@ import registerImg from "../assets/images/login-img.png";
 import { AuthContext } from "./../context/AuthContext.jsx";
 import axiosInstance from "../utils/axios";
 
+const Register = () => {
+  const [credentials, setCredentials] = useState({
+    username: undefined,
+    email: undefined,
+    password: undefined,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+ 
+};
 
 export default Register;
