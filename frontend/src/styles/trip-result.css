@@ -143,4 +143,28 @@
   color: white;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  gap: 10px;
+}
 
+.error-container {
+  text-align: center;
+  padding: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .trip-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .tour-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
