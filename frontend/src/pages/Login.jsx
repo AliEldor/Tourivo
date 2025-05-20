@@ -50,7 +50,19 @@ const Login = () => {
       <Container>
         <Row>
           <Col lg="8" className="m-auto">
-            
+            <div className="login__container d-flex justify-content-between">
+              <div className="login__img">
+                <img src={loginImg} alt="Tourivo login" />
+              </div>
+
+              <div className="login__form">
+                <h2>Welcome Back!</h2>
+
+                {error && <div className="alert alert-danger">{error}</div>}
+
+                
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
