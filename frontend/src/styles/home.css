@@ -37,4 +37,20 @@
   padding-top: 2 rem;
 }
 
+.section__subtitle h3{
+  color: #fff;
+}
+
+.services__subtitle {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-family: var(--subtitle-font-name);
+}
+
+.services__title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
 
