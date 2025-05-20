@@ -285,6 +285,11 @@ function TripResult() {
         tourId: firstTourId,
       };
 
+      const authToken = getAuthToken();
+      const authHeaders = authToken
+        ? { Authorization: `Bearer ${authToken}` }
+        : {};
+
       
     } 
   };
