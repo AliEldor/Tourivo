@@ -117,7 +117,13 @@ const PhotoUpload = ({ onUploadSuccess }) => {
           />
         </div>
 
-        
+        <button
+          type="submit"
+          className="upload-btn"
+          disabled={isUploading || !selectedFile}
+        >
+          {isUploading ? "Uploading..." : "Upload & Analyze"}
+        </button>
       </form>
     </div>
   );
