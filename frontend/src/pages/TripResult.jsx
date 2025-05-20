@@ -218,6 +218,24 @@ function TripResult() {
     });
   };
 
+  const getAuthToken = () => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        return (
+          parsedUser?.token ||
+          parsedUser?.data?.token ||
+          parsedUser?.accessToken ||
+          parsedUser?.data?.accessToken
+        );
+      } catch {
+        return null;
+      }
+    }
+    return null;
+  };
+
   
 }
 
