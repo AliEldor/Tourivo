@@ -50,4 +50,20 @@
     font-size: 1rem;
  }
 
+ .tour__title{
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+ }
+
+ .tour__title a{
+    text-decoration: none;
+    color: var(--heading-color);
+    transition: 0.3s;
+ }
+
+ .tour__title a:hover{
+    color: var(--secondary-color);
+ }
+
  
