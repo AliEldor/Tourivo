@@ -18,7 +18,58 @@ import Newsletter from "../shared/Newsletter";
 
 const Home = () => {
   return (
-   
+    <>
+      {/*hero section start*/}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="6">
+              <div className="hero__content">
+                <div className="hero__subtitle d-flex align-items-center">
+                  <Subtitle subtitle={"Know Before You Go"} />
+                </div>
+                <h1>
+                  Traveling opens the door to creating{""}
+                  <span className="highlight"> memories</span>
+                </h1>
+                <p>
+                  Welcome to our travel website, where dreams take flight and
+                  wanderlust finds its home. Prepare to embark on an
+                  unforgettable journey, as we invite you to explore the
+                  extraordinary corners of our magnificent world. From
+                  breathtaking landscapes to vibrant cultures, our curated
+                  collection of destinations promises to ignite your sense of
+                  adventure.
+                </p>
+              </div>
+            </Col>
+
+            <Col lg="2">
+              <div className="hero__img-box">
+                <img src={heroImg} alt="" />
+              </div>
+            </Col>
+
+            <Col lg="2">
+              <div className="hero__img-box hero__video-box mt-4">
+                <video src={heroVideo} alt="" controls />
+              </div>
+            </Col>
+
+            <Col lg="2">
+              <div className="hero__img-box mt-5">
+                <img src={heroImg02} alt="" />
+              </div>
+            </Col>
+
+            <SearchBar />
+          </Row>
+        </Container>
+      </section>
+      {/*end hero*/}
+
+      
+    </>
   );
 };
 
