@@ -1,0 +1,23 @@
+.photo-upload {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.photo-upload h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #0e1d34;
+  text-align: center;
+}
+
+.photo-upload .subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+
