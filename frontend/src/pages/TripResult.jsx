@@ -262,7 +262,22 @@ function TripResult() {
     });
     setServerResponse(null);
 
-    
+    try {
+      const formattedDate = new Date(bookingForm.bookAt).toISOString();
+
+      const firstTourId = trip.tourSelections[0]?.tourId?._id;
+
+      if (!firstTourId) {
+        setBookingStatus({
+          loading: false,
+          error: "No valid tour found in the trip",
+          success: false,
+        });
+        return;
+      }
+
+      
+    } 
   };
 
   
