@@ -32,5 +32,20 @@ const ResultImage = ({ imageUrl }) => {
   );
 };
 
+const LandmarkSection = ({ landmark }) => {
+  if (!landmark) return null;
+
+  return (
+    <div className="detail-section">
+      <h3>Landmark Detection</h3>
+      <p className="landmark-name">{landmark.name}</p>
+      <p className="confidence">
+        Confidence: {Math.round(landmark.confidence * 100)}%
+      </p>
+    </div>
+  );
+};
+
+
 
 export default PhotoResult;
