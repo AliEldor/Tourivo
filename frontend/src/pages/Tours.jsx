@@ -19,6 +19,12 @@ const Tour = () => {
 
   const tours = Array.isArray(toursData?.data) ? toursData.data : [];
 
+  useEffect(() => {
+    const pages = Math.ceil(tourCount / 8);
+    setPageCount(pages);
+    window.scrollTo(0, 0);
+  }, [page, tourCount, tours]);
+
   
 };
 
