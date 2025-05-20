@@ -56,6 +56,36 @@ const BookingForm = ({ formData, onChange }) => (
         </FormGroup>
       </Col>
     </Row>
+    <Row>
+      <Col md={6}>
+        <FormGroup>
+          <Label for="guestSize">Number of Guests</Label>
+          <Input
+            type="number"
+            name="guestSize"
+            id="guestSize"
+            placeholder="Number of people"
+            min="1"
+            value={formData.guestSize || 1}
+            onChange={onChange}
+            required
+          />
+        </FormGroup>
+      </Col>
+      <Col md={6}>
+        <FormGroup>
+          <Label for="bookAt">Booking Date</Label>
+          <Input
+            type="date"
+            name="bookAt"
+            id="bookAt"
+            value={formData.bookAt || ""}
+            onChange={onChange}
+            required
+          />
+        </FormGroup>
+      </Col>
+    </Row>
     
   </Form>
 );
