@@ -234,7 +234,14 @@ function GenerateTrip() {
     </FormGroup>
   );
 
- 
+  return (
+    <>
+      {loading && <TripLoadingScreen />}
+
+      <CommonSection title="Generate Your Dream Trip" />
+      
+    </>
+  );
 }
 
 export default GenerateTrip;
