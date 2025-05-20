@@ -137,6 +137,32 @@ const extractPhotoData = (photo) => {
   };
 };
 
+const PhotoResult = ({ photo }) => {
+  if (!photo) return null;
+
+  const { imageUrl, personalNote, tags, detections } = extractPhotoData(photo);
+  const { bestLandmark, locationInfo, labels } = detections;
+
+  return (
+    <div className="photo-result">
+      <div className="result-header">
+        <h2>Analysis Results</h2>
+      </div>
+
+      <div className="result-content">
+        <ResultImage imageUrl={imageUrl} />
+        <div className="details-container">
+          <LandmarkSection landmark={bestLandmark} />
+          <LocationSection locationInfo={locationInfo} />
+          <TagsSection tags={tags} />
+          <NoteSection personalNote={personalNote} />
+          <LabelsSection labels={labels} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 
 export default PhotoResult;
