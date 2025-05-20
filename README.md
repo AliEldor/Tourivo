@@ -35,7 +35,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 .Interactive destination explorer with rich visuals and location details
 
-<img src="https://i.ibb.co/svVn7Vj2/Component-16-1.png"/>
+<img src="https://i.ibb.co/svVn7Vj2/Component-16-1.png" heigh="1024" width="1024"/>
 
 <br><br>
 
