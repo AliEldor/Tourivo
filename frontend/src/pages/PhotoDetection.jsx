@@ -5,6 +5,21 @@ import "../styles/photo-detection.css";
 import CommonSection from "../shared/CommonSection";
 
 const PhotoDetection = () => {
+  const [photoData, setPhotoData] = useState(null);
+
+  const handleUploadSuccess = (data) => {
+    setPhotoData(data);
+
+    // Scroll to results section
+    const resultsElement = document.getElementById("results");
+    if (resultsElement) {
+      window.scrollTo({
+        top: resultsElement.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   
 };
 
