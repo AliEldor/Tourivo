@@ -26,7 +26,31 @@ const Register = () => {
     if (error) setError(null);
   };
 
-  
+  const handleClick = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axiosInstance.post("/auth/register", credentials);
+
+      if (response.data) {
+        dispatch({ type: "REGISTER_SUCCESS" });
+        navigate("/login");
+      }
+    } catch (err) {
+      console.log("Registration error:", err.response?.data);
+      setError(
+        err.response?.data?.message ||
+          err.response?.data?.error ||
+          "Registration failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+ 
 };
 
 export default Register;
