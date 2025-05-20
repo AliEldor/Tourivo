@@ -177,7 +177,42 @@ const TourDetails = () => {
                       </div>
                     </Form>
 
-                    
+                    {/* Success message */}
+                    {successMessage && (
+                      <div className="success__message">
+                        <i className="ri-check-line"></i> {successMessage}
+                      </div>
+                    )}
+
+                    <ListGroup className="user__reviews">
+                      {reviews?.map((review, index) => (
+                        <div className="review__item" key={index}>
+                          <img src={avatar} alt="" />
+
+                          <div className="w-100">
+                            <div
+                              className="d-flex align-items-center
+                            justify-content-between"
+                            >
+                              <div>
+                                <h5>{review.username}</h5>
+                                <p>
+                                  {new Date(
+                                    review.createdAt
+                                  ).toLocaleDateString("en-US", options)}
+                                </p>
+                              </div>
+                              <span className="d-flex align-items-center">
+                                {review.rating}
+                                <i className="ri-star-s-fill"></i>
+                              </span>
+                            </div>
+
+                            <h6>{review.reviewText}</h6>
+                          </div>
+                        </div>
+                      ))}
+                    </ListGroup>
                   </div>
                 </div>
               </Col>
