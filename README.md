@@ -18,7 +18,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Component Diagram
 
-<img src="./readme/component2.png"/>
+<img src="./readme/component_diagram2.png"/>
 
 ### Deployment Diagram
 
@@ -47,9 +47,21 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### User Screens (Web)
 
-| Landing screen                            | Login screen                          |
-| ---------------------------------------   | ------------------------------------- |
-| ![Landing](./readme/landing_page.gif)     | ![Login](./readme/login.PNG)     |
+| Login screen                                  | Landing screen                        |
+| ---------------------------------------       | ------------------------------------- |
+| ![Landing](./readme/login.PNG)                | ![Landing](./readme/landing_page.gif) |
+
+| Pictures screen                               | Tours screen                          |
+| ---------------------------------------       | ------------------------------------- |
+| ![Pics Gallery](./readme/pictures_gallery.PNG)| ![Tours](./readme/Tours.PNG)          |
+
+| Tour Card screen                              | AI generated trip screen              |
+| ---------------------------------------       | ------------------------------------- |
+| ![Pics Gallery](./readme/tourCard.gif)        | ![Generated Trip](./readme/new_generated_trips.gif)          |
+
+| Ai Photo Detection screen                     |  screen                          |
+| ---------------------------------------       | ------------------------------------- |
+| ![ Photo Detection](./readme/ai_photo_detection.gif)| ![Tours](./readme/Tours.PNG)          |
 
 
 <br><br>
