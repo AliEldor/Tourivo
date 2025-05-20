@@ -10,7 +10,18 @@ const ActivityCard = ({ activity }) => {
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
 
- 
+  return (
+    <div className='activity__card'>
+      <Card>
+        <div className='activity__img'>
+          <img src={photo} alt='activity-img' />
+          {featured && <span>Featured</span>}
+        </div>
+
+        
+      </Card>
+    </div>
+  );
 };
 
 export default ActivityCard;
