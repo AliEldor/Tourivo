@@ -36,13 +36,6 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Tourivo
 
-.AI-generated travel tours offering personalized trip suggestions
-
-.AI-powered photo detection for automatic tagging and organization
-
-.Shared albums allowing users to create and contribute to group travel collections
-
-.Interactive destination explorer with rich visuals and location details
 
 <img src="./readme/highlights.png"/>
 
