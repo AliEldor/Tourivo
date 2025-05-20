@@ -53,7 +53,9 @@ const ThankYou = () => {
                 </div>
               )}
 
-              
+              <Button className="btn primary__btn w-25">
+                <Link to="/home">Back to Home</Link>
+              </Button>
             </div>
           </Col>
         </Row>
