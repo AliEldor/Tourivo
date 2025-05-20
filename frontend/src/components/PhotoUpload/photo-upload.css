@@ -20,4 +20,25 @@
   margin-bottom: 20px;
 }
 
+.file-input-container {
+  margin-bottom: 20px;
+}
+
+.file-input-label {
+  display: block;
+  cursor: pointer;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.file-input-label:hover {
+  border-color: #0e1d34;
+}
+
+.file-input {
+  display: none;
+}
+
 
