@@ -76,6 +76,16 @@ const Register = () => {
                     />
                   </FormGroup>
 
+                  <FormGroup>
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      required
+                      id="email"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+
                   
                 </Form>
                 <p>
