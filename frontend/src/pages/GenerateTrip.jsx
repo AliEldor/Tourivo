@@ -101,6 +101,17 @@ function GenerateTrip() {
   const [error, setError] = useState(null);
   const [apiResponse, setApiResponse] = useState(null);
 
+  const [tripData, setTripData] = useState({
+    budget: "",
+    duration: "",
+    interests: [],
+    destinationType: "",
+    season: "",
+    city: "",
+    maxPrice: "",
+    maxGroupSize: "",
+  });
+
   
 }
 
