@@ -20,7 +20,14 @@ const PhotoDetection = () => {
     }
   };
 
-  
+  return (
+    <>
+      <CommonSection title="AI Photo Detection" />
+      <section className="photo-detection-page">
+        
+      </section>
+    </>
+  );
 };
 
 export default PhotoDetection;
