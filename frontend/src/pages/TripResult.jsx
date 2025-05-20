@@ -112,6 +112,10 @@ const BookingForm = ({ formData, onChange }) => (
   </Form>
 );
 
+const TourCard = ({ tour, day }) => (
+ 
+);
+
 
 
 export default TripResult;
