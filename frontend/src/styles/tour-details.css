@@ -95,4 +95,18 @@
   outline: none;
 }
 
+.review__item {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.review__item img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
 
