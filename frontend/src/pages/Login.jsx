@@ -81,7 +81,13 @@ const Login = () => {
                     />
                   </FormGroup>
 
-                  
+                  <Button
+                    className="btn auth__btn"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Signing in..." : "Sign In"}
+                  </Button>
                 </Form>
                 <p>
                   Don't have an account yet?{" "}
