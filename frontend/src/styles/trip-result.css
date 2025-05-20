@@ -79,4 +79,13 @@
   font-weight: bold;
 }
 
+.tour-details {
+  padding: 1rem 0;
+}
+
+.tour-details h4 {
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
 
