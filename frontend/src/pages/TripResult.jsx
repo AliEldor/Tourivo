@@ -317,7 +317,21 @@ function TripResult() {
           response.data.error || response.data.message || "Failed to book trip"
         );
       }
-    } 
+    } catch (err) {
+      setBookingStatus({
+        loading: false,
+        error:
+          err.response?.data?.message || err.message || "Failed to book trip",
+        success: false,
+      });
+      setServerResponse({
+        success: false,
+        message: err.message,
+        error: err.response?.data || err.toString(),
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   
