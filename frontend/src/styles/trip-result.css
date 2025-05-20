@@ -20,4 +20,17 @@
   margin-bottom: 1.5rem;
 }
 
+.trip-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.trip-meta span i {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+}
+
 
