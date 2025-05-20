@@ -113,7 +113,19 @@ const BookingForm = ({ formData, onChange }) => (
 );
 
 const TourCard = ({ tour, day }) => (
- 
+  <Card className="tour-card">
+    <CardBody>
+      <Row>
+        <Col md="4">
+          <div className="tour-image">
+            <img src={tour.photo} alt={tour.title} />
+            <span className="tour-day">Day {day}</span>
+          </div>
+        </Col>
+        
+      </Row>
+    </CardBody>
+  </Card>
 );
 
 
