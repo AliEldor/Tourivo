@@ -17,6 +17,22 @@ import axiosInstance from "../utils/axios";
 import TripLoadingScreen from "../components/TripLoadingScreen";
 
 
+const INTEREST_OPTIONS = [
+  "History",
+  "Nature",
+  "Adventure",
+  "Culture",
+  "Food",
+  "Architecture",
+  "Beaches",
+  "Mountains",
+  "Relaxation",
+  "Shopping",
+  "Art",
+  "Nightlife",
+  "Village",
+];
+
 
 
 export default GenerateTrip;
