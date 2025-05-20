@@ -288,6 +288,10 @@ function GenerateTrip() {
                     </Col>
                   </Row>
 
+                  {/* Interest options */}
+                  <InterestOptions />
+
+                  
                 </Form>
               </div>
             </Col>
