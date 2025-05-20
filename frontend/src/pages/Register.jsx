@@ -55,7 +55,22 @@ const Register = () => {
       <Container>
         <Row>
           <Col lg="8" className="m-auto">
-           
+            <div className="login__container d-flex justify-content-between">
+              <div className="login__img">
+                <img src={registerImg} alt="Tourivo register" />
+              </div>
+
+              <div className="login__form">
+                <h2>Create Account</h2>
+
+                {error && <div className="alert alert-danger">{error}</div>}
+
+                
+                <p>
+                  Already have an account? <Link to="/login">Sign in</Link>
+                </p>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
