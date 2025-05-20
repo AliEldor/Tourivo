@@ -106,6 +106,17 @@ const PhotoUpload = ({ onUploadSuccess }) => {
           </label>
         </div>
 
+        <div className="form-group">
+          <label htmlFor="description">Description (optional):</label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={handleDescriptionChange}
+            placeholder="Add a personal note about this photo..."
+            rows="3"
+          />
+        </div>
+
         
       </form>
     </div>
