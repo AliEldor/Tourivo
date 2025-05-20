@@ -22,7 +22,12 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Deployment Diagram
 
-<img src="./readme/component%20diagram.png"/>
+<img src="./readme/deployment%20diagram.png"/>
+
+### Architecture Diagram
+
+<img src="./readme/architecture%202.png"/>
+
 
 <br><br>
 
