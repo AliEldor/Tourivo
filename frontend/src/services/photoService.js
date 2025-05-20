@@ -13,4 +13,13 @@ export const uploadPhoto = async (formData) => {
   }
 };
 
+export const getUserPhotos = async () => {
+  try {
+    const response = await axiosInstance.get("/photo-detections/my-photos");
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
 
