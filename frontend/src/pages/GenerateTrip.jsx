@@ -315,6 +315,40 @@ function GenerateTrip() {
                     </Col>
                   </Row>
 
+                  {/* Additional options */}
+                  <Row>
+                    <Col md="4">
+                      <FormField
+                        label="City (optional)"
+                        name="city"
+                        type="text"
+                        placeholder="Preferred city"
+                        value={tripData.city}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col md="4">
+                      <FormField
+                        label="Max Price per Tour ($)"
+                        name="maxPrice"
+                        type="number"
+                        placeholder="Maximum tour price"
+                        value={tripData.maxPrice}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col md="4">
+                      <FormField
+                        label="Group Size"
+                        name="maxGroupSize"
+                        type="number"
+                        placeholder="Number of people"
+                        value={tripData.maxGroupSize}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                  </Row>
+
                   
                 </Form>
               </div>
