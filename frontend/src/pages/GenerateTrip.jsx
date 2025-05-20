@@ -94,6 +94,14 @@ const FormField = ({
   );
 };
 
+function GenerateTrip() {
+  const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [apiResponse, setApiResponse] = useState(null);
+
+  
+}
 
 export default GenerateTrip;
