@@ -80,7 +80,20 @@ const Home = () => {
         </Container>
       </section>
 
-     
+      {/* tour section start*/}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12" className="mb-5">
+              <Subtitle subtitle={"Explore"} />
+              <h2 className="featured__tour-title">Featured Tours</h2>
+            </Col>
+            <FeaturedTourList />
+          </Row>
+        </Container>
+      </section>
+
+      
     </>
   );
 };
