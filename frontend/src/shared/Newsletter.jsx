@@ -18,11 +18,6 @@ const Newsletter = () => {
 
                 <button className="btn newsletter__btn">Subscribe</button>
               </div>
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Obcaecati adipisci sunt in, provident facere ipsam?
-              </p>
             </div>
           </Col>
           <Col lg="6">
