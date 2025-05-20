@@ -98,7 +98,17 @@ const BookingForm = ({ formData, onChange }) => (
         required
       />
     </FormGroup>
-    
+    <FormGroup>
+      <Label for="note">Special Requests (optional)</Label>
+      <Input
+        type="textarea"
+        name="note"
+        id="note"
+        placeholder="Any special requests or notes"
+        value={formData.note || ""}
+        onChange={onChange}
+      />
+    </FormGroup>
   </Form>
 );
 
