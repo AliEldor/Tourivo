@@ -92,7 +92,18 @@ const TourDetails = () => {
     window.scrollTo(0, 0);
   }, [tour]);
 
-  
+  return (
+    <>
+      <section>
+        <Container>
+          {loading && <h4 className="text-center pt-5">Loading....</h4>}
+          {error && <h4 className="text-center pt-5">{error}</h4>}
+          
+        </Container>
+      </section>
+      <Newsletter />
+    </>
+  );
 };
 
 export default TourDetails;
