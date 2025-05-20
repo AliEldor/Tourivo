@@ -12,7 +12,19 @@ const SearchResultList = () => {
 
   const [data] = useState(location.state);
 
-  
+  return (
+    <>
+      <CommonSection title={"Tour Search Result"} />
+      <section>
+        <Container>
+          <Row>
+            
+          </Row>
+        </Container>
+      </section>
+      <Newsletter/>
+    </>
+  );
 };
 
 export default SearchResultList;
