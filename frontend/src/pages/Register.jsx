@@ -86,7 +86,17 @@ const Register = () => {
                     />
                   </FormGroup>
 
-                  
+                  <FormGroup>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      required
+                      id="password"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+
+                 
                 </Form>
                 <p>
                   Already have an account? <Link to="/login">Sign in</Link>
