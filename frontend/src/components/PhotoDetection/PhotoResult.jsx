@@ -126,6 +126,17 @@ const LabelsSection = ({ labels }) => {
   );
 };
 
+const extractPhotoData = (photo) => {
+  const data = photo?.data?.data || photo?.data || photo || {};
+
+  return {
+    imageUrl: data.imageUrl || "",
+    personalNote: data.personalNote || "",
+    tags: data.tags || [],
+    detections: data.detections || {},
+  };
+};
+
 
 
 export default PhotoResult;
