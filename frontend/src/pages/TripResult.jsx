@@ -255,6 +255,13 @@ function TripResult() {
       return;
     }
 
+    setBookingStatus({
+      loading: true,
+      error: null,
+      success: false,
+    });
+    setServerResponse(null);
+
     
   };
 
