@@ -63,7 +63,7 @@ const About = () => {
         </Container>
       </section>
 
-      
+      <Newsletter />
     </>
   );
 };
