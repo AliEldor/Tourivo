@@ -8,6 +8,13 @@ import loginImg from "../assets/images/login-img.png";
 import { AuthContext } from "./../context/AuthContext.jsx";
 import axiosInstance from "../utils/axios";
 
+const Login = () => {
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
 
+  
+};
 
 export default Login;
