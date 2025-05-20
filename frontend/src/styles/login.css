@@ -42,3 +42,46 @@
   transform: translate(-50%, -9%);
 }
 
+.login__form .user img {
+  width: 100%;
+}
+
+.login__form h2 {
+  color: var(--heading-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.login__form .alert {
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.login__form .alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.login__form input {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+  background: #f9f9f9;
+  font-size: 1rem;
+  color: var(--heading-color);
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.login__form input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(28, 117, 188, 0.1);
+}
+
