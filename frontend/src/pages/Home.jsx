@@ -93,6 +93,46 @@ const Home = () => {
         </Container>
       </section>
 
+      {/* tour section end*/}
+
+      {/* =========experience section start*/}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="6">
+              <div className="experience__content">
+                <Subtitle subtitle={"Experience"} />
+                <h2>
+                  {" "}
+                  With our all experience <br /> we will serve you
+                </h2>
+                <p>
+                Discover Lebanon with our seasoned travel experts.
+                  <br />
+                  We've crafted unforgettable journeys for over a decade.
+                </p>
+              </div>
+
+              <div className="counter__wrapper d-flex align-items-center gap-5">
+                <div className="counter__box">
+                  <span>12k+</span>
+                  <h6>Successfull Trip</h6>
+                </div>
+
+                
+              </div>
+            </Col>
+
+            <Col lg="6">
+              <div className="experience__img">
+                <img src={experienceImg} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      {/* =========experience section end*/}
+
       
     </>
   );
