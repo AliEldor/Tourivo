@@ -25,7 +25,20 @@ const Tour = () => {
     window.scrollTo(0, 0);
   }, [page, tourCount, tours]);
 
-  
+  return (
+    <>
+      <CommonSection title={"All Tours"} />
+      <section>
+        <Container>
+          <Row>
+            <SearchBar />
+          </Row>
+        </Container>
+      </section>
+
+     
+    </>
+  );
 };
 
 export default Tour;
