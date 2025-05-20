@@ -7,4 +7,17 @@
   text-align: center;
 }
 
+.trip-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+}
+
+.trip-meta {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
 
