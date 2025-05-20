@@ -122,7 +122,27 @@ const TourCard = ({ tour, day }) => (
             <span className="tour-day">Day {day}</span>
           </div>
         </Col>
-        
+        <Col md="8">
+          <div className="tour-details">
+            <h4>{tour.title}</h4>
+            <div className="tour-info">
+              <span>
+                <i className="ri-map-pin-line"></i> {tour.city}
+              </span>
+              <span>
+                <i className="ri-time-line"></i> {tour.durationInDays} days
+              </span>
+              <span>
+                <i className="ri-money-dollar-circle-line"></i> ${tour.price}
+                /person
+              </span>
+            </div>
+            <p>{tour.note}</p>
+            <Link to={`/tours/${tour._id}`} className="btn view-tour-btn">
+              View Tour Details
+            </Link>
+          </div>
+        </Col>
       </Row>
     </CardBody>
   </Card>
