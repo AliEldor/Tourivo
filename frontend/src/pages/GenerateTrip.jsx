@@ -239,7 +239,15 @@ function GenerateTrip() {
       {loading && <TripLoadingScreen />}
 
       <CommonSection title="Generate Your Dream Trip" />
-      
+      <section className="generate-trip">
+        <Container>
+          <Row>
+            <Col lg="8" className="m-auto">
+              
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </>
   );
 }
