@@ -119,4 +119,15 @@
   color: var(--heading-color);
 }
 
+.book-trip-btn {
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  background: var(--secondary-color) !important;
+  border: none !important;
+}
+
+.book-trip-btn:hover {
+  background: var(--primary-color) !important;
+}
+
 
