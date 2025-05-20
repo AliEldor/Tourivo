@@ -395,7 +395,47 @@ function TripResult() {
                   ))}
               </Row>
 
-              
+              <Row className="mt-4">
+                <Col lg="12">
+                  <div className="booking-section">
+                    <h4>Ready to book this trip?</h4>
+                    {bookingStatus.success ? (
+                      <Alert color="success">
+                        Trip booked successfully! Redirecting...
+                      </Alert>
+                    ) : (
+                      <>
+                        {bookingStatus.error && (
+                          <Alert color="danger">{bookingStatus.error}</Alert>
+                        )}
+                        {serverResponse && (
+                          <div className="server-response mt-3 mb-3">
+                            <Alert color="info">
+                              <h6>Server Response:</h6>
+                              <pre style={{ whiteSpace: "pre-wrap" }}>
+                                {JSON.stringify(serverResponse, null, 2)}
+                              </pre>
+                            </Alert>
+                          </div>
+                        )}
+                        <div className="d-flex gap-2 justify-content-center flex-wrap">
+                          <Button
+                            color="primary"
+                            size="lg"
+                            onClick={toggle}
+                            disabled={trip.isBooked}
+                            className="book-trip-btn"
+                          >
+                            {trip.isBooked
+                              ? "Already Booked"
+                              : "Book This Trip"}
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </Col>
+              </Row>
             </>
           )}
         </Container>
