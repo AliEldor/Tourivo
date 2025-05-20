@@ -349,7 +349,13 @@ function GenerateTrip() {
                     </Col>
                   </Row>
 
-                  
+                  <Button
+                    type="submit"
+                    className="generate-btn"
+                    disabled={loading}
+                  >
+                    {loading ? "Generating Your Trip..." : "Generate Trip"}
+                  </Button>
                 </Form>
               </div>
             </Col>
