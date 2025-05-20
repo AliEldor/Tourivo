@@ -65,7 +65,19 @@ const Register = () => {
 
                 {error && <div className="alert alert-danger">{error}</div>}
 
-                
+                <Form onSubmit={handleClick}>
+                  <FormGroup>
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      required
+                      id="username"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+
+                  
+                </Form>
                 <p>
                   Already have an account? <Link to="/login">Sign in</Link>
                 </p>
