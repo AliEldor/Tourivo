@@ -96,7 +96,13 @@ const Register = () => {
                     />
                   </FormGroup>
 
-                 
+                  <Button
+                    className="btn auth__btn"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Creating Account..." : "Join Now"}
+                  </Button>
                 </Form>
                 <p>
                   Already have an account? <Link to="/login">Sign in</Link>
