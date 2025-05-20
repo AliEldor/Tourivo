@@ -10,6 +10,16 @@ import { Col, Container, Row } from "reactstrap";
 
 import useAxios from "../hooks/useAxios";
 
+const Tour = () => {
+  const [pageCount, setPageCount] = useState(0);
+  const [page, setPage] = useState(0);
 
+  const { data: toursData, loading, error } = useAxios(`/tours?page=${page}`);
+  const { data: tourCount } = useAxios("/tours/search/getTourCount");
+
+  const tours = Array.isArray(toursData?.data) ? toursData.data : [];
+
+  
+};
 
 export default Tour;
