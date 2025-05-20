@@ -78,5 +78,23 @@ const LocationSection = ({ locationInfo }) => {
   );
 };
 
+const TagsSection = ({ tags }) => {
+  if (!tags?.length) return null;
+
+  return (
+    <div className="detail-section">
+      <h3>Tags</h3>
+      <div className="tags-container">
+        {tags.map((tag, index) => (
+          <span key={index} className="tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
 
 export default PhotoResult;
