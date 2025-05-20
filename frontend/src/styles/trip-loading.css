@@ -132,5 +132,15 @@
     padding: 1.5rem;
   }
 
-  
+  .loading-title {
+    font-size: 24px;
+  }
+
+  .loading-message {
+    font-size: 16px;
+  }
+
+  .trip-loading-animation {
+    height: 150px;
+  }
 }
