@@ -236,6 +236,19 @@ function TripResult() {
     return null;
   };
 
+  const handleBookTrip = async () => {
+    if (!id || !user) {
+      setBookingStatus({
+        loading: false,
+        error: "Not authenticated or invalid trip",
+        success: false,
+      });
+      return;
+    }
+
+    
+  };
+
   
 }
 
