@@ -68,7 +68,19 @@ const Home = () => {
       </section>
       {/*end hero*/}
 
-      
+      <section>
+        <Container>
+          <Row>
+            <Col lg="3">
+              <h5 className="services__subtitle">What We Serve</h5>
+              <h2 className="services__title">Our Best Services</h2>
+            </Col>
+            <ServiceList />
+          </Row>
+        </Container>
+      </section>
+
+     
     </>
   );
 };
