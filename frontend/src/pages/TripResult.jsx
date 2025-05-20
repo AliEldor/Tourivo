@@ -342,6 +342,17 @@ function TripResult() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="error-container">
+        <Alert color="danger">{error}</Alert>
+        <Button color="primary" onClick={() => navigate("/generate-trip")}>
+          Try Again
+        </Button>
+      </div>
+    );
+  }
+
   
 }
 
