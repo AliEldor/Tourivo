@@ -160,7 +160,25 @@ const Home = () => {
 
       {/* =========pictures section end*/}
 
-      
+      {/* =========testimonial section start*/}
+      <section>
+        <Container>
+          <Row>
+            <Col lg="12">
+              <Subtitle subtitle={"Fans Love"} />
+              <h2 className="testimonial__title">
+                What Our fans say about us Say
+              </h2>
+            </Col>
+            <Col lg="12">
+              <Testimonials />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      {/* =========testimonial section end*/}
+
+      <Newsletter />
     </>
   );
 };
