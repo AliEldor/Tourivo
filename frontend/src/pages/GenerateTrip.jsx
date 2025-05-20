@@ -77,7 +77,21 @@ const FormField = ({
     );
   }
 
-  
+  return (
+    <FormGroup>
+      <Label>{label}</Label>
+      <Input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        min={min}
+        max={max}
+        required={required}
+      />
+    </FormGroup>
+  );
 };
 
 
