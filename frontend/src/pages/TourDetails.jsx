@@ -10,6 +10,17 @@ import useAxios from "../hooks/useAxios";
 import { AuthContext } from "../context/AuthContext.jsx";
 import axiosInstance from "../utils/axios";
 
+const TourDetails = () => {
+  const { id } = useParams();
+  const reviewMsgRef = useRef("");
+  const [tourRating, setTourRating] = useState(null);
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const { user } = useContext(AuthContext);
+  const [successMessage, setSuccessMessage] = useState("");
 
+  
+};
 
 export default TourDetails;
