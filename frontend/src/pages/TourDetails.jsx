@@ -45,7 +45,45 @@ const TourDetails = () => {
     setSubmitting(true);
     setSuccessMessage("");
 
-    
+    try {
+      if (!user || user === undefined || user === null) {
+        alert("Please sign in");
+        return;
+      }
+
+      const username = user?.data?.data?.username || "Anonymous";
+
+      const reviewObj = {
+        username: username,
+        reviewText,
+        rating: tourRating,
+      };
+
+      await axiosInstance.post(`/reviews/${id}`, reviewObj);
+
+      reviewMsgRef.current.value = "";
+      setTourRating(null);
+      setSelectedRating(0);
+
+      setSuccessMessage("Review submitted successfully!");
+
+      setRefreshKey((prev) => prev + 1);
+
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
+    } catch (err) {
+      alert(
+        err.response?.data?.message ||
+          err.response?.data?.error ||
+          "Failed to submit review"
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  
 };
 
 export default TourDetails;
