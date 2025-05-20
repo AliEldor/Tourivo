@@ -276,6 +276,15 @@ function TripResult() {
         return;
       }
 
+      const bookingData = {
+        fullName: bookingForm.fullName,
+        guestSize: parseInt(bookingForm.guestSize, 10),
+        phone: bookingForm.phone,
+        bookAt: formattedDate,
+        userEmail: bookingForm.userEmail,
+        tourId: firstTourId,
+      };
+
       
     } 
   };
