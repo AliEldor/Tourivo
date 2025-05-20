@@ -30,6 +30,10 @@ const PhotoUpload = ({ onUploadSuccess }) => {
     reader.readAsDataURL(file);
   };
 
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
   
 };
 
