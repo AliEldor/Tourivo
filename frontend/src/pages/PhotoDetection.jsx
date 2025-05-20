@@ -37,7 +37,16 @@ const PhotoDetection = () => {
             <PhotoUpload onUploadSuccess={handleUploadSuccess} />
           </div>
 
-          
+          <div id="results" className="results-section">
+            {photoData && <PhotoResult photo={photoData} />}
+
+            {!photoData && (
+              <div className="no-results">
+                <i className="ri-image-2-line"></i>
+                <p>Upload a photo to see AI detection results</p>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </>
