@@ -43,6 +43,43 @@ const DESTINATION_OPTIONS = [
   "any",
 ];
 
+const FormField = ({
+  label,
+  name,
+  type,
+  placeholder,
+  value,
+  onChange,
+  min,
+  max,
+  required,
+  options,
+}) => {
+  if (type === "select") {
+    return (
+      <FormGroup>
+        <Label>{label}</Label>
+        <Input
+          type="select"
+          name={name}
+          value={value}
+          onChange={onChange}
+          required={required}
+        >
+          <option value="">Select {label.toLowerCase()}</option>
+          {options.map((option, index) => (
+            <option key={index} value={option}>
+              {option.charAt(0).toUpperCase() + option.slice(1)}
+            </option>
+          ))}
+        </Input>
+      </FormGroup>
+    );
+  }
+
+  
+};
+
 
 
 export default GenerateTrip;
