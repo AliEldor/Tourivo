@@ -36,4 +36,22 @@
   padding: 20px 0;
 }
 
+.no-results {
+  text-align: center;
+  padding: 60px 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
 
+.no-results i {
+  font-size: 4rem;
+  color: #ddd;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  color: #999;
+}
