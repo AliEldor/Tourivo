@@ -20,7 +20,13 @@ const Register = () => {
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
- 
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+
+    if (error) setError(null);
+  };
+
+  
 };
 
 export default Register;
