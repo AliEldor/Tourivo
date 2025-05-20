@@ -20,6 +20,19 @@ const TourDetails = () => {
   const { user } = useContext(AuthContext);
   const [successMessage, setSuccessMessage] = useState("");
 
+  const {
+    data: tour,
+    loading,
+    error,
+  } = useAxios(`/tours/${id}`, null, [refreshKey]);
+
+  const { photo, title, desc, price, address, reviews, city, maxGroupSize } =
+    tour;
+
+  const { totalRating, avgRating } = calculateAvgRating(reviews);
+
+  const options = { day: "numeric", month: "long", year: "numeric" };
+
   
 };
 
