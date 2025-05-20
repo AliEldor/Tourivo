@@ -36,7 +36,14 @@ const Tour = () => {
         </Container>
       </section>
 
-     
+      <section className="pt-0">
+        <Container>
+          {loading && <h4 className="text-center pt-5">Loading.....</h4>}
+          {error && <h4 className="text-center pt-5">{error}</h4>}
+          
+        </Container>
+      </section>
+      <Newsletter />
     </>
   );
 };
