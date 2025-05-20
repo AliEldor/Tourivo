@@ -83,7 +83,31 @@ const PhotoUpload = ({ onUploadSuccess }) => {
 
       {error && <div className="error-message">{error}</div>}
 
-      
+      <form onSubmit={handleSubmit}>
+        <div className="file-input-container">
+          <label className="file-input-label">
+            {preview ? (
+              <div className="preview-container">
+                <img src={preview} alt="Preview" className="file-preview" />
+                <div className="overlay">Click to change</div>
+              </div>
+            ) : (
+              <div className="upload-placeholder">
+                <i className="ri-image-add-line"></i>
+                <span>Select an image</span>
+              </div>
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="file-input"
+            />
+          </label>
+        </div>
+
+        
+      </form>
     </div>
   );
 };
