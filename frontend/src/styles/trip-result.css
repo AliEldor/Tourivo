@@ -130,4 +130,17 @@
   background: var(--primary-color) !important;
 }
 
+.view-tour-btn {
+  background: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 8px 15px;
+  transition: all 0.3s;
+}
+
+.view-tour-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+}
+
 
