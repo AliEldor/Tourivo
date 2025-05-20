@@ -83,6 +83,15 @@ const TourDetails = () => {
     }
   };
 
+  const handleRatingClick = (rating) => {
+    setTourRating(rating);
+    setSelectedRating(rating);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [tour]);
+
   
 };
 
