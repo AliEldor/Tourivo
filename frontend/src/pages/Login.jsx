@@ -60,7 +60,23 @@ const Login = () => {
 
                 {error && <div className="alert alert-danger">{error}</div>}
 
-                
+                <Form onSubmit={handleClick}>
+                  <FormGroup>
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      required
+                      id="email"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+
+                  
+                </Form>
+                <p>
+                  Don't have an account yet?{" "}
+                  <Link to="/register">Create an account</Link>
+                </p>
               </div>
             </div>
           </Col>
