@@ -353,7 +353,14 @@ function TripResult() {
     );
   }
 
-  
+  return (
+    <>
+      <CommonSection title="Your Generated Trip" />
+      
+
+      
+    </>
+  );
 }
 
 export default TripResult;
