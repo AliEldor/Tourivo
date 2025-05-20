@@ -210,6 +210,14 @@ function TripResult() {
     fetchTripData();
   }, [id, user]);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setBookingForm({
+      ...bookingForm,
+      [name]: name === "guestSize" ? parseInt(value, 10) : value,
+    });
+  };
+
   
 }
 
