@@ -120,6 +120,21 @@ function GenerateTrip() {
     });
   };
 
+  const handleInterestChange = (e) => {
+    const { checked, value } = e.target;
+    if (checked) {
+      setTripData({
+        ...tripData,
+        interests: [...tripData.interests, value],
+      });
+    } else {
+      setTripData({
+        ...tripData,
+        interests: tripData.interests.filter((interest) => interest !== value),
+      });
+    }
+  };
+
   
 }
 
