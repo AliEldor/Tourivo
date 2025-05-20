@@ -106,6 +106,26 @@ const NoteSection = ({ personalNote }) => {
   );
 };
 
+const LabelsSection = ({ labels }) => {
+  if (!labels?.length) return null;
+
+  return (
+    <div className="detail-section">
+      <h3>AI Labels</h3>
+      <div className="labels-container">
+        {labels.slice(0, 10).map((label, index) => (
+          <div key={index} className="label-item">
+            <span className="label-name">{label.name}</span>
+            <span className="label-confidence">
+              {Math.round(label.confidence * 100)}%
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 
 
 export default PhotoResult;
