@@ -42,33 +42,34 @@ const Footer = () => {
         <Row>
           <Col lg="3">
             <div className="logo">
-              <img src={logo} alt="" />
-              <p>
-                footer.
+              <img src={logo} alt="Tourivo logo" />
+              <p className="logo-description">
+                Discover the world with Tourivo - your trusted travel companion
+                for unforgettable adventures.
               </p>
 
               <div className="social__links d-flex align-items-center gap-4">
                 <span>
                   <Link to="#">
-                    <i class="ri-youtube-line"></i>
+                    <i className="ri-youtube-line"></i>
                   </Link>
                 </span>
 
                 <span>
                   <Link to="#">
-                    <i class="ri-github-fill"></i>
+                    <i className="ri-github-fill"></i>
                   </Link>
                 </span>
 
                 <span>
                   <Link to="#">
-                    <i class="ri-facebook-circle-line"></i>
+                    <i className="ri-facebook-circle-line"></i>
                   </Link>
                 </span>
 
                 <span>
                   <Link to="#">
-                    <i class="ri-instagram-line"></i>
+                    <i className="ri-instagram-line"></i>
                   </Link>
                 </span>
               </div>
