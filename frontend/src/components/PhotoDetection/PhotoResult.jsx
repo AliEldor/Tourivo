@@ -95,6 +95,17 @@ const TagsSection = ({ tags }) => {
   );
 };
 
+const NoteSection = ({ personalNote }) => {
+  if (!personalNote) return null;
+
+  return (
+    <div className="detail-section">
+      <h3>Personal Note</h3>
+      <p className="personal-note">{personalNote}</p>
+    </div>
+  );
+};
+
 
 
 export default PhotoResult;
