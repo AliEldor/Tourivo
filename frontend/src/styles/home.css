@@ -129,7 +129,17 @@
     display: block;
   }
 
-  
+  .services__title,
+  .featured__tour-title,
+  .gallery__title,
+  .testimonial__title,
+  .experience__content h2 {
+    font-size: 2rem;
+  }
+
+  .experience__img{
+    margin-top: 2rem;
+  }
 }
 
 
