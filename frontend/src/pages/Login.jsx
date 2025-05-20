@@ -14,7 +14,38 @@ const Login = () => {
     password: undefined,
   });
 
-  
+  const { dispatch, error, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    dispatch({ type: "LOGIN_START" });
+
+    try {
+      const response = await axiosInstance.post("/auth/login", credentials);
+
+      if (response.data) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+        navigate("/");
+      }
+    } catch (err) {
+      console.log("Login error:", err.response?.data);
+      dispatch({
+        type: "LOGIN_FAILURE",
+        payload:
+          err.response?.data?.message ||
+          err.response?.data?.error ||
+          "Invalid email or password. Please try again.",
+      });
+    }
+  };
+
+ 
 };
 
 export default Login;
