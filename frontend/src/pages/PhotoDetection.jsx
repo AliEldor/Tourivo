@@ -24,7 +24,17 @@ const PhotoDetection = () => {
     <>
       <CommonSection title="AI Photo Detection" />
       <section className="photo-detection-page">
-        
+        <div className="container">
+          <div className="page-header">
+            <h1>AI Photo Detection</h1>
+            <p>
+              Upload a photo and let AI detect landmarks, objects, and more in
+              your images
+            </p>
+          </div>
+
+          
+        </div>
       </section>
     </>
   );
