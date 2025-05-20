@@ -161,6 +161,16 @@ function TripResult() {
     error: null,
     success: false,
   });
+  const [modal, setModal] = useState(false);
+  const [bookingForm, setBookingForm] = useState({
+    fullName: "",
+    phone: "",
+    guestSize: 1,
+    bookAt: new Date().toISOString().split("T")[0],
+  });
+  const [serverResponse, setServerResponse] = useState(null);
+
+  
   
 }
 
