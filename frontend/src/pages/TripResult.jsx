@@ -441,7 +441,36 @@ function TripResult() {
         </Container>
       </section>
 
-      
+      {/* Booking Modal */}
+      <Modal isOpen={modal} toggle={toggle} size="lg">
+        <ModalHeader toggle={toggle}>Complete Your Booking</ModalHeader>
+        <ModalBody>
+          <BookingForm formData={bookingForm} onChange={handleInputChange} />
+          {bookingStatus.error && (
+            <Alert color="danger" className="mt-3">
+              {bookingStatus.error}
+            </Alert>
+          )}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggle}>
+            Cancel
+          </Button>
+          <Button
+            color="primary"
+            onClick={handleBookTrip}
+            disabled={bookingStatus.loading}
+          >
+            {bookingStatus.loading ? (
+              <>
+                <Spinner size="sm" /> Processing...
+              </>
+            ) : (
+              "Confirm Booking"
+            )}
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 }
