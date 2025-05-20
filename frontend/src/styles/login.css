@@ -118,4 +118,32 @@
   box-shadow: none;
 }
 
+.login__form p {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.login__form p a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin-left: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login__form p a:hover {
+  color: #1a68a7;
+  text-decoration: underline;
+}
+
+.login-page {
+  padding-top: 120px !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #f0f2f5;
+}
+
 
