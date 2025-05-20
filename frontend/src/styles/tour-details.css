@@ -47,4 +47,28 @@
   color: var(--text-color);
 }
 
+.rating__group span {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+}
+
+.rating__group span i {
+  font-size: 1.5rem;
+}
+
+.rating__group span:hover {
+  color: var(--secondary-color);
+}
+
+.rating__group span.selected {
+  color: var(--secondary-color);
+}
+
 
