@@ -19,6 +19,40 @@ const ThankYou = () => {
               <h1 className="mb-3 fw-semibold">Thank You</h1>
               <h3 className="mb-4">Your tour is booked</h3>
 
+              {booking && (
+                <div className="booking-details">
+                  <h4>Booking Details</h4>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Tour Name:</td>
+                        <td>{booking.tourName}</td>
+                      </tr>
+                      <tr>
+                        <td>Full Name:</td>
+                        <td>{booking.fullName}</td>
+                      </tr>
+                      <tr>
+                        <td>Phone:</td>
+                        <td>{booking.phone}</td>
+                      </tr>
+                      <tr>
+                        <td>Guest Size:</td>
+                        <td>{booking.guestSize}</td>
+                      </tr>
+                      <tr>
+                        <td>Booked At:</td>
+                        <td>{booking.bookAt}</td>
+                      </tr>
+                      <tr>
+                        <td>Total Amount:</td>
+                        <td>${booking.totalAmount}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
               
             </div>
           </Col>
