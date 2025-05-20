@@ -86,6 +86,18 @@ const BookingForm = ({ formData, onChange }) => (
         </FormGroup>
       </Col>
     </Row>
+    <FormGroup>
+      <Label for="userEmail">Email</Label>
+      <Input
+        type="email"
+        name="userEmail"
+        id="userEmail"
+        placeholder="Your email address"
+        value={formData.userEmail || ""}
+        onChange={onChange}
+        required
+      />
+    </FormGroup>
     
   </Form>
 );
