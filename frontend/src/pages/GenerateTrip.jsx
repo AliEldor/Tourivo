@@ -167,7 +167,50 @@ function GenerateTrip() {
     setError(null);
     setApiResponse(null);
 
+    try {
     
+      const processedData = {
+        ...tripData,
+        budget: Number(tripData.budget),
+        duration: Number(tripData.duration),
+        maxPrice: tripData.maxPrice ? Number(tripData.maxPrice) : undefined,
+        maxGroupSize: tripData.maxGroupSize
+          ? Number(tripData.maxGroupSize)
+          : undefined,
+      };
+
+      const res = await axiosInstance.post("/generated-trips", processedData);
+      setApiResponse(res.data);
+
+      if (res.data.success) {
+        const tripId = extractTripId(res.data);
+
+        if (tripId) {
+          navigate(`/trip/${tripId}`);
+        } else {
+          setError("Trip created but ID not found in response");
+        }
+      } else {
+        setError(res.data.message || "Failed to generate trip");
+      }
+    } catch (err) {
+      console.error("Error generating trip:", err);
+
+      if (err.response?.data?.errors) {
+        const validationErrors = err.response.data.errors
+          .map((e) => e.msg)
+          .join(", ");
+        setError(`Validation errors: ${validationErrors}`);
+      } else if (err.response) {
+        setError(err.response.data?.message || "Server error");
+      } else if (err.request) {
+        setError("No response received from server");
+      } else {
+        setError("Error setting up request: " + err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   
