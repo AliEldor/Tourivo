@@ -171,6 +171,45 @@ function TripResult() {
   const [serverResponse, setServerResponse] = useState(null);
 
   
+  const toggle = () => setModal(!modal);
+
+  useEffect(() => {
+  
+    if (!id) {
+      setError("Invalid trip ID");
+      setLoading(false);
+      return;
+    }
+
+    const fetchTripData = async () => {
+      try {
+        setLoading(true);
+        const res = await axiosInstance.get(`/generated-trips/${id}`);
+
+        if (res.data.success) {
+          setTrip(res.data.data);
+
+          const username = user?.data?.data?.username || user?.username || "";
+          const email = user?.data?.data?.email || user?.email || "";
+          setBookingForm((prev) => ({
+            ...prev,
+            fullName: username,
+            userEmail: email,
+            guestSize: res.data.data.preferences?.maxGroupSize || 1,
+          }));
+        } else {
+          setError(res.data.message || "Failed to load trip details");
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTripData();
+  }, [id, user]);
+
   
 }
 
