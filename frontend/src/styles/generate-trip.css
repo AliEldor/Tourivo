@@ -1,0 +1,29 @@
+.generate-trip {
+  padding: 50px 0;
+}
+
+.generate-trip__container {
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.generate-trip__container h2 {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.generate-trip__container p {
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.generate-trip__form {
+  margin-top: 2rem;
+}
+
+
