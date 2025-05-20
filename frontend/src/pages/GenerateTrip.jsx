@@ -33,6 +33,16 @@ const INTEREST_OPTIONS = [
   "Village",
 ];
 
+const SEASON_OPTIONS = ["spring", "summer", "fall", "winter", "any"];
+
+const DESTINATION_OPTIONS = [
+  "cities",
+  "countryside",
+  "beach",
+  "mountains",
+  "any",
+];
+
 
 
 export default GenerateTrip;
