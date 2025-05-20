@@ -33,7 +33,19 @@ const TourDetails = () => {
 
   const options = { day: "numeric", month: "long", year: "numeric" };
 
-  
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const reviewText = reviewMsgRef.current.value;
+
+    if (!tourRating) {
+      alert("Please select a rating");
+      return;
+    }
+
+    setSubmitting(true);
+    setSuccessMessage("");
+
+    
 };
 
 export default TourDetails;
