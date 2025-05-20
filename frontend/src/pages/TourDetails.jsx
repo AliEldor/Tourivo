@@ -141,7 +141,44 @@ const TourDetails = () => {
                     <p>{desc}</p>
                   </div>
 
-                  
+                  {/* Tour Reviews Section */}
+                  <div className="tour__reviews mt-4">
+                    <h4>Reviews ({reviews?.length || 0} reviews)</h4>
+
+                    <Form onSubmit={submitHandler}>
+                      <div className="d-flex align-items-center gap-3 mb-4 rating__group">
+                        {[1, 2, 3, 4, 5].map((rating) => (
+                          <span
+                            key={rating}
+                            onClick={() => handleRatingClick(rating)}
+                            className={
+                              selectedRating >= rating ? "selected" : ""
+                            }
+                          >
+                            <i className="ri-star-s-fill"></i>
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="review__input">
+                        <input
+                          type="text"
+                          ref={reviewMsgRef}
+                          placeholder="Share your thoughts"
+                          required
+                        />
+                        <button
+                          className="btn primary__btn text-white"
+                          type="submit"
+                          disabled={submitting}
+                        >
+                          {submitting ? "Submitting..." : "Submit"}
+                        </button>
+                      </div>
+                    </Form>
+
+                    
+                  </div>
                 </div>
               </Col>
 
