@@ -148,6 +148,20 @@ const TourCard = ({ tour, day }) => (
   </Card>
 );
 
+function TripResult() {
+  const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(true);
+  const [trip, setTrip] = useState(null);
+  const [error, setError] = useState(null);
+  const [bookingStatus, setBookingStatus] = useState({
+    loading: false,
+    error: null,
+    success: false,
+  });
+  
+}
 
 export default TripResult;
