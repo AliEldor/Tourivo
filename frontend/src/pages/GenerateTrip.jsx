@@ -259,7 +259,36 @@ function GenerateTrip() {
                   </Alert>
                 )}
 
-                
+                <Form onSubmit={handleSubmit} className="generate-trip__form">
+                  {/* Basic trip details */}
+                  <Row>
+                    <Col md="6">
+                      <FormField
+                        label="Budget ($)"
+                        name="budget"
+                        type="number"
+                        placeholder="Your total budget"
+                        value={tripData.budget}
+                        onChange={handleChange}
+                        required
+                      />
+                    </Col>
+                    <Col md="6">
+                      <FormField
+                        label="Duration (days)"
+                        name="duration"
+                        type="number"
+                        placeholder="Number of days"
+                        value={tripData.duration}
+                        onChange={handleChange}
+                        min="1"
+                        max="30"
+                        required
+                      />
+                    </Col>
+                  </Row>
+
+                </Form>
               </div>
             </Col>
           </Row>
