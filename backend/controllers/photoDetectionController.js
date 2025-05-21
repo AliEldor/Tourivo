@@ -42,4 +42,18 @@ export const getPhoto = async (req, res) => {
   }
 };
 
+export const getUserPhotos = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const result = await PhotoDetectionService.getUserPhotos(userId);
+    return ResponseTrait.successResponse(res, result);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch user photos",
+      500
+    );
+  }
+};
+
 
