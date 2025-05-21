@@ -42,5 +42,12 @@ export const ReviewService = {
     return reviews;
   },
 
+  getUserReviews: async (userId) => {
+
+    const reviews = await Review.find({ userId: userId }).populate("productId");
+
+    return reviews;
+  },
+
   
 };
