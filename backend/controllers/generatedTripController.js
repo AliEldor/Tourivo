@@ -59,4 +59,21 @@ export const getGeneratedTrip = async (req, res) => {
   }
 };
 
+export const deleteGeneratedTrip = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    const result = await GeneratedTripService.deleteGeneratedTrip(id, userId);
+
+    return ResponseTrait.successResponse(res, result);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to delete trip",
+      error.statusCode || 500
+    );
+  }
+};
+
 
