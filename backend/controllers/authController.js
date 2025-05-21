@@ -39,4 +39,21 @@ export const login = async (req, res) => {
   }
 };
 
+export const logout = async (req, res) => {
+  try {
+    res.cookie("accessToken", "", {
+      httpOnly: true,
+      expires: new Date(0),
+    });
 
+    return ResponseTrait.successResponse(res, {
+      message: "Successfully logged out",
+    });
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to logout",
+      500
+    );
+  }
+};
