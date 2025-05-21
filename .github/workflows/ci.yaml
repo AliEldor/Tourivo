@@ -101,10 +101,11 @@ jobs:
           sed -i "s|JWT_SECRET_KEY=.*|JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}|g" docker-compose.yaml
       - name: Write multiline secret to file
         run: |
+          mkdir -p credentials
           cat <<EOF > credentials/google-cloud-key.json
           ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
           EOF
-          mkdir -p credentials
+          
 
       - name: Debugging file
         run: cat docker-compose.yaml
