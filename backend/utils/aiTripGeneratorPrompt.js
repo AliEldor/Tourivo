@@ -22,7 +22,11 @@ export const tripOutputParser = StructuredOutputParser.fromZodSchema(
 
 
 export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
- 
+  [
+    "system",
+    "You are a travel planning assistant that creates personalized itineraries from available tours.",
+  ],
+  
 ]);
 
 
