@@ -98,6 +98,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 <img src="./readme/title8.svg"/>
 
 ### Cloud Infrastructure & Deployment
+- Robust architecture powering intelligent travel experiences
 ### Scalable Deployment Pipeline
 ### Production Environment
 
