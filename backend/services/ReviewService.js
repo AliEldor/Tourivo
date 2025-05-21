@@ -65,5 +65,24 @@ export const ReviewService = {
     return updatedReview;
   },
 
-  
+  deleteReview: async (reviewId) => {
+    const review = await Review.findById(reviewId);
+
+    if (!review) {
+      const error = new Error("Review not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const tour = await Tour.findById(review.productId);
+    if (tour) {
+      await Tour.findByIdAndUpdate(review.productId, {
+        $pull: { reviews: reviewId },
+      });
+    }
+
+    await Review.findByIdAndDelete(reviewId);
+
+    return { message: "Review deleted" };
+  },
 };
