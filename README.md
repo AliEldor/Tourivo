@@ -84,8 +84,9 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 <!-- Development & Testing -->
 <img src="./readme/title7.svg"/>
 
-### Trip Generation Framework
--
+### Trip Engine
+-Traveler Shield
+
 
 
 | Prompt                            | Langchain                       | Schema                        |
