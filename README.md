@@ -86,6 +86,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Trip Engine
 ### Traveler Shield
+- Advanced input screening system that identifies potentially malicious patterns to preserve travel recommendation integrity
 ### Journey Data Framework
 - Structured travel information validation using Zod with seamless OpenAI integration
 
