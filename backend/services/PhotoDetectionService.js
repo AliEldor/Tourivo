@@ -159,6 +159,7 @@ export const PhotoDetectionService = {
           console.log("No labels detected");
         }
 
+        // location info
         if (
           bestLandmark &&
           bestLandmark.locations &&
@@ -194,8 +195,31 @@ export const PhotoDetectionService = {
         }
 
         console.log("Generated tags:", tags.join(", "));
-      } 
-    } 
+      } catch (analysisError) {
+        console.error("Error during image analysis:", analysisError);
+      }
+    } else {
+      console.warn("Vision client not available, skipping image analysis");
+    }
+
+    newPhoto.detections = {
+      bestLandmark: bestLandmark
+        ? {
+            name: bestLandmark.name,
+            confidence: bestLandmark.confidence,
+          }
+        : null,
+      landmarks,
+      labels,
+      locationInfo,
+    };
+    newPhoto.tags = tags;
+
+    await newPhoto.save();
+    console.log("Photo saved with analysis results");
+
+    return newPhoto;
   },
 
+  
 };
