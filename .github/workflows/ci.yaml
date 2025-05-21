@@ -136,6 +136,6 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker compose down
+            docker-compose down
             docker rmi ${{ secrets.DOCKER_USERNAME }}/tourivo-backend:latest
-            docker compose up -d
+            docker-compose up -d
