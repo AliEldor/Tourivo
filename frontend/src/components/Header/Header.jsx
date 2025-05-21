@@ -70,6 +70,7 @@ const Header = () => {
     }
   };
 
+
   const handleNavClick = () => {
     closeMenu();
   };
@@ -104,6 +105,7 @@ const Header = () => {
                         to="/login"
                         className="nav-link login-required"
                         title="Login required"
+                        onClick={handleNavClick}
                       >
                         {item.display} <i className="ri-lock-line"></i>
                       </Link>
