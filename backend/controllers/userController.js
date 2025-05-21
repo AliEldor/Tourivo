@@ -59,4 +59,18 @@ export const getSingleUser = async (req, res) => {
   }
 };
 
-
+export const getAllUser = async (req, res) => {
+  try {
+    const result = await UserService.getAllUsers();
+    return ResponseTrait.successResponse(res, {
+      count: result.count,
+      data: result.data,
+    });
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find users",
+      500
+    );
+  }
+};
