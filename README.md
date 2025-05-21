@@ -100,7 +100,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 ### Cloud Infrastructure & Deployment
 - Robust architecture powering intelligent travel experiences
 ### Scalable Deployment Pipeline
-End-to-end infrastructure for seamless travel services
+- End-to-end infrastructure for seamless travel services
 ### Production Environment
 
 - Description here.
