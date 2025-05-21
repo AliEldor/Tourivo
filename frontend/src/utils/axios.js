@@ -1,14 +1,13 @@
 import axios from "axios";
-import { BASE_URL } from "./config";
+
 
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: `${import.meta.env.VITE_BASE_URL}/api/v1`,
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true, 
+  withCredentials: true,
 });
-
 
 axiosInstance.interceptors.request.use(
   (config) => {
@@ -25,9 +24,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response) {
-      
       if (error.response.status === 401) {
-        
         console.log("Unauthorized access");
       }
     }
