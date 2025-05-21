@@ -233,5 +233,16 @@ export const PhotoDetectionService = {
     return photo;
   },
 
+  getUserPhotos: async (userId) => {
+    const photos = await PhotoDetection.find({ userId }).sort({
+      createdAt: -1,
+    });
+
+    return {
+      count: photos.length,
+      data: photos,
+    };
+  },
+
   
 };
