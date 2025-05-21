@@ -14,7 +14,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Database Schema
 
-<img src="https://i.ibb.co/HT9WCnd6/schema3.png"/>
+<img src="./readme/schema3.png"/>
 
 ### Component Diagram
 
