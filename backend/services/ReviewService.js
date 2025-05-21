@@ -49,5 +49,21 @@ export const ReviewService = {
     return reviews;
   },
 
+  updateReview: async (reviewId, updateData) => {
+    const updatedReview = await Review.findByIdAndUpdate(
+      reviewId,
+      { $set: updateData },
+      { new: true }
+    );
+
+    if (!updatedReview) {
+      const error = new Error("Review not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    return updatedReview;
+  },
+
   
 };
