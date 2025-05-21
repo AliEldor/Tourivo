@@ -21,3 +21,49 @@ try {
   console.error("Failed to initialize Vision client:", error);
 }
 
+const determineBestLandmark = (landmarks) => {
+  if (!landmarks || landmarks.length === 0) return null;
+
+  const famousLandmarks = [
+    "Eiffel Tower",
+    "Big Ben",
+    "Statue of Liberty",
+    "Taj Mahal",
+    "Colosseum",
+    "Great Wall of China",
+    "Pyramids of Giza",
+    "Golden Gate Bridge",
+    "Machu Picchu",
+    "Grand Canyon",
+    "Stonehenge",
+    "Sydney Opera House",
+    "Burj Khalifa",
+    "Christ the Redeemer",
+    "Mount Rushmore",
+    "Louvre Museum",
+    "Angkor Wat",
+    "Acropolis",
+    "Petra",
+    "Sagrada Familia",
+  ];
+
+  for (const famousLandmark of famousLandmarks) {
+    const match = landmarks.find(
+      (l) =>
+        l.name.toLowerCase().includes(famousLandmark.toLowerCase()) &&
+        l.confidence > 0.6
+    );
+    if (match) return match;
+  }
+
+  const sortedLandmarks = [...landmarks].sort(
+    (a, b) => b.confidence - a.confidence
+  );
+  if (sortedLandmarks[0] && sortedLandmarks[0].confidence > 0.7) {
+    return sortedLandmarks[0];
+  }
+
+  return null;
+};
+
+
