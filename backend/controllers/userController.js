@@ -44,4 +44,19 @@ export const deleteUser = async (req, res) => {
   }
 };
 
+export const getSingleUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userData = await UserService.getSingleUser(id);
+    return ResponseTrait.successResponse(res, userData);
+  } catch (error) {
+    const statusCode = error.message === "User not found" ? 404 : 500;
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find user",
+      statusCode
+    );
+  }
+};
+
 
