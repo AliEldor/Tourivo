@@ -37,10 +37,9 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ 
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 } 
 });
 
-// upload a new photo
 router.post(
   "/", 
   verifyToken, 
@@ -50,10 +49,8 @@ router.post(
   uploadPhoto
 );
 
-// get user's photos
 router.get("/my-photos", verifyToken, getUserPhotos);
 
-// get photos by landmark
 router.get(
   "/landmark/:landmarkName", 
   validatePhotoDetection("getPhotosByLandmark"), 
@@ -61,7 +58,6 @@ router.get(
   getPhotosByLandmark
 );
 
-// get photos for a specific tour
 router.get(
   "/tour/:tourId", 
   validatePhotoDetection("getTourPhotos"), 
@@ -69,7 +65,6 @@ router.get(
   getTourPhotos
 );
 
-// get a specific photo
 router.get(
   "/:id", 
   validatePhotoDetection("getPhoto"), 
@@ -77,7 +72,6 @@ router.get(
   getPhoto
 );
 
-// update a photo
 router.put(
   "/:id", 
   verifyToken, 
@@ -86,7 +80,6 @@ router.put(
   updatePhoto
 );
 
-// delete a photo
 router.delete(
   "/:id", 
   verifyToken, 

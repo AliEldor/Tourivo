@@ -8,7 +8,6 @@ import { z } from "zod";
 export const GeneratedTripService = {
   generateTrip: async (userId, preferences) => {
     try {
-      //fetch available tours from the database
       let availableTours = await Tour.find({});
 
       // Apply basic filters based on preferences if provided
@@ -261,8 +260,8 @@ export const GeneratedTripService = {
           tourName: tour.title,
         };
 
-        const bookingService = require("./BookingService.js").BookingService;
-        const bookingResult = await bookingService.createBooking(
+        const { BookingService } = await import("./BookingService.js");
+        const bookingResult = await BookingService.createBooking(
           tourBookingData
         );
 

@@ -10,7 +10,6 @@ import { validateBooking, validate } from "../requests/BookingRequest.js";
 
 const router = express.Router();
 
-// Create a new booking/ only authenticated users can book
 router.post("/", 
   verifyToken, 
   validateBooking("createBooking"), 
@@ -21,7 +20,6 @@ router.post("/",
 // Get user's bookings /users can only see their own bookings
 router.get("/my-bookings", verifyToken, getUserBookings);
 
-// Get a specific booking 
 router.get("/:id", 
   verifyToken, 
   validateBooking("getBooking"), 
@@ -29,7 +27,6 @@ router.get("/:id",
   getBooking
 );
 
-// Get all bookings by admins
 router.get("/", verifyAdmin, getAllBooking);
 
 export default router;
