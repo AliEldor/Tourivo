@@ -86,6 +86,32 @@ export const PhotoDetectionService = {
     let tags = [];
     let bestLandmark = null;
 
-    
+    if (client) {
+      try {
+        console.log("Reading image file from:", file.path);
+
+        const imageBuffer = fs.readFileSync(file.path);
+
+        console.log(
+          "Image file read successfully, size:",
+          imageBuffer.length,
+          "bytes"
+        );
+        console.log("Starting Vision API analysis...");
+
+        // analyze  image with g vision
+        const [result] = await client.annotateImage({
+          image: { content: imageBuffer.toString("base64") },
+          features: [
+            { type: "LANDMARK_DETECTION", maxResults: 10 },
+            { type: "LABEL_DETECTION", maxResults: 15 },
+            { type: "IMAGE_PROPERTIES" },
+          ],
+        });
+
+        console.log("Vision API analysis completed successfully");
+
+        
+  },
 
 };
