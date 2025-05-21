@@ -111,6 +111,54 @@ export const PhotoDetectionService = {
 
         console.log("Vision API analysis completed successfully");
 
+        if (
+          result.landmarkAnnotations &&
+          result.landmarkAnnotations.length > 0
+        ) {
+          landmarks = result.landmarkAnnotations.map((landmark) => ({
+            name: landmark.description,
+            confidence: landmark.score,
+            locations: landmark.locations
+              ? landmark.locations.map((loc) => ({
+                  latitude: loc.latLng.latitude,
+                  longitude: loc.latLng.longitude,
+                }))
+              : [],
+          }));
+
+          console.log(
+            "Detected landmarks:",
+            landmarks
+              .map((l) => `${l.name} (${(l.confidence * 100).toFixed(1)}%)`)
+              .join(", ")
+          );
+
+          bestLandmark = determineBestLandmark(landmarks);
+          console.log(
+            "Best landmark determined to be:",
+            bestLandmark ? bestLandmark.name : "None"
+          );
+        } else {
+          console.log("No landmarks detected");
+        }
+
+        if (result.labelAnnotations && result.labelAnnotations.length > 0) {
+          labels = result.labelAnnotations.map((label) => ({
+            name: label.description,
+            confidence: label.score,
+          }));
+          console.log(
+            "Detected labels:",
+            labels
+              .slice(0, 5)
+              .map((l) => l.name)
+              .join(", "),
+            "..."
+          );
+        } else {
+          console.log("No labels detected");
+        }
+
         
   },
 
