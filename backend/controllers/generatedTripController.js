@@ -42,4 +42,21 @@ export const getUserGeneratedTrips = async (req, res) => {
   }
 };
 
+export const getGeneratedTrip = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    const trip = await GeneratedTripService.getGeneratedTrip(id, userId);
+
+    return ResponseTrait.successResponse(res, trip);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch trip",
+      error.statusCode || 500
+    );
+  }
+};
+
 
