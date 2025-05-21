@@ -76,4 +76,12 @@ export const deleteGeneratedTrip = async (req, res) => {
   }
 };
 
+export const bookGeneratedTrip = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+    const bookingData = req.body;
 
+    
+  } 
+};
