@@ -113,6 +113,7 @@ const Header = () => {
                         className={(navClass) =>
                           navClass.isActive ? "active__link" : ""
                         }
+                        onClick={handleNavClick}
                       >
                         {item.display}
                       </NavLink>
