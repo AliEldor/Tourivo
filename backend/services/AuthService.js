@@ -3,95 +3,57 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const AuthService = {
-    register: async (userData) => {
-        try{
-            // Check if user with same email already exists
-      const existingUser = await User.findOne({ email: userData.email });
-      if (existingUser) {
-        return {
-          success: false,
-          error: "Email already exists"
-        };
-      }
-
-      // Hashing password
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(userData.password, salt);
-
-      // Create new user with hashed password
-      const newUser = new User({
-        username: userData.username,
-        email: userData.email,
-        password: hash,
-        photo: userData.photo
-      });
-
-      await newUser.save();
-
-      return {
-        success: true,
-        message: "User successfully registered"
-      };
-        } catch (err) {
-            return {
-              success: false,
-              error: "Failed to create user"
-            };
-          }
-    },
-
-    login: async (email, password) => {
-        try{
-            // Find user by email
-      const user = await User.findOne({ email });
-
-      // If user doesn't exist
-      if (!user) {
-        return {
-          success: false,
-          error: "User not found",
-          statusCode: 404
-        };
-      }
-
-      // Check if password is correct
-      const checkCorrectPassword = await bcrypt.compare(
-        password,
-        user.password
-      );
-
-      // If password is incorrect
-      if (!checkCorrectPassword) {
-        return {
-          success: false,
-          error: "Incorrect email or password",
-          statusCode: 401
-        };
-      }
-
-      // Extract sensitive data from user object
-      const { password: userPassword, role, ...rest } = user._doc;
-
-      // Create JWT token
-      const token = jwt.sign(
-        { id: user._id, role: user.role },
-        process.env.JWT_SECRET_KEY,
-        { expiresIn: "15d" }
-      );
-
-      return {
-        success: true,
-        token,
-        data: { ...rest },
-        role
-      };
-        } catch (err){
-            return {
-                success: false,
-                error: "Failed to login",
-                statusCode: 500
-              };
-        }
+  register: async (userData) => {
+    const existingUser = await User.findOne({ email: userData.email });
+    if (existingUser) {
+      throw new Error("Email already exists");
     }
 
-}
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(userData.password, salt);
+
+    const newUser = new User({
+      username: userData.username,
+      email: userData.email,
+      password: hash,
+      photo: userData.photo,
+    });
+
+    await newUser.save();
+
+    return { message: "User successfully registered" };
+  },
+
+  login: async (email, password) => {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      const error = new Error("User not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const checkCorrectPassword = await bcrypt.compare(password, user.password);
+
+    if (!checkCorrectPassword) {
+      const error = new Error("Incorrect email or password");
+      error.statusCode = 401;
+      throw error;
+    }
+
+    const { password: userPassword, role, ...rest } = user._doc;
+
+    // Create JWT token
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "15d" }
+    );
+
+    return {
+      token,
+      data: { ...rest },
+      role,
+    };
+  },
+};
