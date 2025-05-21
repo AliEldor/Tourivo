@@ -170,6 +170,14 @@ export const GeneratedTripService = {
       throw error;
     }
 
-    
+    if (trip.isBooked) {
+      const error = new Error("Cannot delete a booked trip");
+      error.statusCode = 400;
+      throw error;
+    }
+
+    await GeneratedTrip.findByIdAndDelete(id);
+
+    return { message: "Generated trip deleted successfully" };
   },
 };
