@@ -164,6 +164,12 @@ export const GeneratedTripService = {
       throw error;
     }
 
+    if (trip.userId.toString() !== userId) {
+      const error = new Error("Unauthorized access to this trip");
+      error.statusCode = 403;
+      throw error;
+    }
+
     
   },
 };
