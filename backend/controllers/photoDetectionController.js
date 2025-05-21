@@ -28,4 +28,18 @@ export const uploadPhoto = async (req, res) => {
   }
 };
 
+export const getPhoto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const photo = await PhotoDetectionService.getPhoto(id);
+    return ResponseTrait.successResponse(res, photo);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find photo",
+      error.statusCode || 500
+    );
+  }
+};
+
 
