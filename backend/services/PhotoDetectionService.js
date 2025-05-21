@@ -255,5 +255,17 @@ export const PhotoDetectionService = {
     };
   },
 
+  getTourPhotos: async (tourId) => {
+    const photos = await PhotoDetection.find({
+      tourId,
+      isPublic: true,
+    }).sort({ createdAt: -1 });
+
+    return {
+      count: photos.length,
+      data: photos,
+    };
+  },
+
   
 };
