@@ -155,5 +155,15 @@ export const GeneratedTripService = {
     };
   },
 
-  
+  deleteGeneratedTrip: async (id, userId) => {
+    const trip = await GeneratedTrip.findById(id);
+
+    if (!trip) {
+      const error = new Error("Generated trip not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    
+  },
 };
