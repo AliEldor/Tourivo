@@ -93,5 +93,18 @@ export const GeneratedTripService = {
     return trip;
   },
 
+  getUserGeneratedTrips: async (userId) => {
+    const trips = await GeneratedTrip.find({ userId }).populate({
+      path: "tourSelections.tourId",
+      model: "Tour",
+      select: "title city photo price", 
+    });
+
+    return {
+      count: trips.length,
+      data: trips,
+    };
+  },
+
   
 };
