@@ -67,5 +67,7 @@ export async function generateAITrip(preferences, tourOptions) {
     ? preferences.interests.join(", ")
     : preferences.interests;
 
-  
+  return chain.invoke({
+    
+  });
 }
