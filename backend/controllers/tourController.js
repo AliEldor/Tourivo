@@ -29,4 +29,19 @@ export const updateTour = async (req, res) => {
   }
 };
 
+export const deleteTour = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await TourService.deleteTour(id);
+    return ResponseTrait.successResponse(res, result);
+  } catch (error) {
+    const statusCode = error.message === "Tour not found" ? 404 : 500;
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to delete tour",
+      statusCode
+    );
+  }
+};
+
 
