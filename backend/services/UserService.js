@@ -7,5 +7,19 @@ export const UserService = {
     return savedUser;
   },
 
+  updateUser: async (id, userData) => {
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { $set: userData },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      throw new Error("User not found");
+    }
+
+    return updatedUser;
+  },
+
   
 };
