@@ -53,5 +53,11 @@ export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
 
 export async function generateAITrip(preferences, tourOptions) {
 
+  const model = new ChatOpenAI({
+    openAIApiKey: process.env.OPENAI_API_KEY,
+    modelName: "o4-mini",
+    temperature: 1,
+  });
+
   
 }
