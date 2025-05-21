@@ -104,6 +104,7 @@ jobs:
           cat <<EOF > credentials/google-cloud-key.json
           ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
           EOF
+          mkdir -p credentials
 
       - name: Debugging file
         run: cat docker-compose.yaml
