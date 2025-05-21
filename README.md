@@ -44,9 +44,22 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### User Screens (Web)
 
-| Login screen                   | Landing screen                        |
+<div align="center">
+  <table>
+    <tr>
+      <td><strong>Login screen</strong></td>
+      <td><strong>Landing screen</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./readme/login.PNG" width="450"></td>
+      <td><img src="./readme/landing_page.gif" width="450"></td>
+    </tr>
+  </table>
+</div>
+
+<!-- | Login screen                   | Landing screen                        |
 | ------------------------------ | ------------------------------------- |
-| ![Landing](./readme/login.PNG) | ![Landing](./readme/landing_page.gif) |
+| ![Landing](./readme/login.PNG) | ![Landing](./readme/landing_page.gif) | -->
 
 | Pictures screen                                | Tours screen                 |
 | ---------------------------------------------- | ---------------------------- |
