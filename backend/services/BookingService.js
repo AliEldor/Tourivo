@@ -2,77 +2,10 @@ import Booking from "../models/Booking.js";
 
 export const BookingService = {
   createBooking: async (bookingData) => {
-    try {
-      const newBooking = new Booking(bookingData);
-      const savedBooking = await newBooking.save();
-
-      return {
-        success: true,
-        data: savedBooking,
-      };
-    } catch (err) {
-      return {
-        success: false,
-        error: "Failed to create booking",
-      };
-    }
+    const newBooking = new Booking(bookingData);
+    const savedBooking = await newBooking.save();
+    return savedBooking;
   },
 
-  getBooking: async (id) => {
-    try {
-      const booking = await Booking.findById(id);
-
-      if (!booking) {
-        return {
-          success: false,
-          error: "Booking not found",
-          statusCode: 404,
-        };
-      }
-
-      return {
-        success: true,
-        data: booking,
-      };
-    } catch (err) {
-      return {
-        success: false,
-        error: "Failed to find booking",
-      };
-    }
-  },
-
-  getAllBookings: async () => {
-    try {
-      const bookings = await Booking.find();
-
-      return {
-        success: true,
-        count: bookings.length,
-        data: bookings,
-      };
-    } catch (err) {
-      return {
-        success: false,
-        error: "Failed to fetch bookings",
-      };
-    }
-  },
-
-  getUserBookings: async (userId) => {
-    try {
-      const bookings = await Booking.find({ userId: userId });
-
-      return {
-        success: true,
-        count: bookings.length,
-        data: bookings,
-      };
-    } catch (err) {
-      return {
-        success: false,
-        error: "Failed to fetch user bookings",
-      };
-    }
-  },
+  
 };
