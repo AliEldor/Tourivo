@@ -76,7 +76,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 | Services                            | Validation                       | Testing                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/service.jpg) |
+| ![Landing](./readme/service.jpg) | ![validation](./readme/validation.jpg) | ![test](./readme/demo/1440x1024.png) |
 
 
 <br><br>
