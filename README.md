@@ -14,7 +14,22 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Database Schema
 
+
 <img src="https://i.ibb.co/HT9WCnd6/schema3.png"/>
+
+### Component Diagram
+
+<img src="./readme/component_diagram2.png"/>
+
+### Deployment Diagram
+
+<img src="./readme/deployment%20diagram.png"/>
+
+### Architecture Diagram
+
+<img src="./readme/architecture%202.png"/>
+
+
 
 <br><br>
 
@@ -23,31 +38,32 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Tourivo
 
-.AI-generated travel tours offering personalized trip suggestions
 
-.AI-powered photo detection for automatic tagging and organization
-
-.Shared albums allowing users to create and contribute to group travel collections
-
-.Interactive destination explorer with rich visuals and location details
+<img src="./readme/highlights.png"/>
 
 <br><br>
 
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-### User Screens (Mobile)
 
-| Login screen                            | Register screen                       | Register screen                       |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+### User Screens (Web)
 
+| Login screen                                  | Landing screen                        |
+| ---------------------------------------       | ------------------------------------- |
+| ![Landing](./readme/login.PNG)                | ![Landing](./readme/landing_page.gif) |
 
-### Admin Screens (Web)
+| Pictures screen                               | Tours screen                          |
+| ---------------------------------------       | ------------------------------------- |
+| ![Pics Gallery](./readme/pictures_gallery.PNG)| ![Tours](./readme/Tours.PNG)          |
 
-| Login screen                            | Register screen                       |
-| --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Tour Card screen                              | AI generated trip screen              |
+| ---------------------------------------       | ------------------------------------- |
+| ![Pics Gallery](./readme/tourCard.gif)        | ![Generated Trip](./readme/new_generated_trips.gif)          |
+
+| Ai Photo Detection screen                     |  screen                          |
+| ---------------------------------------       | ------------------------------------- |
+| ![ Photo Detection](./readme/ai_photo_detection.gif)| ![Tours](./readme/Tours.PNG)          |
 
 
 <br><br>
