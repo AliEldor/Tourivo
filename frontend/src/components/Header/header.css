@@ -172,6 +172,18 @@ section {
     transition: transform 0.3s ease;
   }
 
+  .nav__item {
+    margin: 0.8rem 0;
+  }
+
+  .show__menu {
+    display: block;
+  }
+
+  .show__menu .menu {
+    transform: translateX(0);
+  }
+
   
 }
 
