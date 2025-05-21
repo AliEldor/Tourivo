@@ -102,6 +102,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 ### Scalable Deployment Pipeline
 - End-to-end infrastructure for seamless travel services
 ### Production Environment
+- High-performance hosting for AI-powered travel solutions
 
 - Description here.
 
