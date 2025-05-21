@@ -39,6 +39,13 @@ export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
     Select from these available tours to create the best itinerary:
     {tourOptions}
     
+    Important rules:
+    1. ONLY use tours from the provided list
+    2. The total duration of selected tours should be roughly equal to the requested duration
+    3. The total cost should not exceed the budget
+    4. Select tours that match the user's interests
+    5. Each tour MUST have a valid tourId from the options provided
+    
     
   ],
 ]);
