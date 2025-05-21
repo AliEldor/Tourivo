@@ -82,6 +82,12 @@ export const bookGeneratedTrip = async (req, res) => {
     const userId = req.user.id;
     const bookingData = req.body;
 
+    const result = await GeneratedTripService.bookGeneratedTrip(
+      id,
+      userId,
+      bookingData
+    );
+
     
   } 
 };
