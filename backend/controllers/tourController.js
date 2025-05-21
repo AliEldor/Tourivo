@@ -73,4 +73,30 @@ export const getAllTour = async (req, res) => {
   }
 };
 
+export const getTourBySearch = async (req, res) => {
+  try {
+    const tours = await TourService.getTourBySearch(req.query);
+    return ResponseTrait.successResponse(res, tours);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find tours",
+      500
+    );
+  }
+};
+
+export const getFeaturedTour = async (req, res) => {
+  try {
+    const tours = await TourService.getFeaturedTours();
+    return ResponseTrait.successResponse(res, tours);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find featured tours",
+      500
+    );
+  }
+};
+
 
