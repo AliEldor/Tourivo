@@ -89,7 +89,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 | Prompt                            | Langchain                       | Schema                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/prompt.jpg) | ![validation](./readme/validation.jpg) | ![schema](./readme/schema.jpg) |
+| ![Landing](./readme/prompt.jpg) | ![validation](./readme/image.png) | ![schema](./readme/schema.jpg) |
 
 
 <br><br>
