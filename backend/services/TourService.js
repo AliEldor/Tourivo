@@ -42,5 +42,30 @@ export const TourService = {
     return tour;
   },
 
- 
+  getAllTours: async (page = 0) => {
+    const tours = await Tour.find({})
+      .populate("reviews")
+      .skip(page * 8)
+      .limit(8);
+
+    return {
+      count: tours.length,
+      data: tours,
+    };
+  },
+
+  getTourBySearch: async (query) => {
+    const { city, price, maxGroupSize } = query;
+    const cityRegex = new RegExp(city, "i");
+
+    const tours = await Tour.find({
+      city: cityRegex,
+      price: { $gte: parseInt(price) },
+      maxGroupSize: { $gte: parseInt(maxGroupSize) },
+    }).populate("reviews");
+
+    return tours;
+  },
+
+  
 };
