@@ -9,7 +9,12 @@ export const tripOutputParser = StructuredOutputParser.fromZodSchema(
     title: z.string().min(1),
     description: z.string().min(1),
     tourSelections: z.array(
-      
+      z.object({
+        tourId: z.string().min(1),
+        orderInTrip: z.number().positive(),
+        durationInDays: z.number().positive(),
+        note: z.string().optional(),
+      })
     ),
     totalEstimatedCost: z.number().positive(),
   })
