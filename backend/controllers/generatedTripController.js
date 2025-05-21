@@ -95,5 +95,11 @@ export const bookGeneratedTrip = async (req, res) => {
         bookings: result.bookings,
       },
     });
-  } 
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to book trip",
+      error.statusCode || 500
+    );
+  }
 };
