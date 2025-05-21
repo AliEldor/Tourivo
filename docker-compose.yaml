@@ -1,30 +1,16 @@
-version: '3.8'
-
 services:
-  # Frontend service
-  frontend:
-    image: ${DOCKER_USERNAME}/tourivo-frontend:latest
-    build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-    restart: unless-stopped
-    volumes:
-      - ./frontend:/app:ro
-      - /app/node_modules
-
-  # Backend service (Express with Mongoose)
   backend:
-    image: ${DOCKER_USERNAME}/tourivo-backend:latest
-    build: ./backend
-    ports:
-      - "4000:4000"
+    image: alieldor1/tourivo-backend:latest
     environment:
-      - NODE_ENV=development
-      - PORT=4000
-      - MONGO_URI=mongodb+srv://alieldor:ali123@cluster0.mvd5s7b.mongodb.net/tourivo?retryWrites=true&w=majority&appName=Cluster0
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    restart: unless-stopped
+      - PORT=3000
+      - MONGO_URI=db_connection
+      - OPENAI_API_KEY=key
+      - JWT_SECRET_KEY=jwt
+      - GOOGLE_CLOUD_CREDENTIALS=./credentials/google-cloud-key.json
+
+    restart: always
+    ports:
+      - 3000:3000
+    # command: sh -c "cp .env.example .env && node index.js"
+  
+  

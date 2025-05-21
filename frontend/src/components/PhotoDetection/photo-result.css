@@ -1,0 +1,153 @@
+.photo-result {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.result-header {
+  padding: 15px 20px;
+  background-color: #0e1d34;
+  color: white;
+}
+
+.result-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .result-content {
+    flex-direction: row;
+  }
+}
+
+.image-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.result-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.details-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.detail-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.detail-section h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #0e1d34;
+  font-size: 1.2rem;
+}
+
+.landmark-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.confidence {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.coordinates {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.maps-button {
+  background-color: #0e1d34;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.maps-button:hover {
+  background-color: #1a355e;
+}
+
+.maps-button:active {
+  transform: translateY(1px);
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e9f2fe;
+  color: #0e1d34;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.personal-note {
+  font-style: italic;
+  line-height: 1.5;
+  color: #444;
+}
+
+.labels-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.label-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.label-confidence {
+  color: #555;
+  font-weight: 500;
+}

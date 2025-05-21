@@ -7,19 +7,36 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cleanup": "node scripts/cleanup.js",
+    "test": "cross-env NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
+    "seed": "node scripts/seed.js",
+    "seed:test": "cross-env NODE_ENV=test node scripts/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/vision": "^5.1.0",
+    "@langchain/openai": "^0.5.10",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.3.25",
     "mongodb": "^6.16.0",
-    "mongoose": "^8.14.1"
+    "mongoose": "^8.14.1",
+    "multer": "^1.4.5-lts.2",
+    "openai": "^4.98.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "cross-env": "^7.0.3",
+    "faker": "^6.6.6",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
   }
 }

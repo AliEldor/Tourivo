@@ -1,0 +1,43 @@
+.thank__you span i {
+    font-size: 4rem;
+    color: green;
+  }
+  
+  .thank__you h1 {
+    font-size: 3.6rem;
+  }
+  
+  .thank__you table {
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    border-collapse: collapse;
+  }
+  
+  .thank__you table td,
+  .thank__you table th {
+    padding: 10px;
+    text-align: left;
+    font-size: 1.6rem;
+  }
+  
+  .thank__you table th {
+    background-color: #f5f5f5;
+    font-weight: normal;
+  }
+  
+  .thank__you table td:first-child {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .thank__you span i {
+    font-size: 4rem;
+    color: green;
+  }
+  
+  .thank__you h1 {
+    font-size: 3.6rem;
+    margin-bottom: 20px;
+  }
+  

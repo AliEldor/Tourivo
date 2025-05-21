@@ -6,6 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+# src/assets/images/
+src/assets/data/
+# images
+ai photos
 
 node_modules
 dist
