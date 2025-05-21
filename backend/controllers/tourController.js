@@ -59,4 +59,18 @@ export const getSingleTour = async (req, res) => {
   }
 };
 
+export const getAllTour = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 0;
+    const result = await TourService.getAllTours(page);
+    return ResponseTrait.successResponse(res, result);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find tours",
+      500
+    );
+  }
+};
+
 
