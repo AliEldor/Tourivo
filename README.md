@@ -14,7 +14,6 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Database Schema
 
-
 <img src="https://i.ibb.co/HT9WCnd6/schema3.png"/>
 
 ### Component Diagram
@@ -29,15 +28,12 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 <img src="./readme/architecture%202.png"/>
 
-
-
 <br><br>
 
 <!-- Project Highlights -->
 <img src="./readme/title4.svg"/>
 
 ### Tourivo
-
 
 <img src="./readme/highlights.png"/>
 
@@ -46,25 +42,23 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-
 ### User Screens (Web)
 
-| Login screen                                  | Landing screen                        |
-| ---------------------------------------       | ------------------------------------- |
-| ![Landing](./readme/login.PNG)                | ![Landing](./readme/landing_page.gif) |
+| Login screen                   | Landing screen                        |
+| ------------------------------ | ------------------------------------- |
+| ![Landing](./readme/login.PNG) | ![Landing](./readme/landing_page.gif) |
 
-| Pictures screen                               | Tours screen                          |
-| ---------------------------------------       | ------------------------------------- |
-| ![Pics Gallery](./readme/pictures_gallery.PNG)| ![Tours](./readme/Tours.PNG)          |
+| Pictures screen                                | Tours screen                 |
+| ---------------------------------------------- | ---------------------------- |
+| ![Pics Gallery](./readme/pictures_gallery.PNG) | ![Tours](./readme/Tours.PNG) |
 
-| Tour Card screen                              | AI generated trip screen              |
-| ---------------------------------------       | ------------------------------------- |
-| ![Pics Gallery](./readme/tourCard.gif)        | ![Generated Trip](./readme/new_generated_trips.gif)          |
+| Tour Card screen                       | AI generated trip screen                            |
+| -------------------------------------- | --------------------------------------------------- |
+| ![Pics Gallery](./readme/tourCard.gif) | ![Generated Trip](./readme/new_generated_trips.gif) |
 
-| Ai Photo Detection screen                     |  screen                          |
-| ---------------------------------------       | ------------------------------------- |
-| ![ Photo Detection](./readme/ai_photo_detection.gif)| ![Tours](./readme/Tours.PNG)          |
-
+| Ai Photo Detection screen                            |
+| ---------------------------------------------------- |
+| ![ Photo Detection](./readme/ai_photo_detection.gif) |
 
 <br><br>
 
@@ -73,11 +67,9 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 ### Add Title Here
 
-
-| Services                            | Validation                       | Testing                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Services                         | Validation                             | Testing                                |
+| -------------------------------- | -------------------------------------- | -------------------------------------- |
 | ![Landing](./readme/service.jpg) | ![validation](./readme/validation.jpg) | ![test](./readme/demo//test_cases.PNG) |
-
 
 <br><br>
 
@@ -85,19 +77,20 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 <img src="./readme/title7.svg"/>
 
 ### Trip Engine
+
 - Automated trip planning workflow with intelligent duration estimates and priority-driven itinerary schedulin
+
 ### Traveler Shield
+
 - Advanced input screening system that identifies potentially malicious patterns to preserve travel recommendation integrity
+
 ### Journey Data Framework
+
 - Structured travel information validation using Zod with seamless OpenAI integration
 
-
-
-
-| Prompt                            | Langchain                       | Schema                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Prompt                          | Langchain                         | Schema                         |
+| ------------------------------- | --------------------------------- | ------------------------------ |
 | ![Landing](./readme/prompt.jpg) | ![validation](./readme/image.png) | ![schema](./readme/schema.jpg) |
-
 
 <br><br>
 
@@ -108,9 +101,8 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 
 - Description here.
 
-
-| Generated Trips                            | Ai Photo Detection                       | Create Tours                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| Generated Trips                   | Ai Photo Detection               | Create Tours                    |
+| --------------------------------- | -------------------------------- | ------------------------------- |
 | ![Landing](./readme/postman1.PNG) | ![fsdaf](./readme/detection.PNG) | ![fsdaf](./readme/postman3.PNG) |
 
 <br><br>
