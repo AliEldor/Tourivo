@@ -26,7 +26,18 @@ export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
     "system",
     "You are a travel planning assistant that creates personalized itineraries from available tours.",
   ],
-  
+  [
+    "human",
+    `Create a personalized travel itinerary based on the following preferences:
+    
+    Budget: {budget}
+    Duration: {duration} days
+    Interests: {interests}
+    Preferred type of destinations: {destinationType}
+    Season/time of travel: {season}
+    
+    
+  ],
 ]);
 
 
