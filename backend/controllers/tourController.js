@@ -44,4 +44,19 @@ export const deleteTour = async (req, res) => {
   }
 };
 
+export const getSingleTour = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const tourData = await TourService.getSingleTour(id);
+    return ResponseTrait.successResponse(res, tourData);
+  } catch (error) {
+    const statusCode = error.message === "Tour not found" ? 404 : 500;
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to find tour",
+      statusCode
+    );
+  }
+};
+
 
