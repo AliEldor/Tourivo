@@ -244,5 +244,16 @@ export const PhotoDetectionService = {
     };
   },
 
+  getPhotosByLandmark: async (landmarkName) => {
+    const photos = await PhotoDetection.find({
+      "detections.bestLandmark.name": { $regex: new RegExp(landmarkName, "i") },
+    }).sort({ createdAt: -1 });
+
+    return {
+      count: photos.length,
+      data: photos,
+    };
+  },
+
   
 };
