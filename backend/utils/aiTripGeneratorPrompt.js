@@ -59,5 +59,7 @@ export async function generateAITrip(preferences, tourOptions) {
     temperature: 1,
   });
 
+  const formatInstructions = tripOutputParser.getFormatInstructions();
+
   
 }
