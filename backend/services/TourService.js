@@ -22,5 +22,25 @@ export const TourService = {
     return updatedTour;
   },
 
-  
+  deleteTour: async (id) => {
+    const deletedTour = await Tour.findByIdAndDelete(id);
+
+    if (!deletedTour) {
+      throw new Error("Tour not found");
+    }
+
+    return { message: "Successfully deleted" };
+  },
+
+  getSingleTour: async (id) => {
+    const tour = await Tour.findById(id).populate("reviews");
+
+    if (!tour) {
+      throw new Error("Tour not found");
+    }
+
+    return tour;
+  },
+
+ 
 };
