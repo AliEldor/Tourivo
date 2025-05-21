@@ -66,4 +66,7 @@ const determineBestLandmark = (landmarks) => {
   return null;
 };
 
+export const PhotoDetectionService = {
+  
 
+};
