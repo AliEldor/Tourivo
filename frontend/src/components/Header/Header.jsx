@@ -64,6 +64,14 @@ const Header = () => {
 
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
+  const closeMenu = () => {
+    if (menuRef.current.classList.contains("show__menu")) {
+      menuRef.current.classList.remove("show__menu");
+    }
+  };
+
+  
+
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/register";
   const isAuthPage = isLoginPage || isRegisterPage;
@@ -85,7 +93,7 @@ const Header = () => {
             {/*logo end */}
 
             {/*menu*/}
-            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+            <div className="navigation" ref={menuRef}>
               <ul className="menu d-flex align-items-center gap-5">
                 {nav__links.map((item, index) => (
                   <li className="nav__item" key={index}>
