@@ -14,4 +14,29 @@ export const register = async (req, res) => {
   }
 };
 
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const result = await AuthService.login(email, password);
+
+    // Set token in  cookies
+    res.cookie("accessToken", result.token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days
+    });
+
+    return ResponseTrait.successResponse(res, {
+      token: result.token,
+      data: result.data,
+      role: result.role,
+    });
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to login",
+      error.statusCode || 500
+    );
+  }
+};
+
 
