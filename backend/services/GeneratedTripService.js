@@ -124,7 +124,26 @@ export const GeneratedTripService = {
       throw error;
     }
 
-    
+    const bookings = [];
+    const bookingIds = [];
+
+    for (const tourSelection of trip.tourSelections) {
+      const tour = tourSelection.tourId;
+
+      // create booking data for this tour
+      const tourBookingData = {
+        ...bookingData,
+        userId,
+        tourName: tour.title,
+      };
+
+      const { BookingService } = await import("./BookingService.js");
+      const savedBooking = await BookingService.createBooking(tourBookingData);
+
+      bookings.push(savedBooking);
+      bookingIds.push(savedBooking._id);
+    }
+
   },
 
   
