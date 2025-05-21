@@ -36,6 +36,9 @@ export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
     Preferred type of destinations: {destinationType}
     Season/time of travel: {season}
     
+    Select from these available tours to create the best itinerary:
+    {tourOptions}
+    
     
   ],
 ]);
