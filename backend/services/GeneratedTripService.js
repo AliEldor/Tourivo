@@ -144,6 +144,15 @@ export const GeneratedTripService = {
       bookingIds.push(savedBooking._id);
     }
 
+    trip.isBooked = true;
+    trip.bookingIds = bookingIds;
+    await trip.save();
+
+    return {
+      message: "Trip booked successfully",
+      trip,
+      bookings,
+    };
   },
 
   
