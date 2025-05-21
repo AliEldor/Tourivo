@@ -41,4 +41,18 @@ export const getTourReviews = async (req, res) => {
   }
 };
 
+export const getUserReviews = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const reviews = await ReviewService.getUserReviews(userId);
+    return ResponseTrait.successResponse(res, reviews);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch user reviews",
+      error.statusCode || 500
+    );
+  }
+};
+
 
