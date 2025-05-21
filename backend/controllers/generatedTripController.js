@@ -88,6 +88,12 @@ export const bookGeneratedTrip = async (req, res) => {
       bookingData
     );
 
-    
+    return ResponseTrait.successResponse(res, {
+      message: result.message,
+      data: {
+        trip: result.trip,
+        bookings: result.bookings,
+      },
+    });
   } 
 };
