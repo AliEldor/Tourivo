@@ -102,4 +102,18 @@ export const deletePhoto = async (req, res) => {
   }
 };
 
+export const updatePhoto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
 
+    const photo = await PhotoDetectionService.updatePhoto(id, userId, req.body);
+    return ResponseTrait.successResponse(res, photo);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to update photo",
+      error.statusCode || 500
+    );
+  }
+};
