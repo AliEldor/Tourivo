@@ -68,6 +68,12 @@ export async function generateAITrip(preferences, tourOptions) {
     : preferences.interests;
 
   return chain.invoke({
-    
+    budget: preferences.budget,
+    duration: preferences.duration,
+    interests: interestsString,
+    destinationType: preferences.destinationType,
+    season: preferences.season,
+    tourOptions: JSON.stringify(tourOptions, null, 2),
+    format_instructions: formatInstructions,
   });
 }
