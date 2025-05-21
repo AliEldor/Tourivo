@@ -46,6 +46,24 @@ export const GeneratedTripService = {
     const tourIds = tripData.tourSelections.map(
       (selection) => selection.tourId
     );
+    const validTours = await Tour.find({ _id: { $in: tourIds } });
+
+    if (validTours.length !== tourIds.length) {
+      throw new Error("Some selected tours were not found in the database");
+    }
+
+    const newTrip = new GeneratedTrip({
+      userId,
+      title: tripData.title,
+      description: tripData.description,
+      duration: preferences.duration,
+      tourSelections: tripData.tourSelections,
+      totalEstimatedCost: tripData.totalEstimatedCost,
+      preferences: preferences,
+    });
+
+    await newTrip.save();
+
     
   },
 
