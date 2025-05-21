@@ -7,7 +7,7 @@ const ResultImage = ({ imageUrl }) => {
 
   const formattedImageUrl = normalizedImageUrl.startsWith?.("http")
     ? normalizedImageUrl
-    : `http://localhost:4000/${normalizedImageUrl}`;
+    : `${import.meta.env.VITE_BASE_URL/normalizedImageUrl}`;
 
   return (
     <div className="image-container">
