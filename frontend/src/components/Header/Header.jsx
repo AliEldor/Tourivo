@@ -120,6 +120,7 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
+              <div className="menu-backdrop" onClick={closeMenu}></div>
             </div>
             {/*menu end*/}
 
