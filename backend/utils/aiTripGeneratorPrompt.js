@@ -61,5 +61,7 @@ export async function generateAITrip(preferences, tourOptions) {
 
   const formatInstructions = tripOutputParser.getFormatInstructions();
 
+  const chain = tripPromptTemplate.pipe(model).pipe(tripOutputParser);
+
   
 }
