@@ -89,8 +89,8 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 - Description here.
 
 
-| Postman API 1                            | Postman API 2                       | Postman API 3                        |
+| Generated Trips                            | Ai Photo Detection                       | Create Tours                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/postman1.PNG) | ![fsdaf](./readme/detection.PNG) | ![fsdaf](./readme/postman3.PNG) |
 
 <br><br>
