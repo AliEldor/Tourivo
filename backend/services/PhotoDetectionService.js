@@ -221,5 +221,17 @@ export const PhotoDetectionService = {
     return newPhoto;
   },
 
+  getPhoto: async (id) => {
+    const photo = await PhotoDetection.findById(id);
+
+    if (!photo) {
+      const error = new Error("Photo not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    return photo;
+  },
+
   
 };
