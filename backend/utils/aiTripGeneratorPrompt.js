@@ -51,4 +51,7 @@ export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
 ]);
 
 
+export async function generateAITrip(preferences, tourOptions) {
 
+  
+}
