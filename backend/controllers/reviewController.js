@@ -90,4 +90,34 @@ export const updateReview = async (req, res) => {
   }
 };
 
+export const deleteReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const userId = req.user.id;
+    const isAdmin = req.user.role === "admin";
 
+    const review = await Review.findById(reviewId);
+
+    if (!review) {
+      return ResponseTrait.errorResponse(res, "Review not found", 404);
+    }
+
+    if (review.userId.toString() !== userId && !isAdmin) {
+      return ResponseTrait.errorResponse(
+        res,
+        "You can only delete your own reviews",
+        403
+      );
+    }
+
+    const result = await ReviewService.deleteReview(reviewId);
+
+    return ResponseTrait.successResponse(res, result);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to delete review",
+      error.statusCode || 500
+    );
+  }
+};
