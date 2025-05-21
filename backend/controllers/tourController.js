@@ -99,4 +99,15 @@ export const getFeaturedTour = async (req, res) => {
   }
 };
 
-
+export const getTourCount = async (req, res) => {
+  try {
+    const count = await TourService.getTourCount();
+    return ResponseTrait.successResponse(res, count);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch tour count",
+      500
+    );
+  }
+};
