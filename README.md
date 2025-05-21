@@ -87,6 +87,7 @@ Tourivo is a smart tourism website that enhances how people discover and share t
 ### Trip Engine
 ### Traveler Shield
 ### Journey Data Framework
+- Structured travel information validation using Zod with seamless OpenAI integration
 
 
 
