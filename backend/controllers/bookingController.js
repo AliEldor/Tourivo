@@ -1,71 +1,28 @@
 import { BookingService } from "../services/BookingService.js";
 import { ResponseTrait } from "../traits/ResponseTrait.js";
 
-// Create new booking
 export const createBooking = async (req, res) => {
-  // Add user ID from auth token to booking data
-  const bookingData = {
-    ...req.body,
-    userId: req.user.id,
-  };
+  try {
+  
+    const bookingData = {
+      ...req.body,
+      userId: req.user.id,
+    };
 
-  const response = await BookingService.createBooking(bookingData);
+    const savedBooking = await BookingService.createBooking(bookingData);
 
-  if (!response.success) {
-    return ResponseTrait.errorResponse(res, response.error, 500);
-  }
-
-  return ResponseTrait.successResponse(res, {
-    message: "Your tour is booked",
-    data: response.data,
-  });
-};
-
-// Get a single booking
-export const getBooking = async (req, res) => {
-  const { id } = req.params;
-  const response = await BookingService.getBooking(id);
-
-  if (!response.success) {
+    return ResponseTrait.successResponse(res, {
+      message: "Your tour is booked",
+      data: savedBooking,
+    });
+  } catch (error) {
     return ResponseTrait.errorResponse(
       res,
-      response.error,
-      response.statusCode || 500
+      error.message || "Failed to create booking",
+      500
     );
   }
-
-  // only admin can see all bookings
-  if (response.data.userId !== req.user.id && req.user.role !== 'admin') {
-    return ResponseTrait.errorResponse(
-      res,
-      "You can only access your own bookings",
-      403
-    );
-  }
-
-  return ResponseTrait.successResponse(res, response.data);
 };
 
-// Get all bookings (admin only)
-export const getAllBooking = async (req, res) => {
-  const response = await BookingService.getAllBookings();
 
-  if (!response.success) {
-    return ResponseTrait.errorResponse(res, response.error, 500);
-  }
 
-  return ResponseTrait.successResponse(res, response.data);
-};
-
-// Get user's bookings
-export const getUserBookings = async (req, res) => {
-  const userId = req.user.id;
-  const response = await BookingService.getUserBookings(userId);
-
-  if (!response.success) {
-    return ResponseTrait.errorResponse(res, response.error, 500);
-  }
-
-  return ResponseTrait.successResponse(res, response.data);
-};
- 
