@@ -21,5 +21,15 @@ export const UserService = {
     return updatedUser;
   },
 
+  deleteUser: async (id) => {
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    if (!deletedUser) {
+      throw new Error("User not found");
+    }
+
+    return { message: "Successfully deleted" };
+  },
+
   
 };
