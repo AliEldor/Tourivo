@@ -159,7 +159,43 @@ export const PhotoDetectionService = {
           console.log("No labels detected");
         }
 
-        
+        if (
+          bestLandmark &&
+          bestLandmark.locations &&
+          bestLandmark.locations.length > 0
+        ) {
+          locationInfo = {
+            latitude: bestLandmark.locations[0].latitude,
+            longitude: bestLandmark.locations[0].longitude,
+            locationName: bestLandmark.name,
+          };
+          console.log("Location info set to:", locationInfo);
+        } else if (
+          landmarks.length > 0 &&
+          landmarks[0].locations &&
+          landmarks[0].locations.length > 0
+        ) {
+          locationInfo = {
+            latitude: landmarks[0].locations[0].latitude,
+            longitude: landmarks[0].locations[0].longitude,
+            locationName: landmarks[0].name,
+          };
+          console.log("Using fallback location:", locationInfo);
+        } else {
+          console.log("No location info detected");
+        }
+
+        tags = labels
+          .filter((label) => label.confidence > 0.75)
+          .map((label) => label.name);
+
+        if (bestLandmark && !tags.includes(bestLandmark.name)) {
+          tags.unshift(bestLandmark.name);
+        }
+
+        console.log("Generated tags:", tags.join(", "));
+      } 
+    } 
   },
 
 };
