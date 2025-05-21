@@ -70,7 +70,9 @@ const Header = () => {
     }
   };
 
-  
+  const handleNavClick = () => {
+    closeMenu();
+  };
 
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/register";
