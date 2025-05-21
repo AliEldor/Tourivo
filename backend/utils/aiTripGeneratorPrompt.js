@@ -46,7 +46,7 @@ export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
     4. Select tours that match the user's interests
     5. Each tour MUST have a valid tourId from the options provided
     
-    
+    {format_instructions}`,
   ],
 ]);
 
