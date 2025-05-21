@@ -56,4 +56,18 @@ export const getUserPhotos = async (req, res) => {
   }
 };
 
+export const getTourPhotos = async (req, res) => {
+  try {
+    const { tourId } = req.params;
+    const result = await PhotoDetectionService.getTourPhotos(tourId);
+    return ResponseTrait.successResponse(res, result);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch tour photos",
+      500
+    );
+  }
+};
+
 
