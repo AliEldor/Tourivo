@@ -48,4 +48,29 @@ export const getBooking = async (req, res) => {
   }
 };
 
+export const getAllBooking = async (req, res) => {
+  try {
+    const result = await BookingService.getAllBookings();
+    return ResponseTrait.successResponse(res, result.data);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch bookings",
+      500
+    );
+  }
+};
 
+export const getUserBookings = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const result = await BookingService.getUserBookings(userId);
+    return ResponseTrait.successResponse(res, result.data);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch user bookings",
+      500
+    );
+  }
+};
