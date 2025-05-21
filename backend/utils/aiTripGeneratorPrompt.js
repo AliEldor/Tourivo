@@ -21,3 +21,9 @@ export const tripOutputParser = StructuredOutputParser.fromZodSchema(
 );
 
 
+export const tripPromptTemplate = ChatPromptTemplate.fromMessages([
+ 
+]);
+
+
+
