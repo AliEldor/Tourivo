@@ -27,5 +27,20 @@ export const ReviewService = {
     return savedReview;
   },
 
+  getTourReviews: async (tourId) => {
+
+    const tour = await Tour.findById(tourId);
+    if (!tour) {
+      const error = new Error("Tour not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+  
+    const reviews = await Review.find({ productId: tourId });
+
+    return reviews;
+  },
+
   
 };
