@@ -295,5 +295,35 @@ export const PhotoDetectionService = {
     return { message: "Photo deleted successfully" };
   },
 
-  
+  updatePhoto: async (id, userId, photoData) => {
+    const photo = await PhotoDetection.findById(id);
+
+    if (!photo) {
+      const error = new Error("Photo not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    if (photo.userId.toString() !== userId) {
+      const error = new Error("Unauthorized to update this photo");
+      error.statusCode = 403;
+      throw error;
+    }
+
+    if (photoData.personalNote !== undefined) {
+      photo.personalNote = photoData.personalNote;
+    }
+
+    if (photoData.isPublic !== undefined) {
+      photo.isPublic = photoData.isPublic;
+    }
+
+    if (photoData.tags !== undefined && Array.isArray(photoData.tags)) {
+      photo.tags = photoData.tags;
+    }
+
+    await photo.save();
+
+    return photo;
+  },
 };
