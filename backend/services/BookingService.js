@@ -7,5 +7,17 @@ export const BookingService = {
     return savedBooking;
   },
 
+  getBooking: async (id) => {
+    const booking = await Booking.findById(id);
+
+    if (!booking) {
+      const error = new Error("Booking not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    return booking;
+  },
+
   
 };
