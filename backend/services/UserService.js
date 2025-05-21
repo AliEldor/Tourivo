@@ -41,5 +41,12 @@ export const UserService = {
     return user;
   },
 
-  
+  getAllUsers: async () => {
+    const users = await User.find({});
+
+    return {
+      count: users.length,
+      data: users,
+    };
+  },
 };
