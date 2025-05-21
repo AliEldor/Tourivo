@@ -67,5 +67,17 @@ export const TourService = {
     return tours;
   },
 
-  
+  getFeaturedTours: async () => {
+    const tours = await Tour.find({ featured: true })
+      .populate("reviews")
+      .limit(8);
+
+    return tours;
+  },
+
+  getTourCount: async () => {
+    const tourCount = await Tour.estimatedDocumentCount();
+
+    return tourCount;
+  },
 };
