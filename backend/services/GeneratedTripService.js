@@ -64,7 +64,12 @@ export const GeneratedTripService = {
 
     await newTrip.save();
 
-    
+    const populatedTrip = await GeneratedTrip.findById(newTrip._id).populate({
+      path: "tourSelections.tourId",
+      model: "Tour",
+    });
+
+    return populatedTrip;
   },
 
   
