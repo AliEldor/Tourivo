@@ -27,4 +27,18 @@ export const createReview = async (req, res) => {
   }
 };
 
+export const getTourReviews = async (req, res) => {
+  try {
+    const { tourId } = req.params;
+    const reviews = await ReviewService.getTourReviews(tourId);
+    return ResponseTrait.successResponse(res, reviews);
+  } catch (error) {
+    return ResponseTrait.errorResponse(
+      res,
+      error.message || "Failed to fetch reviews",
+      error.statusCode || 500
+    );
+  }
+};
+
 
